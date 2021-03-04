@@ -7,6 +7,10 @@ body {
 	background-image: url(img/profile.jpg);
 }
 
+/* .feed {
+	background: white;
+} */
+
 .tooltip::after, .post-date::after {
 	content: attr(data-full-date);
 	display: none;
