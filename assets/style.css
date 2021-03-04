@@ -1,0 +1,96 @@
+body {
+	font-family: 'Work Sans', sans-serif;
+	background: #F9F9FA;
+}
+
+.user-profile-name {
+	background-image: url(img/profile.jpg);
+}
+
+.tooltip::after, .post-date::after {
+	content: attr(data-full-date);
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(43, 40, 40, 0.6);
+	color: white;
+	white-space: nowrap;
+	padding: 3px 6px;
+	border-radius: 2px;
+	font-size: .75rem;
+}
+
+.tooltip::after {
+	top: calc(100% + 10px);
+	content: attr(data-hover);
+}
+
+.tooltip:hover::after, .post-date:hover::after {
+	display: block;
+}
+/* .tooltip{
+  visibility: hidden;
+  position: absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  visibility: visible;
+  z-index: 100;
+} */
+
+header {
+	background: #F9F9FA;
+	/* background: #ECECEC; */
+}
+
+footer {
+	background: none;
+}
+
+.post-content-container {
+
+}
+
+.post-content-container a {
+	color: black;
+	text-decoration: underline;
+}
+
+.post-content-container img {
+	display: block;
+	width: 100%;
+}
+
+.feed {
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+}
+
+.post {
+	border-bottom: 1px solid #CCC;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+		background: #222;
+		color: white;
+	}
+	header {
+		background: #333!important;
+		color: white;
+	}
+	.post-date, .user-profile-username {
+		color: #999!important;
+	}
+	.user-profile-full-name {
+		color: white!important;
+	}
+	.feed, .post {
+		border-color: #444!important;
+	}
+	footer {
+		background: #333!important;
+	}
+}
