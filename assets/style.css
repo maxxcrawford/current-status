@@ -5,6 +5,7 @@ body {
 
 .user-profile-image {
 	background-image: url(img/profile.jpg);
+	border-radius: 100%;
 }
 
 /* .feed {
@@ -96,6 +97,30 @@ footer {
 
 .post {
 	border-bottom: 1px solid #CCC;
+}
+
+.post-container {
+	overflow-x: hidden;
+	width: 100%;
+}
+
+.user-profile-username  {
+	overflow: hidden;
+  text-overflow: ellipsis;
+	flex-shrink: 3;
+}
+
+.post-date {
+	white-space: nowrap;
+}
+
+@media only screen and (max-width: 600px) {
+	.user-profile-full-name {
+		overflow: hidden;
+	  text-overflow: ellipsis;
+		flex-shrink: 1;
+		white-space: nowrap;
+	}
 }
 
 @media (prefers-color-scheme: dark) {
