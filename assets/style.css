@@ -47,6 +47,7 @@ body {
 
 header {
 	background: #F9F9FA;
+	positon: relative;
 	/* background: #ECECEC; */
 }
 
@@ -118,12 +119,34 @@ footer {
 	white-space: nowrap;
 }
 
+.time {
+	position: absolute;
+	right: 2rem;
+	color: #888;
+	top: 50%;
+	opacity: 0.5;
+	transform: translateY(-50%);
+
+}
+
+.time i {
+	font-size: 1.25rem;
+	transition: transform 0.8s ease-in-out 0s;
+}
+
+.time:hover i {
+	transform: rotate(360deg);
+}
+
 @media only screen and (max-width: 600px) {
 	.user-profile-full-name {
 		overflow: hidden;
 	  text-overflow: ellipsis;
 		flex-shrink: 1;
 		white-space: nowrap;
+	}
+	.time {
+		display: none;
 	}
 }
 

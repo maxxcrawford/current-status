@@ -34,4 +34,23 @@
 
 	});
 
+	function copyToClipboard() {
+    var temp = document.createElement("textarea");
+		var time = buildCurrentTime();
+    document.body.appendChild(temp);
+    temp.value = time;
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
+	}
+
+	function buildCurrentTime() {
+		// 20210310T2306
+		var now = dayjs();
+		return now.format('YYYYMMDDTHHmm');
+	}
+
+	const getTimeButton = document.getElementById("getTimeButton");
+	getTimeButton.addEventListener("click", copyToClipboard, false);
+	
 })();
