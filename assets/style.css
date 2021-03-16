@@ -99,6 +99,10 @@ footer {
 	padding-top: 100%;
 }
 
+.post-content-container-image.loading {
+	background-color: black;
+}
+
 .feed {
 	border-left: 1px solid #CCC;
 	border-right: 1px solid #CCC;

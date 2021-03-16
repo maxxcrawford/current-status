@@ -55,8 +55,27 @@
 
 	const images = document.querySelectorAll(".post-content-container-image");
 
+	let options = {
+	  root: document.querySelector('#scrollArea'),
+	  rootMargin: '0px',
+	  threshold: 1.0
+	}
+
+	let callback = (entries, observer) => {
+	  entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.remove("loading");
+				var bg = entry.target.dataset.img;
+				entry.target.style.backgroundImage = "url('" + bg + "')";
+			}
+	  });
+	};
+
+	let observer = new IntersectionObserver(callback, options);
+
 	images.forEach((img) => {
-		// console.log(img.dataset.img);
+		img.style.backgroundColor = img.dataset.color;
+		observer.observe(img);
 	});
 
 })();
