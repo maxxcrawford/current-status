@@ -95,6 +95,10 @@ footer {
 	padding-top: 75%;
 }
 
+.post-content-container-image.ratio-1-1 {
+	padding-top: 100%;
+}
+
 .feed {
 	border-left: 1px solid #CCC;
 	border-right: 1px solid #CCC;

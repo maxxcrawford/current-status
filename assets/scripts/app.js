@@ -52,5 +52,11 @@
 
 	const getTimeButton = document.getElementById("getTimeButton");
 	getTimeButton.addEventListener("click", copyToClipboard, false);
-	
+
+	const images = document.querySelectorAll(".post-content-container-image");
+
+	images.forEach((img) => {
+		// console.log(img.dataset.img);
+	});
+
 })();
