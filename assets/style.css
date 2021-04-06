@@ -103,6 +103,10 @@ footer {
 	padding-top: 67%;
 }
 
+.post-content-container-image.ratio-8-5 {
+	padding-top: 62.5%;
+}
+
 .post-content-container-image.loading {
 	background-color: black;
 }
