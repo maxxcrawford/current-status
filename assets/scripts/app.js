@@ -35,13 +35,13 @@
 	});
 
 	function copyToClipboard() {
-    var temp = document.createElement("textarea");
-		var time = buildCurrentTime();
-    document.body.appendChild(temp);
-    temp.value = time;
-    temp.select();
-    document.execCommand("copy");
-    document.body.removeChild(temp);
+		const temp = document.createElement("textarea");
+		const time = buildCurrentTime();
+		document.body.appendChild(temp);
+		temp.value = time;
+		temp.select();
+		document.execCommand("copy");
+		document.body.removeChild(temp);
 	}
 
 	function buildCurrentTime() {
@@ -55,27 +55,30 @@
 
 	const images = document.querySelectorAll(".post-content-container-image");
 
-	let options = {
-	  root: document.querySelector('#scrollArea'),
-	  rootMargin: '0px',
-	  threshold: 1.0
-	}
-
 	let callback = (entries, observer) => {
-	  entries.forEach(entry => {
+		entries.map((entry) => {
 			if (entry.isIntersecting) {
-				entry.target.classList.remove("loading");
-				var bg = entry.target.dataset.img;
+			entry.target.classList.remove("loading");
+				const bg = entry.target.dataset.img;
 				entry.target.style.backgroundImage = "url('" + bg + "')";
+				observer.unobserve(entry.target);
 			}
-	  });
+		});
 	};
 
-	let observer = new IntersectionObserver(callback, options);
+	let observer = new IntersectionObserver(callback);
 
 	images.forEach((img) => {
 		img.style.backgroundColor = img.dataset.color;
 		observer.observe(img);
 	});
+
+	// Load first five elements on load
+	for (let index = 0; index < 5; index++) {
+		const currentImage = images[index];
+		currentImage.classList.remove("loading");
+		var bg = currentImage.dataset.img;
+		currentImage.style.backgroundImage = "url('" + bg + "')";	
+	}
 
 })();
