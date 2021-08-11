@@ -53,6 +53,14 @@
 	const getTimeButton = document.getElementById("getTimeButton");
 	getTimeButton.addEventListener("click", copyToClipboard, false);
 
+	// Show time-clock only on local
+	const currentWindow = window.location.toString();
+	const isLocal = (currentWindow.includes("localhost"));
+	
+	if (isLocal) {
+		getTimeButton.classList.add("is-visible");
+	}
+	
 	const images = document.querySelectorAll(".post-content-container-image");
 
 	let callback = (entries, observer) => {
