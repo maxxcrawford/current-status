@@ -24,7 +24,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link defer rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
@@ -33,7 +34,10 @@
     <div class="container max-w-screen-sm mx-auto py-4 text-xl text-center">
       <span data-hover="current status" class="relative inline-block px-3 py-1 bg-black text-white">current status: </span>
     </div>
-    <button id="getTimeButton" class="time" type="button" name="button"><i class="fas fa-clock"></i></button>
+    <div class="top-1/2 opacity-50 -translate-y-1/2 absolute right-8 flex gap-6 items-center justify-center">
+      <button id="getTimeButton" class="hidden  color-[#888]  text-2xl" type="button" name="button"><i class="fas fa-clock transition-transform duration-700 hover:rotate-[360deg]"></i></button>
+      <div class="italic text-sm"><span id="postCount"></span> posts</div>
+    </div>
   </header>
   <main class="pt-12">
     <ul class="feed container max-w-screen-sm mx-auto pt-8 pb-16" >

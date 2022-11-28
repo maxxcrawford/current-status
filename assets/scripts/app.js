@@ -19,6 +19,10 @@
 
 	const postDate = document.querySelectorAll(".post-date");
 
+	const postCount = document.getElementById("postCount");
+
+	postCount.textContent = postDate.length;
+
 	postDate.forEach( el => {
 		// TODO: Add hover element with full date
 		let date = el.dataset.date;
@@ -58,7 +62,7 @@
 	const isLocal = (currentWindow.includes("localhost"));
 	
 	if (isLocal) {
-		getTimeButton.classList.add("is-visible");
+		getTimeButton.classList.remove("hidden");
 	}
 	
 	const images = document.querySelectorAll(".post-content-container-image");
