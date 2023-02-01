@@ -47,8 +47,11 @@ body {
 
 header {
 	background: #F9F9FA;
-	positon: relative;
 	/* background: #ECECEC; */
+}
+
+main {
+	/* border-top: 1px solid #CCC; */
 }
 
 footer {
@@ -136,6 +139,7 @@ footer {
 }
 
 .feed {
+	
 	border-left: 1px solid #CCC;
 	border-right: 1px solid #CCC;
 }
@@ -157,6 +161,10 @@ footer {
 
 .post-date {
 	white-space: nowrap;
+}
+
+div:target {
+	padding-top: 5rem;
 }
 
 @media only screen and (max-width: 600px) {
