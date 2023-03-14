@@ -200,4 +200,7 @@ div:target {
 	footer {
 		background: #333!important;
 	}
+	.post-content-container-image {
+		opacity: 0.75;
+	}
 }
