@@ -196,7 +196,17 @@ div:target {
 	}
 	.feed, .post {
 		border-color: #444!important;
+		/* border-width: 1px; */
 	}
+	.feed {	
+		border-left-width: 2px;		
+		border-right-width: 2px;
+	}
+
+	.post {
+		border-bottom-width: 2px;	
+	}
+	
 	footer {
 		background: #333!important;
 	}
