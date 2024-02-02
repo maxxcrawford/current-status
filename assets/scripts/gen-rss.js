@@ -14,7 +14,7 @@ const feed = new RSS({
     description: 'Twitter feed for one, please!',
     feed_url: 'http://current-status.com/rss.xml',
     site_url: 'http://current-status.com',
-    image_url: 'https://current-status.com/favicon.ico',
+    image_url: 'https://current-status.com/favicon.png',
     copyright: '2024 Maxx Crawford',
     language: 'en',
     ttl: '60',
@@ -37,7 +37,7 @@ for (const post of posts.posts) {
     feed.item({
         title:  'current status:',
         description: '',
-        url: `http://current-status.com/#${post.guid}`,
+        url: `http://current-status.com/${post.guid}`,
         author: 'Maxx Crawford', 
         date: date, 
         enclosure: {url: post.image}, // optional enclosure        
@@ -53,4 +53,4 @@ var xml = feed.xml();
 
 // console.log(xml);
 
-Fs.writeFileSync('rss.xml', xml);
+Fs.writeFileSync('test2.xml', xml);
