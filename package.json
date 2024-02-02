@@ -5,11 +5,15 @@
   "main": "current-status.js",
   "scripts": {
     "start": "browser-sync start --server",
+    "rss": "node gen-rss.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "browser-sync": "^2.28.3"
+    "browser-sync": "^2.28.3",
+    "dayjs": "^1.11.10",
+    "fs": "^0.0.1-security",
+    "rss": "^1.2.2"
   }
 }
