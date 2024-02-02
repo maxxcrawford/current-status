@@ -41,7 +41,9 @@ for (const post of posts.posts) {
         url: `https://current-status.com/${post.guid}`,
         author: 'Maxx Crawford', 
         date: date, 
-        enclosure: {url: `https://current-status.com/${post.image}`}, // optional enclosure        
+        enclosure: {
+            url: post.image
+        },
     });
 }
 
