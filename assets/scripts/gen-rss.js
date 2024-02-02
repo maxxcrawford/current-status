@@ -54,4 +54,4 @@ var xml = feed.xml();
 
 // console.log(xml);
 
-Fs.writeFileSync('test3.xml', xml);
+Fs.writeFileSync('rss.xml', xml);
