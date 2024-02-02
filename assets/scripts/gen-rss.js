@@ -37,10 +37,11 @@ for (const post of posts.posts) {
     feed.item({
         title:  'current status:',
         description: '',
-        url: `http://current-status.com/${post.guid}`,
+        guid: post.guid,
+        url: `https://current-status.com/${post.guid}`,
         author: 'Maxx Crawford', 
         date: date, 
-        enclosure: {url: post.image}, // optional enclosure        
+        enclosure: {url: `https://current-status.com/${post.image}`}, // optional enclosure        
     });
 }
 
@@ -53,4 +54,4 @@ var xml = feed.xml();
 
 // console.log(xml);
 
-Fs.writeFileSync('test2.xml', xml);
+Fs.writeFileSync('test3.xml', xml);
