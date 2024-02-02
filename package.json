@@ -5,7 +5,7 @@
   "main": "current-status.js",
   "scripts": {
     "start": "browser-sync start --server",
-    "rss": "node gen-rss.js",
+    "rss": "node assets/scripts/gen-rss.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
