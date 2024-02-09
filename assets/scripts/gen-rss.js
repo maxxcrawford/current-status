@@ -17,7 +17,7 @@ const feed = new RSS({
     image_url: 'https://current-status.com/favicon.png',
     copyright: '2024 Maxx Crawford',
     language: 'en',
-    ttl: '60',
+    ttl: '1',
 });
 
 var posts = JSON.parse(Fs.readFileSync("./data.json", 'utf8'));
