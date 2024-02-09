@@ -52,7 +52,7 @@ for (const post of posts.posts) {
 
  
 // cache the xml to send to clients
-var xml = feed.xml();
+var xml = feed.xml({indent: true});
 
 // console.log(xml);
 
