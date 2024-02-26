@@ -1,6 +1,10 @@
 {
   "posts": [
     {
+      "guid": "#20240225T2304",
+      "image": "https://current-status.com/assets/img/content/20240225T2304.jpg"
+    },
+    {
       "guid": "#20240221T1446",
       "image": "https://current-status.com/assets/img/content/20240221T1446.jpg"
     },
