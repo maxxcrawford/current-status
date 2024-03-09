@@ -1,8 +1,14 @@
 {
   "posts": [
     {
+      "guid": "#20240309T1508",
+      "image": "https://current-status.com/assets/img/content/20240309T1508.jpg",
+      "imageAltDesc": "The Major League Rugby Championship Shield and rugby football on a table"
+    },
+    {
       "guid": "#20240307T1159",
-      "image": "https://current-status.com/assets/img/content/20240307T1159.jpg"
+      "image": "https://current-status.com/assets/img/content/20240307T1159.jpg",
+      "imageAltDesc": "Black and white image of two woman riding a horse"
     },
     {
       "guid": "#20240228T0825",
@@ -18,7 +24,8 @@
     },
     {
       "guid": "#20240214T0901",
-      "image": "https://media.giphy.com/media/Gpqk76tiVKjn2/giphy.gif"
+      "image": "https://media.giphy.com/media/Gpqk76tiVKjn2/giphy.gif",
+      "imageAltDesc": "Woodstock pins a valentine's heart on Snoopy's nose"
     },
     {
       "guid": "#20240212T1005",

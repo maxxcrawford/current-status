@@ -24,5 +24,5 @@ function getFullTime(time){
 
 setTimeout(()=>{
 	pbcopy(getFullTime(currentTime))
-}, 400);
+}, 1000);
 
