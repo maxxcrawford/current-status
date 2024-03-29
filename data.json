@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240329T1418",
+      "image": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmRyYmVpOHVzNnE0MzEwaXVlZHAxZWphY3FpcXVkbGNlb3BvYXNtaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/huVPgLyK2gH2tEQgqQ/giphy.gif",
+      "imageAltDesc": "Email swirling around a cartoon person"
+    },
+    {
       "guid": "#20240327T1420",
       "image": "https://current-status.com/assets/img/content/20240327T1420.jpg",
       "imageAltDesc": "Two characters from the show Bluey and a suspicious chair in the corner."
