@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240403T1448",
+      "image": "https://media.giphy.com/media/WRAPJOi3gbawE67IQr/giphy.gif",
+      "imageAltDesc": "Moe from the Simpsons throws Barney out of his bar, only to have him reappear behind him"
+    },
+    {
       "guid": "#20240402T1455",
       "image": "https://current-status.com/assets/img/content/20240402T1455.jpg",
       "imageAltDesc": "Beetlejuice sitting on a gravestone"
