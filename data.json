@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240408T1123",
+      "image": "https://current-status.com/assets/img/content/20240408T1123.jpg",
+      "imageAltDesc": "Cartoon of multiple familiies in a park. All the adults in the image have sad expressions."
+    },
+    {
       "guid": "#20240403T1448",
       "image": "https://media.giphy.com/media/WRAPJOi3gbawE67IQr/giphy.gif",
       "imageAltDesc": "Moe from the Simpsons throws Barney out of his bar, only to have him reappear behind him"
