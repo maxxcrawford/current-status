@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240423T1137",
+      "image": "https://media.giphy.com/media/ff6IT8IzC5hEQ/giphy.gif",
+      "imageAltDesc": "A cartoon rotatory telephone, with a red blinking light"
+    },
+    {
       "guid": "#20240421T2334",
       "image": "https://current-status.com/assets/img/content/20240421T2334.jpg",
       "imageAltDesc": "A still from the movie, 'Everything Everywhere All at Once' of a rock with the text 'There Are No Rules!'"
