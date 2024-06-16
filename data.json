@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240615T2056",
+      "image": "https://current-status.com/assets/img/content/20240615T2056.jpg",
+      "imageAltDesc": "Man taking a self-portrait in the mirror"
+    },
+    {
       "guid": "#20240605T1139",
       "image": "https://current-status.com/assets/img/content/20240605T1139.jpg",
       "imageAltDesc": "Illustration of a chatbot with a creepy human face."
