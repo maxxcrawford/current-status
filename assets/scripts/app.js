@@ -86,11 +86,11 @@
 	});
 
 	// Load first five elements on load
-	for (let index = 0; index < 5; index++) {
-		const currentImage = images[index];
-		currentImage.classList.remove("loading");
-		var bg = currentImage.dataset.img;
-		currentImage.style.backgroundImage = "url('" + bg + "')";	
-	}
+	// for (let index = 0; index < 5; index++) {
+	// 	const currentImage = images[index];
+	// 	currentImage.classList.remove("loading");
+	// 	var bg = currentImage.dataset.img;
+	// 	currentImage.style.backgroundImage = "url('" + bg + "')";	
+	// }
 
 })();

@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240621T1428",
+      "image": "https://current-status.com/assets/img/content/20240621T1428.jpg",
+      "imageAltDesc": "Multiple empty tables at an Italian resturant"
+    },
+    {
       "guid": "#20240617T1613",
       "image": "https://current-status.com/assets/img/content/20240617T1613.jpg",
       "imageAltDesc": "Two men posing behind a road construction sign"
