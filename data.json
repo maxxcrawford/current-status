@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240623T2128",
+      "image": "https://current-status.com/assets/img/content/20240623T2128.jpg",
+      "imageAltDesc": "Batman looking through a film camera on a movie set"
+    },
+    {
       "guid": "#20240621T1428",
       "image": "https://current-status.com/assets/img/content/20240621T1428.jpg",
       "imageAltDesc": "Multiple empty tables at an Italian resturant"
