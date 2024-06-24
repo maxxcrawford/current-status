@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240624T1105",
+      "image": "https://current-status.com/assets/img/content/20240624T1105.jpg",
+      "imageAltDesc": "Sign displaying the betting odds of who shot Mr. Burns from the Simpsons televeision show"
+    },
+    {
       "guid": "#20240623T2128",
       "image": "https://current-status.com/assets/img/content/20240623T2128.jpg",
       "imageAltDesc": "Batman looking through a film camera on a movie set"
