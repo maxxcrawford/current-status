@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240626T0910",
+      "image": "https://current-status.com/assets/img/content/20240626T0910.jpg",
+      "imageAltDesc": "Computer with a smiley face surrounded by music notes"
+    },
+    {
       "guid": "#20240624T1105",
       "image": "https://current-status.com/assets/img/content/20240624T1105.jpg",
       "imageAltDesc": "Sign displaying the betting odds of who shot Mr. Burns from the Simpsons televeision show"
