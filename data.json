@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240627T1559",
+      "image": "https://current-status.com/assets/img/content/20240627T1559.jpg",
+      "imageAltDesc": "Teenager holding an eletric guitar"
+    },
+    {
       "guid": "#20240626T0910",
       "image": "https://current-status.com/assets/img/content/20240626T0910.jpg",
       "imageAltDesc": "Computer with a smiley face surrounded by music notes"
