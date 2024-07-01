@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240701T1526",
+      "image": "https://current-status.com/assets/img/content/20240701T1526.jpg",
+      "imageAltDesc": "Man hunched over a computer terminal"
+    },
+    {
       "guid": "#20240627T1559",
       "image": "https://current-status.com/assets/img/content/20240627T1559.jpg",
       "imageAltDesc": "Teenager holding an eletric guitar"
