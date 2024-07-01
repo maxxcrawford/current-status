@@ -5,9 +5,12 @@
   "main": "current-status.js",
   "scripts": {
     "start": "browser-sync start --server",
-    "date": "node assets/scripts/gen-date.js",
+    "date": "npm-run-all date:*",
+    "date:short": "node assets/scripts/gen-date-short.js",
+    "date:full": "node assets/scripts/gen-date-full.js",
     "rss": "node assets/scripts/gen-rss.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "color": "dominant_colours --max-colours=1 --no-palette",
     "masto": "node assets/scripts/masto.js",
     "publish": "npm run rss && npm run masto"
   },
@@ -19,6 +22,7 @@
     "dotenv": "^16.4.5",
     "fs": "^0.0.1-security",
     "masto": "^6.6.4",
+    "npm-run-all": "^4.1.5",
     "rss": "^1.2.2"
   },
   "volta": {

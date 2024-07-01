@@ -16,13 +16,13 @@ const currentTime = buildCurrentTime()
 
 pbcopy(currentTime)
 
-function getFullTime(time){
-	// let date = el.dataset.date;
-	let dayjsDate = Dayjs(time);
-	return dayjsDate.format("h:mm A • MMMM D, YYYY");
-}
+// function getFullTime(time){
+// 	// let date = el.dataset.date;
+// 	let dayjsDate = Dayjs(time);
+// 	return dayjsDate.format("h:mm A • MMMM D, YYYY");
+// }
 
-setTimeout(()=>{
-	pbcopy(getFullTime(currentTime))
-}, 1000);
+// setTimeout(()=>{
+// 	pbcopy(getFullTime(currentTime))
+// }, 1000);
 
