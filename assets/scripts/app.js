@@ -18,16 +18,20 @@
 	});
 
 	const postDate = document.querySelectorAll(".post-date");
-
 	const postCount = document.getElementById("postCount");
 
 	postCount.textContent = postDate.length;
+
+	const currentYear = dayjs().year();
 
 	postDate.forEach( el => {
 		// TODO: Add hover element with full date
 		let date = el.dataset.date;
 		let dayjsDate = dayjs(date);
-		let dayjsDateDisplay = dayjsDate.format("MMM D");
+		let postIsCurrentYear = dayjsDate.isSame(`${currentYear}-01-01`, 'y')
+
+		let dayjsDateDisplay = postIsCurrentYear ? dayjsDate.format("MMM D") : dayjsDate.format("MMM D, YYYY")
+		
 		let dayjsDateHover = dayjsDate.format("h:mm A • MMMM D, YYYY");
 		el.textContent = dayjsDateDisplay;
 		el.dataset.fullDate = dayjsDateHover
@@ -35,7 +39,6 @@
 		// let span = document.createElement("span");
 		// span.classList.add("post-date-full", "tooltip", "p-1", "rounded", "bg-red-500", "sm:bg-yellow-400", "md:bg-blue-500", "lg:bg-green-700");
 		// span.textContent = dayjsDateHover
-
 	});
 
 	function copyToClipboard() {
