@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240702T0945",
+      "image": "https://current-status.com/assets/img/content/20240702T0945.jpg",
+      "imageAltDesc": "Halle Berry next to a computer screen, displaying her website"
+    },
+    {
       "guid": "#20240701T1526",
       "image": "https://current-status.com/assets/img/content/20240701T1526.jpg",
       "imageAltDesc": "Man hunched over a computer terminal"
