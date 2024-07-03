@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240703T1247",
+      "image": "https://current-status.com/assets/img/content/20240703T1247.jpg",
+      "imageAltDesc": "Cross-stitch illustration of a dinosaur"
+    },
+    {
       "guid": "#20240702T0945",
       "image": "https://current-status.com/assets/img/content/20240702T0945.jpg",
       "imageAltDesc": "Halle Berry next to a computer screen, displaying her website"
