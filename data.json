@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240708T1052",
+      "image": "https://current-status.com/assets/img/content/20240708T1052.jpg",
+      "imageAltDesc": "Error message from Reddit.com"
+    },
+    {
       "guid": "#20240703T1247",
       "image": "https://current-status.com/assets/img/content/20240703T1247.jpg",
       "imageAltDesc": "Cross-stitch illustration of a dinosaur"
