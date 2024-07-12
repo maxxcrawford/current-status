@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240712T1341",
+      "image": "https://current-status.com/assets/img/content/20240712T1341.jpg",
+      "imageAltDesc": "A scene from the show Twin Peaks where three teenagers recording a song in a living room"
+    },
+    {
       "guid": "#20240708T1052",
       "image": "https://current-status.com/assets/img/content/20240708T1052.jpg",
       "imageAltDesc": "Error message from Reddit.com"
