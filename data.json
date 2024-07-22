@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240722T1127",
+      "image": "https://media.giphy.com/media/56zzkJIfFidB6eIkAd/giphy.gif",
+      "imageAltDesc": "Childish Gambino singing on stage with a band"
+    },
+    {
       "guid": "#20240712T1341",
       "image": "https://current-status.com/assets/img/content/20240712T1341.jpg",
       "imageAltDesc": "A scene from the show Twin Peaks where three teenagers recording a song in a living room"
