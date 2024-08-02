@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240802T0919",
+      "image": "https://current-status.com/assets/img/content/20240802T0919.jpg",
+      "imageAltDesc": "Still from the game show, Jeopardy"
+    },
+    {
       "guid": "#20240722T1127",
       "image": "https://media.giphy.com/media/56zzkJIfFidB6eIkAd/giphy.gif",
       "imageAltDesc": "Childish Gambino singing on stage with a band"
