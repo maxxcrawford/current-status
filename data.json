@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240913T1152",
+      "image": "https://current-status.com/assets/img/content/20240913T1152.jpg",
+      "imageAltDesc": "Woman at a gas station filling up her sports car"
+    },
+    {
       "guid": "#20240905T1244",
       "image": "https://current-status.com/assets/img/content/20240905T1244.jpg",
       "imageAltDesc": "Costumes from the Spirit Halloween x Chipotle collection"
