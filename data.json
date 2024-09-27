@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240927T1021",
+      "image": "https://current-status.com/assets/img/content/20240927T1021.jpg",
+      "imageAltDesc": "Two men stand in the bed of a red truck, while a woman on a cellphone stands in the foreground."
+    },
+    {
       "guid": "#20240913T1152",
       "image": "https://current-status.com/assets/img/content/20240913T1152.jpg",
       "imageAltDesc": "Woman at a gas station filling up her sports car"
