@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20240930T0920",
+      "image": "https://current-status.com/assets/img/content/20240930T0920.jpg",
+      "imageAltDesc": "A Lego person addressing a crowd of other Lego people."
+    },
+    {
       "guid": "#20240927T1021",
       "image": "https://current-status.com/assets/img/content/20240927T1021.jpg",
       "imageAltDesc": "Two men stand in the bed of a red truck, while a woman on a cellphone stands in the foreground."
