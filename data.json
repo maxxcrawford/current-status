@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20241008T1527",
+      "image": "https://current-status.com/assets/img/content/20241008T1527.jpg",
+      "imageAltDesc": "An illustration of a young boy with small figure of a smiling football coach on one shoulder and a muscular man with a rifle on his right shoulder."
+    },
+    {
       "guid": "#20240930T0920",
       "image": "https://current-status.com/assets/img/content/20240930T0920.jpg",
       "imageAltDesc": "A Lego person addressing a crowd of other Lego people."
