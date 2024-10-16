@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20241016T1119",
+      "image": "https://current-status.com/assets/img/content/20241016T1119.jpg",
+      "imageAltDesc": "The cat, Jones, from the movie Alien, in a space suit helmet. A reflection of a Xenomorph alien is visible in the helmet visor"
+    },
+    {
       "guid": "#20241009T1237",
       "image": "https://current-status.com/assets/img/content/20241009T1237.jpg",
       "imageAltDesc": "A man in a dress shirt holding a phone"
