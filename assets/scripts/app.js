@@ -35,7 +35,7 @@
 		let dayjsDateHover = dayjsDate.format("h:mm A • MMMM D, YYYY");
 		el.textContent = dayjsDateDisplay;
 		el.dataset.fullDate = dayjsDateHover
-
+		el.ariaLabel = dayjsDateHover;
 		// let span = document.createElement("span");
 		// span.classList.add("post-date-full", "tooltip", "p-1", "rounded", "bg-red-500", "sm:bg-yellow-400", "md:bg-blue-500", "lg:bg-green-700");
 		// span.textContent = dayjsDateHover
