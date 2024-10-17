@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20241017T0928",
+      "image": "https://current-status.com/assets/img/content/20241017T0928.jpg",
+      "imageAltDesc": "Two well dressed men from the 1980's in the center of a high-end sushi restaurant"
+    },
+    {
       "guid": "#20241016T1119",
       "image": "https://current-status.com/assets/img/content/20241016T1119.jpg",
       "imageAltDesc": "The cat, Jones, from the movie Alien, in a space suit helmet. A reflection of a Xenomorph alien is visible in the helmet visor"
