@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20241021T1043",
+      "image": "https://current-status.com/assets/img/content/20241021T1043.jpg",
+      "imageAltDesc": "A white-collar office worker stares sternly from behind his computer"
+    },
+    {
       "guid": "#20241017T0928",
       "image": "https://current-status.com/assets/img/content/20241017T0928.jpg",
       "imageAltDesc": "Two well dressed men from the 1980's in the center of a high-end sushi restaurant"
