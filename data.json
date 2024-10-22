@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20241022T1723",
+      "image": "https://current-status.com/assets/img/content/20241022T1723.jpg",
+      "imageAltDesc": "Rick from the television show, 'Rick and Morty' points at a photo of himself on a computer screen"
+    },
+    {
       "guid": "#20241021T1043",
       "image": "https://current-status.com/assets/img/content/20241021T1043.jpg",
       "imageAltDesc": "A white-collar office worker stares sternly from behind his computer"
