@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20241101T1037",
+      "image": "https://current-status.com/assets/img/content/20241101T1037.jpg",
+      "imageAltDesc": "An illustration of a man in a chainmail t-shirt with worms in his arms"
+    },
+    {
       "guid": "#20241022T1723",
       "image": "https://current-status.com/assets/img/content/20241022T1723.jpg",
       "imageAltDesc": "Rick from the television show, 'Rick and Morty' points at a photo of himself on a computer screen"
