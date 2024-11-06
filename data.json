@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20241106T1239",
+      "image": "https://media.giphy.com/media/g8s8oSSxbp2fq3Guip/giphy.gif",
+      "imageAltDesc": "Man in costume walks around a shopping mall"
+    },
+    {
       "guid": "#20241105T1628",
       "image": "https://current-status.com/assets/img/content/20241105T1628.jpg",
       "imageAltDesc": "BTS Photo of Twin Peaks Actors"
