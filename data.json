@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20241202T1524",
+      "image": "https://current-status.com/assets/img/content/20241202T1524.jpg",
+      "imageAltDesc": "A man at a desk, holding a hot dog"
+    },
+    {
       "guid": "#20241106T1239",
       "image": "https://media.giphy.com/media/g8s8oSSxbp2fq3Guip/giphy.gif",
       "imageAltDesc": "Man in costume walks around a shopping mall"
