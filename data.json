@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20241209T1020",
+      "image": "https://current-status.com/assets/img/content/20241209T1020.jpg",
+      "imageAltDesc": "A man peeking over a wanted poster, covering his face."
+    },
+    {
       "guid": "#20241202T1524",
       "image": "https://current-status.com/assets/img/content/20241202T1524.jpg",
       "imageAltDesc": "A man at a desk, holding a hot dog"
