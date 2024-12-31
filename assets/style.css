@@ -155,9 +155,14 @@ footer {
 	padding-top: 129%;
 }
 
+.post-content-container-image.ratio-13-32,
+.post-content-container-image.ratio-32-13 {
+	padding-top: 40%;
+}
+
 .post-content-container-image.ratio-2-5,
 .post-content-container-image.ratio-5-2 {
-	padding-top: 45%;
+	padding-top: 40%;
 }
 
 .post-content-container-image.ratio-1-2,

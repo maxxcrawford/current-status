@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20241231T1439",
+      "image": "https://current-status.com/assets/img/content/20241231T1439.jpg",
+      "imageAltDesc": "Screenshot from the game Age of Empires II completing research"
+    },
+    {
       "guid": "#20241219T1325",
       "image": "https://media.giphy.com/media/2q00npOsnT25DN79kk/giphy.gif",
       "imageAltDesc": "Man in Barbie-inspiried outfit walks into a back yard"
