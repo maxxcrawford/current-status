@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20250107T1353",
+      "image": "https://current-status.com/assets/img/content/20250107T1353.jpg",
+      "imageAltDesc": "A field of medieval knights with a sports car in the center"
+    },
+    {
       "guid": "#20241231T1439",
       "image": "https://current-status.com/assets/img/content/20241231T1439.jpg",
       "imageAltDesc": "Screenshot from the game Age of Empires II completing research"
