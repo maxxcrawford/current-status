@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20250109T2120",
+      "image": "https://current-status.com/assets/img/content/20250109T2120.jpg",
+      "imageAltDesc": "The abominable snowman towering over a field of frozen highway, littered with crashed cars"
+    },
+    {
       "guid": "#20250107T1353",
       "image": "https://current-status.com/assets/img/content/20250107T1353.jpg",
       "imageAltDesc": "A field of medieval knights with a sports car in the center"
