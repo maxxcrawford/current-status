@@ -1,6 +1,7 @@
 const dotenv = require('dotenv').config();
 const masto = require('masto');
 const Fs = require('fs');
+const { exec } = require('child_process');
 
 (async function() {
 	"use strict";
@@ -50,7 +51,5 @@ const Fs = require('fs');
     });
 
     console.log(status.url);
-
-	// Code Here
-	
+    exec(`open ${status.url}`);	
 })();
