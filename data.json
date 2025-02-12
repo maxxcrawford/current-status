@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20250212T1414",
+      "image": "https://current-status.com/assets/img/content/20250212T1414.jpg",
+      "imageAltDesc": "The band Cheap Trick standing together on a cloud"
+    },
+    {
       "guid": "#20250204T1130",
       "image": "https://current-status.com/assets/img/content/20250204T1130.jpg",
       "imageAltDesc": "Ben and Jerry Horne looking at each other in his office at the Great Northern Hotel"
