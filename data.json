@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20250324T1037",
+      "image": "https://current-status.com/assets/img/content/20250324T1037.jpg",
+      "imageAltDesc": "A sign of the window of a store reading No Skin / No Soul / No Service"
+    },
+    {
       "guid": "#20250306T0947",
       "image": "https://current-status.com/assets/img/content/20250306T0947.jpg",
       "imageAltDesc": "The pokemon Gengar frowning, wearing a tie and holding a briefcase."
