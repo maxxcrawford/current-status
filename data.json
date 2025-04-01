@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20250401T1414",
+      "image": "https://current-status.com/assets/img/content/20250401T1414.jpg",
+      "imageAltDesc": "Graffiti on a wall reads, 'F- U Skrillex you think ur Andy Warhol but ur not,'with a painted heart, beside a parked car."
+    },
+    {
       "guid": "#20250331T2217",
       "image": "https://media.giphy.com/media/xrUOOe0neqqDJtN7vb/giphy.gif",
       "imageAltDesc": "Skrillex logo (three blades)"
