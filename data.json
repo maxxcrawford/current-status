@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20250331T2217",
+      "image": "https://media.giphy.com/media/xrUOOe0neqqDJtN7vb/giphy.gif",
+      "imageAltDesc": "Skrillex logo (three blades)"
+    },
+    {
       "guid": "#20250331T1141",
       "image": "https://current-status.com/assets/img/content/20250331T1141.jpg",
       "imageAltDesc": "Dog Man feeding Lil' Petey dinner"
