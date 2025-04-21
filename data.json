@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20250421T0919",
+      "image": "https://current-status.com/assets/img/content/20250421T0919.jpg",
+      "imageAltDesc": "Cartoon illustration of three orange and white fox characters with distinct accessories—a green cap and smile on the left, a tie and neutral expression in the center, and a star badge with a grin on the right—set against a light blue background."
+    },
+    {
       "guid": "#20250410T1217",
       "image": "https://current-status.com/assets/img/content/20250410T1217.jpg",
       "imageAltDesc": "Traders in suits converse amid a cluttered, paper-strewn floor at a bustling financial exchange. One trader sits on a counter, and several monitors are visible."
