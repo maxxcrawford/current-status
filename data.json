@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20250630T0944",
+      "image": "https://current-status.com/assets/img/content/20250630T0944.jpg",
+      "imageAltDesc": "Cop Files YouTube series logo"
+    },
+    {
       "guid": "#20250618T1220",
       "image": "https://current-status.com/assets/img/content/20250618T1220.jpg",
       "imageAltDesc": "Illustration of a humanoid robot blowing bubbles, each containing icons representing creative activities like music, art, writing, gaming, and technology, against a yellow background."
