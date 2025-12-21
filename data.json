@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20251221T1241",
+      "image": "https://current-status.com/assets/img/content/20251221T1241.jpg",
+      "imageAltDesc": "Group of five men posing inside a retro diner, wearing suits, jackets, and uniforms with a serious, posed expression"
+    },
+    {
       "guid": "#20251210T1405",
       "image": "https://current-status.com/assets/img/content/20251210T1405.jpg",
       "imageAltDesc": "A man wearing futuristic visor glasses sits at a kitchen table while another man in a suit pours coffee into a mug beside him"
