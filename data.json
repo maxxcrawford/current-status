@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20260101T1046",
+      "image": "https://current-status.com/assets/img/content/20260101T1046.jpg",
+      "imageAltDesc": "Derek Turnbow from Stranger Things wearing glasses and a colorful striped sweater, holding a retro lunchbox on a suburban street"
+    },
+    {
       "guid": "#20251226T1845",
       "image": "https://current-status.com/assets/img/content/20251226T1845.jpg",
       "imageAltDesc": "Studio portrait of Lara Flynn Boyle posed above James Marshall during a 1990 Movieline magazine photo shoot, against a dark backdrop"
