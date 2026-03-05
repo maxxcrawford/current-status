@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20260305T0925",
+      "image": "https://current-status.com/assets/img/content/20260305T0925.jpg",
+      "imageAltDesc": "Man wearing sunglasses and a black leather jacket in a crowded indoor shopping area, with a red 50% off sale sign in the background"
+    },
+    {
       "guid": "#20260226T1905",
       "image": "https://current-status.com/assets/img/content/20260226T1905.jpg",
       "imageAltDesc": "Injured man in a hospital gown sitting in a hospital room, with subtitles reading about becoming “true detectives.”"
