@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20260328T2105",
+      "image": "https://current-status.com/assets/img/content/20260328T2105.jpg",
+      "imageAltDesc": "Black-and-white 1990s Twin Peaks print ad featuring character portraits and the headline 'New mysteries. New day. Fresh doughnuts.'"
+    },
+    {
       "guid": "#20260305T0925",
       "image": "https://current-status.com/assets/img/content/20260305T0925.jpg",
       "imageAltDesc": "Man wearing sunglasses and a black leather jacket in a crowded indoor shopping area, with a red 50% off sale sign in the background"
