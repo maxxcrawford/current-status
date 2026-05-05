@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "guid": "#20260505T1842",
+      "image": "https://current-status.com/assets/img/content/20260505T1842.jpg",
+      "imageAltDesc": "Man with curly hair wearing round tinted glasses and an orange patterned shirt against a blue sky background."
+    },
+    {
       "guid": "#20260328T2105",
       "image": "https://current-status.com/assets/img/content/20260328T2105.jpg",
       "imageAltDesc": "Black-and-white 1990s Twin Peaks print ad featuring character portraits and the headline 'New mysteries. New day. Fresh doughnuts.'"
