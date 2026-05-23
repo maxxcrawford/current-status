@@ -1,3 +1,4 @@
 node_modules
 .env
 assets/img/.DS_Store
+dist
