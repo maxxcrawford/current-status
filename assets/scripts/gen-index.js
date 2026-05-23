@@ -17,6 +17,8 @@ const staticFiles = [
   'assets/img',
 ];
 
+const generatedCommentPattern = /^<!DOCTYPE html>\n<!-- This was generated at .+ -->\n/;
+
 function escapeAttr(value) {
   return String(value ?? '')
     .replace(/&/g, '&amp;')
@@ -75,6 +77,18 @@ function replacePostList(template, posts) {
   return `${template.slice(0, firstPostIndex)}${postsHtml}\n\n${template.slice(closingLineStart)}`;
 }
 
+function addGeneratedComment(html) {
+  const generatedAt = new Date().toISOString();
+  return html.replace(
+    /^<!DOCTYPE html>\n/,
+    `<!DOCTYPE html>\n<!-- This was generated at ${generatedAt} -->\n`
+  );
+}
+
+function stripGeneratedComment(html) {
+  return html.replace(generatedCommentPattern, '<!DOCTYPE html>\n');
+}
+
 function copyStaticFile(relativePath) {
   const sourcePath = Path.join(rootDir, relativePath);
   if (!Fs.existsSync(sourcePath)) {
@@ -99,14 +113,17 @@ function main() {
   const checkOnly = process.argv.includes('--check');
   const data = JSON.parse(Fs.readFileSync(dataPath, 'utf8'));
   const template = Fs.readFileSync(indexPath, 'utf8');
-  const nextIndex = replacePostList(template, data.posts);
+  const nextIndex = addGeneratedComment(replacePostList(template, data.posts));
 
   if (checkOnly) {
     const currentOutput = Fs.existsSync(outputIndexPath)
       ? Fs.readFileSync(outputIndexPath, 'utf8')
       : '';
 
-    if (nextIndex === currentOutput) {
+    const hasGeneratedComment = generatedCommentPattern.test(currentOutput);
+    const indexMatches = stripGeneratedComment(nextIndex) === stripGeneratedComment(currentOutput);
+
+    if (hasGeneratedComment && indexMatches) {
       console.log('dist/index.html is up to date.');
       return;
     }
