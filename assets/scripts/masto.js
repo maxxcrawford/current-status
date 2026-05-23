@@ -1,11 +1,11 @@
 const dotenv = require('dotenv').config();
-const masto = require('masto');
 const Fs = require('fs');
 const { exec } = require('child_process');
 
 (async function() {
 	"use strict";
 
+    const { createRestAPIClient } = await import('masto');
     const { posts } = JSON.parse(Fs.readFileSync("./data.json", 'utf8'));
 
     
@@ -34,7 +34,7 @@ const { exec } = require('child_process');
         
     }
 
-    const mastoClient = masto.createRestAPIClient({
+    const mastoClient = createRestAPIClient({
         url: dotenv.parsed.MASTODON_URL,
         accessToken: dotenv.parsed.MASTODON_TOKEN,
     });
