@@ -5,10 +5,13 @@
   "main": "current-status.js",
   "scripts": {
     "start": "browser-sync start --server",
+    "build": "node assets/scripts/gen-index.js && npm run rss:dist",
+    "build:check": "node assets/scripts/gen-index.js --check",
     "date": "npm-run-all date:*",
     "date:short": "node assets/scripts/gen-date-short.js",
     "date:full": "node assets/scripts/gen-date-full.js",
     "rss": "node assets/scripts/gen-rss.js",
+    "rss:dist": "node assets/scripts/gen-rss.js dist/rss.xml",
     "test": "echo \"Error: no test specified\" && exit 1",
     "color": "dominant_colours --max-colours=1 --no-palette",
     "masto": "node assets/scripts/masto.js",

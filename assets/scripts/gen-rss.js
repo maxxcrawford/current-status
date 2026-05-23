@@ -1,5 +1,6 @@
 const RSS = require('rss');
 const Fs = require('fs');
+const Path = require('path');
 const Dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc')
 const timezone = require('dayjs/plugin/timezone')
@@ -21,6 +22,7 @@ const feed = new RSS({
 });
 
 var posts = JSON.parse(Fs.readFileSync("./data.json", 'utf8'));
+const outputPath = Path.resolve(process.cwd(), process.argv[2] || 'rss.xml');
 
 // console.log(posts);
 
@@ -56,4 +58,5 @@ var xml = feed.xml({indent: true});
 
 // console.log(xml);
 
-Fs.writeFileSync('rss.xml', xml);
+Fs.mkdirSync(Path.dirname(outputPath), { recursive: true });
+Fs.writeFileSync(outputPath, xml);
