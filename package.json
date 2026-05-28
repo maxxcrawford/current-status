@@ -12,14 +12,17 @@
     "date:full": "node assets/scripts/gen-date-full.js",
     "rss": "node assets/scripts/gen-rss.js",
     "rss:dist": "node assets/scripts/gen-rss.js dist/rss.xml",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run test:masto",
+    "test:masto": "node assets/scripts/test-masto-publisher.js",
     "color": "dominant_colours --max-colours=1 --no-palette",
     "masto": "node assets/scripts/masto.js",
+    "masto:seed": "node assets/scripts/seed-masto.js",
     "publish": "npm run rss && npm run masto"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@netlify/blobs": "^10.7.8",
     "browser-sync": "^3.0.4",
     "dayjs": "^1.11.20",
     "dotenv": "^17.4.2",

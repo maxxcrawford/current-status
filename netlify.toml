@@ -4,3 +4,10 @@
 
 [build.environment]
   NODE_VERSION = "18.20.1"
+
+[functions]
+  included_files = ["data.json"]
+  node_bundler = "esbuild"
+
+[[plugins]]
+  package = "./plugins/netlify-plugin-publish-masto"
