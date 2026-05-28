@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260528T0828",
+      "fullTime": "8:28 AM • May 28, 2026",
+      "image": "https://current-status.com/assets/img/content/20260528T0828.jpg",
+      "displayImage": "assets/img/content/20260528T0828.jpg",
+      "imageAltDesc": "Two men in black suits and sunglasses standing in a crowded city street scene",
+      "ratio": "2-3",
+      "color": "#0d293b"
+    },
+    {
       "guid": "#20260528T0035",
       "fullTime": "12:35 AM • May 28, 2026",
       "image": "https://current-status.com/assets/img/content/20260528T0035.jpg",
