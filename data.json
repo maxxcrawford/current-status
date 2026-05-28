@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260528T0035",
+      "fullTime": "12:35 AM • May 28, 2026",
+      "image": "https://current-status.com/assets/img/content/20260528T0035.jpg",
+      "displayImage": "assets/img/content/20260528T0035.jpg",
+      "imageAltDesc": "BMO wearing a cowboy hat and playing a ukulele inside a spaceship with a starry galaxy outside the window",
+      "ratio": "",
+      "color": "#6AA2E2"
+    },
+    {
       "guid": "#20260523T0902",
       "fullTime": "9:02 AM • May 23, 2026",
       "image": "https://current-status.com/assets/img/content/20260523T0902.jpg",

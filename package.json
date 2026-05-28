@@ -5,6 +5,7 @@
   "main": "current-status.js",
   "scripts": {
     "start": "browser-sync start --server",
+    "preview": "browser-sync start --server dist",
     "build": "node assets/scripts/gen-index.js && npm run rss:dist",
     "build:check": "node assets/scripts/gen-index.js --check",
     "date": "npm-run-all date:*",
