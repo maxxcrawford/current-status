@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>current status</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="Twitter feed for one, please!">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="current status:" />
+    <meta property="og:description" content="Twitter feed for one, please!" />
+    <meta property="og:image" content="https://current-status.com/share.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@woodenwarship">
+    <meta name="twitter:creator" content="@woodenwarship">
+    <meta name="twitter:title" content="current status:">
+    <meta name="twitter:description" content="Twitter feed for one, please!">
+    <meta name="twitter:image" content="https://current-status.com/share.png">
+
+    <!-- Stylesheets -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link defer rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body class="m-0 p-0 relative">
+  <header class="sticky top-0 left-0 w-full z-10 shadow ">
+    <div class="container max-w-screen-sm mx-auto py-4 text-xl text-center">
+      <span data-hover="current status" class="relative inline-block px-3 py-1 bg-black text-white">current status: </span>
+    </div>
+    <div class="top-1/2 opacity-50 -translate-y-1/2 absolute right-8 flex gap-6 items-center justify-center">
+      <button id="getTimeButton" class="hidden  color-[#888]  text-2xl" type="button" name="button"><i class="fas fa-clock transition-transform duration-700 hover:rotate-[360deg]"></i></button>
+      <div class="italic text-sm"><span id="postCount"></span> posts</div>
+    </div>
+  </header>
+  <main class="relative">
+    <ul class="feed container max-w-screen-sm mx-auto pb-16" >
+      <li class="post"></li>
+    </ul>
+  </main>
+  <footer class="hidden">
+    <div class="container bg-none mx-auto py-4 text-gray-400 text-center text-sm">
+      Made by <a class="underline" href="https://maxxcrawford.com">Maxx Crawford</a>
+    </div>
+  </footer>
+  <script src="https://kit.fontawesome.com/f42f48d217.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="assets/scripts/dayjs.min.js"></script>
+  <script type="text/javascript" src="assets/scripts/app.js"></script>
+</body>
+</html>
