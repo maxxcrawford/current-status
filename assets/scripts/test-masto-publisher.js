@@ -3,6 +3,7 @@ const assert = require('assert/strict');
 const {
   MultipleUnpostedPostsError,
   STATUS_TEXT,
+  getLatestPublishRecord,
   postKey,
   publishLatest,
   seedExistingPosts,
@@ -133,10 +134,13 @@ async function testPublishesSingleUnpostedTopPost() {
   });
 
   const record = await store.get(postKey(topPost.guid));
+  const latestRecord = await getLatestPublishRecord({ store });
 
   assert.equal(result.action, 'published');
   assert.equal(result.mastodonUrl, 'https://mastodon.example/@maxx/1');
   assert.equal(record.status, 'published');
+  assert.equal(latestRecord.mastodonUrl, 'https://mastodon.example/@maxx/1');
+  assert.equal(latestRecord.guid, topPost.guid);
   assert.equal(record.commitRef, 'abc123');
   assert.equal(calls.fetches[0], 'https://deploy.example/assets/img/content/20260523T0902.jpg');
   assert.equal(calls.media[0].description, topPost.imageAltDesc);

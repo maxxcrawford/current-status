@@ -1,6 +1,11 @@
 const Crypto = require('crypto');
 const { connectLambda } = require('@netlify/blobs');
-const { errorToResponse, publishLatest, seedExistingPosts } = require('../../lib/mastodon-publisher');
+const {
+  errorToResponse,
+  getLatestPublishRecord,
+  publishLatest,
+  seedExistingPosts,
+} = require('../../lib/mastodon-publisher');
 
 function json(statusCode, body, headers = {}) {
   return {
@@ -51,8 +56,8 @@ function parseBody(event) {
 }
 
 exports.handler = async function handler(event) {
-  if (event.httpMethod !== 'POST') {
-    return json(405, { error: 'method_not_allowed', message: 'Use POST.' }, { allow: 'POST' });
+  if (!['GET', 'POST'].includes(event.httpMethod)) {
+    return json(405, { error: 'method_not_allowed', message: 'Use GET or POST.' }, { allow: 'GET, POST' });
   }
 
   if (!process.env.PUBLISH_SECRET) {
@@ -66,16 +71,31 @@ exports.handler = async function handler(event) {
     return json(401, { error: 'unauthorized', message: 'Invalid publish secret.' });
   }
 
+  if (event.blobs) {
+    connectLambda(event);
+  }
+
+  if (event.httpMethod === 'GET') {
+    try {
+      const record = await getLatestPublishRecord();
+
+      return json(200, {
+        action: 'latest',
+        record,
+        mastodonUrl: record && record.mastodonUrl,
+      });
+    } catch (error) {
+      const response = errorToResponse(error);
+      return json(response.statusCode, response.body);
+    }
+  }
+
   let body;
 
   try {
     body = parseBody(event);
   } catch (error) {
     return json(400, { error: 'invalid_json', message: error.message });
-  }
-
-  if (event.blobs) {
-    connectLambda(event);
   }
 
   try {
