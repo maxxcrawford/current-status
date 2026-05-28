@@ -73,7 +73,13 @@ async function callPublishFunction() {
     throw new Error(`Publish function failed with ${response.status}: ${responseBody}`);
   }
 
+  const result = JSON.parse(responseBody);
+
   console.log(`Mastodon publish result: ${responseBody}`);
+
+  if (result.mastodonUrl) {
+    console.log(`Mastodon URL: ${result.mastodonUrl}`);
+  }
 }
 
 module.exports = {
