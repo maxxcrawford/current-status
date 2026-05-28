@@ -181,8 +181,42 @@ async function testSeedExistingPosts() {
     now: new Date('2026-05-27T12:00:00Z'),
   });
 
-  assert.deepEqual(firstRun, { action: 'seeded', seeded: 2, skipped: 0, total: 2 });
-  assert.deepEqual(secondRun, { action: 'seeded', seeded: 0, skipped: 2, total: 2 });
+  assert.deepEqual(firstRun, {
+    action: 'seeded',
+    seeded: 2,
+    skipped: 0,
+    total: 2,
+    availableTotal: 2,
+  });
+  assert.deepEqual(secondRun, {
+    action: 'seeded',
+    seeded: 0,
+    skipped: 2,
+    total: 2,
+    availableTotal: 2,
+  });
+}
+
+async function testSeedTopPostOnly() {
+  const store = new MemoryStore();
+  const posts = [post('#20260523T0902'), post('#20260505T1842')];
+
+  const result = await seedExistingPosts({
+    data: { posts },
+    store,
+    onlyTop: true,
+    now: new Date('2026-05-27T12:00:00Z'),
+  });
+
+  assert.deepEqual(result, {
+    action: 'seeded',
+    seeded: 1,
+    skipped: 0,
+    total: 1,
+    availableTotal: 2,
+  });
+  assert.ok(await store.get(postKey(posts[0].guid)));
+  assert.equal(await store.get(postKey(posts[1].guid)), null);
 }
 
 (async function main() {
@@ -190,5 +224,6 @@ async function testSeedExistingPosts() {
   await testPublishesSingleUnpostedTopPost();
   await testMultipleUnpostedFailsBeforePublish();
   await testSeedExistingPosts();
+  await testSeedTopPostOnly();
   console.log('masto publisher tests passed.');
 })();

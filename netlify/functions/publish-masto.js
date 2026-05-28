@@ -81,6 +81,7 @@ exports.handler = async function handler(event) {
   try {
     const options = {
       commitRef: body.commitRef || process.env.COMMIT_REF,
+      onlyTop: body.only === 'top' || body.onlyTop === true,
       source: body.source || 'manual-function',
       sourceBaseUrl: body.sourceBaseUrl || process.env.DEPLOY_URL || process.env.URL,
     };
