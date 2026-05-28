@@ -1,13 +1,12 @@
 require('dotenv').config();
 
-const { errorToResponse, publishLatest } = require('../../lib/mastodon-publisher');
+const { errorToResponse, seedExistingPosts } = require('../../lib/mastodon-publisher');
 
 (async function main() {
   try {
-    const result = await publishLatest({
+    const result = await seedExistingPosts({
       commitRef: process.env.COMMIT_REF || null,
-      source: 'local-script',
-      sourceBaseUrl: process.env.SOURCE_BASE_URL || process.env.URL || 'https://current-status.com',
+      source: 'local-seed-script',
     });
 
     console.log(JSON.stringify(result, null, 2));
