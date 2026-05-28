@@ -17,8 +17,10 @@
     "test:masto": "node assets/scripts/test-masto-publisher.js",
     "color": "dominant_colours --max-colours=1 --no-palette",
     "masto": "node assets/scripts/masto.js",
+    "masto:local": "node assets/scripts/masto-local.js",
     "masto:seed": "node assets/scripts/seed-masto.js",
-    "publish": "npm run rss && npm run masto"
+    "publish": "npm run rss && npm run masto",
+    "publish:local": "npm run rss && npm run masto:local"
   },
   "author": "",
   "license": "ISC",
