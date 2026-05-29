@@ -1,4 +1,4 @@
 node_modules
 .env
-assets/img/.DS_Store
+.DS_Store
 dist

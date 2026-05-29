@@ -54,7 +54,7 @@ async function callPublishFunction() {
     throw new Error('PUBLISH_SECRET is required for the publish function.');
   }
 
-  const endpoint = new URL('/.netlify/functions/publish-masto', deployUrl);
+  const endpoint = new URL('/.netlify/functions/publish-social', deployUrl);
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
@@ -76,22 +76,30 @@ async function callPublishFunction() {
 
   const result = JSON.parse(responseBody);
 
-  console.log(`Mastodon publish result: ${responseBody}`);
+  console.log(`Social publish result: ${responseBody}`);
 
-  if (result.mastodonUrl) {
-    console.log(`Mastodon URL: ${result.mastodonUrl}`);
+  if (result.services && result.services.mastodon && result.services.mastodon.mastodonUrl) {
+    console.log(`Mastodon URL: ${result.services.mastodon.mastodonUrl}`);
+  }
+
+  if (result.services && result.services.bluesky && result.services.bluesky.blueskyUrl) {
+    console.log(`Bluesky URL: ${result.services.bluesky.blueskyUrl}`);
+  }
+
+  if (result.failed > 0) {
+    console.warn(`Social publish completed with ${result.failed} failed service(s).`);
   }
 }
 
 module.exports = {
   onSuccess: async () => {
     if (process.env.CONTEXT !== 'production') {
-      console.log(`Skipping Mastodon publish for deploy context: ${process.env.CONTEXT || 'unknown'}.`);
+      console.log(`Skipping social publish for deploy context: ${process.env.CONTEXT || 'unknown'}.`);
       return;
     }
 
     if (!dataJsonChanged()) {
-      console.log('Skipping Mastodon publish because data.json did not change.');
+      console.log('Skipping social publish because data.json did not change.');
       return;
     }
 
