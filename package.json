@@ -8,6 +8,7 @@
     "preview": "browser-sync start --server dist",
     "build": "node assets/scripts/gen-index.js && npm run rss:dist",
     "build:check": "node assets/scripts/gen-index.js --check",
+    "build:watch": "node assets/scripts/build-watch.js",
     "date": "npm-run-all date:*",
     "date:short": "node assets/scripts/gen-date-short.js",
     "date:full": "node assets/scripts/gen-date-full.js",
