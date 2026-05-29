@@ -170,6 +170,27 @@ async function testMultipleUnpostedFailsBeforePublish() {
   assert.equal(calls.statuses.length, 0);
 }
 
+async function testTopOnlyPublishesWhenPreviousPostIsUnrecorded() {
+  const store = new MemoryStore();
+  const topPost = post('#20260523T0902');
+  const previousPost = post('#20260505T1842');
+  const calls = { fetches: [], media: [], statuses: [] };
+
+  const result = await publishLatest({
+    data: { posts: [topPost, previousPost] },
+    store,
+    onlyTop: true,
+    mastodonClient: createMastodonClient(calls),
+    fetchImpl: createFetch(calls),
+  });
+
+  assert.equal(result.action, 'published');
+  assert.equal(result.guid, topPost.guid);
+  assert.equal(calls.fetches.length, 1);
+  assert.equal(calls.statuses.length, 1);
+  assert.equal(await store.get(postKey(previousPost.guid)), null);
+}
+
 async function testSeedExistingPosts() {
   const store = new MemoryStore();
   const posts = [post('#20260523T0902'), post('#20260505T1842')];
@@ -227,6 +248,7 @@ async function testSeedTopPostOnly() {
   await testAlreadyRecordedNoops();
   await testPublishesSingleUnpostedTopPost();
   await testMultipleUnpostedFailsBeforePublish();
+  await testTopOnlyPublishesWhenPreviousPostIsUnrecorded();
   await testSeedExistingPosts();
   await testSeedTopPostOnly();
   console.log('masto publisher tests passed.');

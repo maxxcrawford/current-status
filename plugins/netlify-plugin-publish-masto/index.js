@@ -63,6 +63,7 @@ async function callPublishFunction() {
     },
     body: JSON.stringify({
       commitRef: process.env.COMMIT_REF || null,
+      only: 'top',
       source: 'netlify-build-plugin',
       sourceBaseUrl: deployUrl,
     }),
