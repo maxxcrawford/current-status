@@ -25,6 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link defer rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/0b4447b789.js" crossorigin="anonymous"></script>
     <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -34,12 +35,43 @@
     <div class="container max-w-screen-sm mx-auto py-4 text-xl text-center">
       <span data-hover="current status" class="relative inline-block px-3 py-1 bg-black text-white">current status: </span>
     </div>
-    <div class="top-1/2 opacity-50 -translate-y-1/2 absolute right-8 flex gap-6 items-center justify-center">
-      <button id="getTimeButton" class="hidden  color-[#888]  text-2xl" type="button" name="button"><i class="fas fa-clock transition-transform duration-700 hover:rotate-[360deg]"></i></button>
-      <div class="italic text-sm"><span id="postCount"></span> posts</div>
-    </div>
   </header>
   <main class="relative">
+    <section class="container max-w-screen-sm mx-auto border-l border-r border-gray-300 bg-white">
+      <div class="h-48 bg-gray-300 overflow-hidden">
+        <img class="w-full h-full object-cover" src="assets/img/header.jpg" alt="Oil pumpjacks operating across a flat, arid Texas landscape beneath a cloudy sky">
+      </div>
+      <div class="px-4 pb-6">
+        <div class="-mt-12 mb-4 flex justify-between items-start">
+          <img class="w-28 h-28 rounded-full outline outline-4 outline-white bg-black object-cover" src="assets/img/profile.jpg" alt="Maxx Crawford">
+          <a class="mt-16 px-6 py-2 rounded-full border border-gray-400 font-bold text-black active:hover:bg-gray-800 hover:bg-gray-800 hover:text-white" href="/rss.xml">Follow</a>
+        </div>
+        <div class="mb-6">
+          <h1 class="text-3xl font-bold leading-tight">Maxx Crawford</h1>
+          <a class="text-gray-600" rel="me" href="https://mastodon.social/@woodenwarship">@woodenwarship</a>
+          <div class="mt-2 text-gray-600"><span id="postCount"></span> posts</div>
+        </div>
+        <div class="mb-4 text-lg leading-snug">
+          <!-- <p><a class="text-blue-500" href="https://www.mozilla.org">@mozilla</a> senior ui engineer wfh</p>
+          <p><a class="text-blue-500" href="https://tulsaux.com">@tulsaux</a> organizer</p>
+          <p><a class="text-blue-500" href="https://www.techlahoma.org">@techlahoma</a> board member</p> -->
+          <p><a class="text-blue-500" href="https://bsky.app/profile/maxx.social">bluesky: @maxx.social</a></p>
+          <p><a class="text-blue-500" href="https://mastodon.social/@woodenwarship">mastodon.social: @woodenwarship</a></p>
+          <p>climbing rocks in my spare time</p>
+          <!-- <p><a class="text-blue-500" href="https://blacklivesmatter.com">#blacklivesmatter</a></p> -->
+        </div>
+        <div class="mb-4 flex flex-wrap gap-x-4 gap-y-2 text-gray-600">
+          <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Tulsa, OK</span>
+          <a class="text-blue-500" href="https://maxxcrawford.com"><i class="fa-solid fa-link" aria-hidden="true"></i> maxxcrawford.com</a>
+          <!-- <a class="text-blue-500" rel="me" href="https://mastodon.social/@woodenwarship">mastodon.social/@woodenwarship</a> -->
+          <p><i class="fa-regular fa-calendar" aria-hidden="true"></i> Joined Feb 2014 <span class="line-through">June 2009</span></p>
+        </div>
+        <div class="hidden flex gap-6">
+          <span><strong>850</strong> Following</span>
+          <span><strong>502</strong> Followers</span>
+        </div>
+      </div>
+    </section>
     <ul class="feed container max-w-screen-sm mx-auto pb-16" >
       <li class="post"></li>
     </ul>
@@ -49,7 +81,6 @@
       Made by <a class="underline" href="https://maxxcrawford.com">Maxx Crawford</a>
     </div>
   </footer>
-  <script src="https://kit.fontawesome.com/f42f48d217.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="assets/scripts/dayjs.min.js"></script>
   <script type="text/javascript" src="assets/scripts/app.js"></script>
 </body>
