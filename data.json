@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260530T0827",
+      "fullTime": "8:27 AM • May 30, 2026",
+      "image": "https://current-status.com/assets/img/content/20260530T0827.png",
+      "displayImage": "assets/img/content/20260530T0827.png",
+      "imageAltDesc": "Animated Teenage Mutant Ninja Turtle Raphael wearing a chef hat and red mask, smiling in front of a brick wall.",
+      "ratio": "3-4",
+      "color": "#906010"
+    },
+    {
       "guid": "#20260529T0737",
       "fullTime": "7:37 AM • May 29, 2026",
       "image": "https://current-status.com/assets/img/content/20260529T0737.jpg",
