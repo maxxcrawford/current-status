@@ -35,6 +35,23 @@ function fullImageForHtml(image) {
   return String(image || '').replace(/^https:\/\/current-status\.com\//, 'current-status.com/');
 }
 
+function aspectRatioClass(ratio) {
+  const match = String(ratio || '').match(/^(\d+)-(\d+)$/);
+
+  if (!match) {
+    return 'aspect-video';
+  }
+
+  const height = Number(match[1]);
+  const width = Number(match[2]);
+
+  if (!Number.isInteger(height) || !Number.isInteger(width) || height <= 0 || width <= 0) {
+    return 'aspect-video';
+  }
+
+  return `aspect-[${width}/${height}]`;
+}
+
 const POST_ITEM_CLASSES = 'post dark:!border-[#444] dark:!border-b-2';
 const USER_FULL_NAME_CLASSES = 'user-profile-full-name mr-2 text-black dark:!text-white font-bold text-base sm:text-lg';
 const USER_USERNAME_CLASSES = 'user-profile-username mr-2 text-gray-600 dark:!text-[#999]';
@@ -44,6 +61,7 @@ const POST_IMAGE_CLASSES = 'loading post-content-container-image dark:opacity-75
 function renderPost(post) {
   const id = postId(post);
   const ratioClass = post.ratio ? ` ratio-${post.ratio}` : '';
+  const aspectClass = aspectRatioClass(post.ratio);
   const fullTime = post.fullTime || '';
   const imageAltDesc = post.imageAltDesc || '';
 
@@ -59,7 +77,7 @@ function renderPost(post) {
             </div>
             <div class="post-content-container">
               <p class="mt-0">current status:</p>
-              <div role="img" aria-label="${escapeAttr(imageAltDesc)}" data-full-image="${escapeAttr(fullImageForHtml(post.image))}" data-img="${escapeAttr(post.displayImage)}" data-color="${escapeAttr(post.color)}" class="${POST_IMAGE_CLASSES}${ratioClass}"></div>
+              <div role="img" aria-label="${escapeAttr(imageAltDesc)}" data-full-image="${escapeAttr(fullImageForHtml(post.image))}" data-img="${escapeAttr(post.displayImage)}" data-color="${escapeAttr(post.color)}" class="${POST_IMAGE_CLASSES}${ratioClass} ${aspectClass}"></div>
             </div>
           </div>
         </div>
