@@ -404,6 +404,26 @@ function fullTimeForDate(date, timeZone = DEFAULT_TIME_ZONE) {
   return `${time} • ${day}`;
 }
 
+function issueTitleForDate(date, timeZone = DEFAULT_TIME_ZONE) {
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+  const dateParts = Object.fromEntries(
+    dateFormatter.formatToParts(date).map((part) => [part.type, part.value])
+  );
+  const time = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }).format(date);
+
+  return `Post : ${dateParts.month} ${dateParts.day} ${dateParts.year}, ${time}`;
+}
+
 function readEvent(options = {}) {
   if (options.event) {
     return options.event;
@@ -494,12 +514,14 @@ async function createPostFromIssue(options = {}) {
   const timeZone = options.timeZone || process.env.POST_TIMEZONE || DEFAULT_TIME_ZONE;
   const now = options.now || new Date();
   const postId = postIdForDate(now, timeZone);
+  const fullTime = fullTimeForDate(now, timeZone);
+  const issueTitle = issueTitleForDate(now, timeZone);
   const filename = `${postId}.${downloadedImage.extension}`;
   const assetPath = Path.join(assetDir, filename);
   const data = readData(dataPath);
   const post = buildPost({
     postId,
-    fullTime: fullTimeForDate(now, timeZone),
+    fullTime,
     filename,
     altText,
     ratio,
@@ -516,6 +538,8 @@ async function createPostFromIssue(options = {}) {
   return {
     action: 'created',
     postId,
+    fullTime,
+    issueTitle,
     guid: post.guid,
     filename,
     assetPath: relativePath(assetPath),
@@ -559,6 +583,7 @@ module.exports = {
   downloadImage,
   extractImageUrl,
   fullTimeForDate,
+  issueTitleForDate,
   normalizeColor,
   parseIssueFormBody,
   postIdForDate,

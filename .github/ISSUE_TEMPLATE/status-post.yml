@@ -1,6 +1,6 @@
 name: Status post
 description: Create a current-status post pull request.
-title: "Status post: "
+title: "Post : "
 labels:
   - status-post
 body:

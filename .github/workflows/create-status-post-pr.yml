@@ -24,7 +24,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v6
         with:
-          node-version: 18.20.1
+          node-version: 22.11.0
           cache: npm
 
       - name: Install dependencies
@@ -38,6 +38,15 @@ jobs:
           POST_TIMEZONE: America/Chicago
         run: npm run post:from-issue
 
+      - name: Update issue title
+        if: steps.create-post.outputs.action == 'created'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ steps.create-post.outputs.issueTitle }}
+        run: |
+          gh issue edit "$ISSUE_NUMBER" --title "$ISSUE_TITLE"
+
       - name: Validate generated post
         if: steps.create-post.outputs.action == 'created'
         run: |
@@ -45,6 +54,7 @@ jobs:
           npm run test:social
           npm run test:post
           npm run build
+          npm run rss
 
       - name: Commit and push branch
         if: steps.create-post.outputs.action == 'created'
@@ -56,7 +66,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH_NAME"
-          git add data.json "$ASSET_PATH"
+          git add data.json rss.xml "$ASSET_PATH"
           git commit -m "Add status post $POST_ID"
           git push --set-upstream origin "$BRANCH_NAME"
 

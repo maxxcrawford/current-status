@@ -7,6 +7,7 @@ const {
   createPostFromIssue,
   extractImageUrl,
   fullTimeForDate,
+  issueTitleForDate,
   normalizeColor,
   postIdForDate,
   ratioTokenFromDimensions,
@@ -107,6 +108,7 @@ async function testCreatesPostFromAttachment() {
 
   assert.equal(result.action, 'created');
   assert.equal(result.postId, '20260530T1435');
+  assert.equal(result.issueTitle, 'Post : May 30 2026, 2:35 PM');
   assert.equal(result.assetPath.endsWith('assets/img/content/20260530T1435.jpg'), true);
   assert.equal(Fs.existsSync(Path.join(assetDir, '20260530T1435.jpg')), true);
   assert.equal(data.posts[0].guid, '#20260530T1435');
@@ -226,6 +228,7 @@ async function testPostCollisionFailsBeforeWritingAsset() {
 function testHelpers() {
   assert.equal(postIdForDate(new Date('2026-05-30T05:15:00Z')), '20260530T0015');
   assert.equal(fullTimeForDate(new Date('2026-05-30T05:15:00Z')), '12:15 AM • May 30, 2026');
+  assert.equal(issueTitleForDate(new Date('2026-05-30T05:15:00Z')), 'Post : May 30 2026, 12:15 AM');
   assert.equal(normalizeColor('#abc'), '#AABBCC');
   assert.equal(extractImageUrl('[download](https://example.com/image.png)'), 'https://example.com/image.png');
   assert.equal(ratioTokenFromDimensions(1920, 1080), '9-16');
