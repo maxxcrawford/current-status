@@ -70,14 +70,16 @@ jobs:
           POST_ID: ${{ steps.create-post.outputs.postId }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          pr_body="Created from #$ISSUE_NUMBER.
-
-Netlify should add a deploy preview to this PR when the deploy starts."
+          {
+            echo "Created from #$ISSUE_NUMBER."
+            echo
+            echo "Netlify should add a deploy preview to this PR when the deploy starts."
+          } > "$RUNNER_TEMP/status-post-pr-body.md"
           pr_url="$(gh pr create \
             --base "$BASE_BRANCH" \
             --head "$BRANCH_NAME" \
             --title "Add status post $POST_ID" \
-            --body "$pr_body")"
+            --body-file "$RUNNER_TEMP/status-post-pr-body.md")"
           echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
 
       - name: Comment on issue
@@ -86,4 +88,5 @@ Netlify should add a deploy preview to this PR when the deploy starts."
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           PR_URL: ${{ steps.open-pr.outputs.pr_url }}
-        run: gh issue comment "$ISSUE_NUMBER" --body "Created status post PR: $PR_URL"
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "Created status post PR: $PR_URL"
