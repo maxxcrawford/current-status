@@ -48404,7 +48404,7 @@
     console.log(tweet)
     
     if (tweet.type === "img") {
-      const htmlTemplate = `<li class="post p-4"><div id="${tweet.date}" class="flex items-start"><div class="user-profile-image w-8 h-8 sm:w-12 sm:h-12 bg-cover bg-black mr-2 flex-shrink-0"></div><div class="post-container"><div class="user-profile-info flex items-baseline mb-2 text-sm"><div class="user-profile-full-name mr-2 text-black font-bold text-base sm:text-lg"></div><div class="user-profile-username mr-2 text-gray-600"></div><div class="text-gray-600 mr-2">&bull;</div><a href="#${tweet.date}" class="post-date relative text-gray-600" data-date="${tweet.date}"></a></div><div class="post-content-container"><p class="mt-0">current status:</p><div data-img="assets/img/tweets_media/${tweet.mediaId}" data-color="#BEA270" class="loading post-content-container-image ratio-5-2" style=""></div></div></div></div></li>`;
+      const htmlTemplate = `<li class="post p-4 dark:!border-[#444] dark:!border-b-2"><div id="${tweet.date}" class="flex items-start"><div class="user-profile-image w-8 h-8 sm:w-12 sm:h-12 bg-cover bg-black mr-2 flex-shrink-0"></div><div class="post-container"><div class="user-profile-info flex items-baseline mb-2 text-sm"><div class="user-profile-full-name mr-2 text-black dark:!text-white font-bold text-base sm:text-lg"></div><div class="user-profile-username mr-2 text-gray-600 dark:!text-[#999]"></div><div class="text-gray-600 mr-2">&bull;</div><a href="#${tweet.date}" class="post-date relative text-gray-600 dark:!text-[#999]" data-date="${tweet.date}"></a></div><div class="post-content-container"><p class="mt-0">current status:</p><div data-img="assets/img/tweets_media/${tweet.mediaId}" data-color="#BEA270" class="loading post-content-container-image dark:opacity-75 ratio-5-2" style=""></div></div></div></div></li>`;
 
       htmlTemplateArray.push(htmlTemplate);
 
@@ -48419,4 +48419,3 @@
 
 	
 })();
-

@@ -35,25 +35,31 @@ function fullImageForHtml(image) {
   return String(image || '').replace(/^https:\/\/current-status\.com\//, 'current-status.com/');
 }
 
+const POST_ITEM_CLASSES = 'post dark:!border-[#444] dark:!border-b-2';
+const USER_FULL_NAME_CLASSES = 'user-profile-full-name mr-2 text-black dark:!text-white font-bold text-base sm:text-lg';
+const USER_USERNAME_CLASSES = 'user-profile-username mr-2 text-gray-600 dark:!text-[#999]';
+const POST_DATE_CLASSES = 'post-date relative text-gray-600 dark:!text-[#999]';
+const POST_IMAGE_CLASSES = 'loading post-content-container-image dark:opacity-75';
+
 function renderPost(post) {
   const id = postId(post);
   const ratioClass = post.ratio ? ` ratio-${post.ratio}` : '';
   const fullTime = post.fullTime || '';
   const imageAltDesc = post.imageAltDesc || '';
 
-  return `      <li class="post">
+  return `      <li class="${POST_ITEM_CLASSES}">
         <div id="${escapeAttr(id)}" class="flex items-start p-4">
           <div class="user-profile-image w-8 h-8 sm:w-12 sm:h-12 bg-cover bg-black mr-2 flex-shrink-0"></div>
           <div class="post-container">
             <div class="user-profile-info flex items-baseline mb-2 text-sm">
-              <div class="user-profile-full-name mr-2 text-black font-bold text-base sm:text-lg"></div>
-              <div class="user-profile-username mr-2 text-gray-600">@woodenwarship</div>
+              <div class="${USER_FULL_NAME_CLASSES}"></div>
+              <div class="${USER_USERNAME_CLASSES}">@woodenwarship</div>
               <div class="text-gray-600 mr-2">&bull;</div>
-              <a href="#${escapeAttr(id)}" class="post-date relative text-gray-600" data-date="${escapeAttr(id)}" data-full-date="${escapeAttr(fullTime)}">${escapeAttr(fullTime)}</a>
+              <a href="#${escapeAttr(id)}" class="${POST_DATE_CLASSES}" data-date="${escapeAttr(id)}" data-full-date="${escapeAttr(fullTime)}">${escapeAttr(fullTime)}</a>
             </div>
             <div class="post-content-container">
               <p class="mt-0">current status:</p>
-              <div role="img" aria-label="${escapeAttr(imageAltDesc)}" data-full-image="${escapeAttr(fullImageForHtml(post.image))}" data-img="${escapeAttr(post.displayImage)}" data-color="${escapeAttr(post.color)}" class="loading post-content-container-image${ratioClass}"></div>
+              <div role="img" aria-label="${escapeAttr(imageAltDesc)}" data-full-image="${escapeAttr(fullImageForHtml(post.image))}" data-img="${escapeAttr(post.displayImage)}" data-color="${escapeAttr(post.color)}" class="${POST_IMAGE_CLASSES}${ratioClass}"></div>
             </div>
           </div>
         </div>
@@ -61,11 +67,12 @@ function renderPost(post) {
 }
 
 function replacePostList(template, posts) {
-  const firstPostIndex = template.indexOf('      <li class="post">');
-  if (firstPostIndex === -1) {
+  const firstPostMatch = template.match(/      <li class="post(?: [^"]*)?">/);
+  if (!firstPostMatch) {
     throw new Error('Could not find the first post in index.html.');
   }
 
+  const firstPostIndex = firstPostMatch.index;
   const closingUlIndex = template.indexOf('</ul>', firstPostIndex);
   if (closingUlIndex === -1) {
     throw new Error('Could not find the feed closing </ul> in index.html.');
