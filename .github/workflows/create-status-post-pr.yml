@@ -1,0 +1,89 @@
+name: Create Status Post PR
+
+on:
+  issues:
+    types:
+      - opened
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  create-status-post-pr:
+    if: github.event.issue.user.login == 'maxxcrawford'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 18.20.1
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Create post from issue
+        id: create-post
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          POST_ALLOWED_AUTHORS: maxxcrawford
+          POST_TIMEZONE: America/Chicago
+        run: npm run post:from-issue
+
+      - name: Validate generated post
+        if: steps.create-post.outputs.action == 'created'
+        run: |
+          npm run test:masto
+          npm run test:social
+          npm run test:post
+          npm run build
+
+      - name: Commit and push branch
+        if: steps.create-post.outputs.action == 'created'
+        env:
+          BRANCH_NAME: ${{ steps.create-post.outputs.branchName }}
+          POST_ID: ${{ steps.create-post.outputs.postId }}
+          ASSET_PATH: ${{ steps.create-post.outputs.assetPath }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH_NAME"
+          git add data.json "$ASSET_PATH"
+          git commit -m "Add status post $POST_ID"
+          git push --set-upstream origin "$BRANCH_NAME"
+
+      - name: Open pull request
+        if: steps.create-post.outputs.action == 'created'
+        id: open-pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          BRANCH_NAME: ${{ steps.create-post.outputs.branchName }}
+          POST_ID: ${{ steps.create-post.outputs.postId }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          pr_body="Created from #$ISSUE_NUMBER.
+
+Netlify should add a deploy preview to this PR when the deploy starts."
+          pr_url="$(gh pr create \
+            --base "$BASE_BRANCH" \
+            --head "$BRANCH_NAME" \
+            --title "Add status post $POST_ID" \
+            --body "$pr_body")"
+          echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
+
+      - name: Comment on issue
+        if: steps.create-post.outputs.action == 'created'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          PR_URL: ${{ steps.open-pr.outputs.pr_url }}
+        run: gh issue comment "$ISSUE_NUMBER" --body "Created status post PR: $PR_URL"

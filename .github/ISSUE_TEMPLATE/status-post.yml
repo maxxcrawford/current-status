@@ -1,0 +1,37 @@
+name: Status post
+description: Create a current-status post pull request.
+title: "Status post: "
+labels:
+  - status-post
+body:
+  - type: textarea
+    id: image-source
+    attributes:
+      label: Image source
+      description: Paste a GitHub issue image attachment, attachment URL, or direct image/GIF URL.
+      placeholder: "![Image](https://github.com/user-attachments/assets/...) or https://example.com/status.gif"
+    validations:
+      required: true
+  - type: textarea
+    id: alt-text
+    attributes:
+      label: Alt text
+      description: Describe the image for screen readers and social embeds.
+    validations:
+      required: true
+  - type: input
+    id: background-color
+    attributes:
+      label: Background color
+      description: Hex color used while the image loads.
+      placeholder: "#B02010"
+    validations:
+      required: true
+  - type: input
+    id: ratio-override
+    attributes:
+      label: Ratio override
+      description: Optional natural width-height ratio like 4-5 or 16:9. Leave blank to detect automatically.
+      placeholder: "4-5"
+    validations:
+      required: false
