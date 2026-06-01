@@ -24,11 +24,11 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v6
         with:
-          node-version: 22.11.0
+          node-version: 22.13.0
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --omit=dev
 
       - name: Create post from issue
         id: create-post
@@ -81,7 +81,7 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           {
-            echo "Created from #$ISSUE_NUMBER."
+            echo "Closes #$ISSUE_NUMBER."
             echo
             echo "Netlify should add a deploy preview to this PR when the deploy starts."
           } > "$RUNNER_TEMP/status-post-pr-body.md"

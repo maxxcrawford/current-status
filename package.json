@@ -42,9 +42,9 @@
     "rss": "^1.2.2"
   },
   "volta": {
-    "node": "22.11.0"
+    "node": "22.13.0"
   },
   "devDependencies": {
-    "netlify-cli": "^21.6.0"
+    "netlify-cli": "^26.0.2"
   }
 }

@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "22.11.0"
+  NODE_VERSION = "22.13.0"
 
 [functions]
   included_files = ["data.json"]
