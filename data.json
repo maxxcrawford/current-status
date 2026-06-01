@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260601T1219",
+      "fullTime": "12:19 PM • June 1, 2026",
+      "image": "https://current-status.com/assets/img/content/20260601T1219.png",
+      "displayImage": "assets/img/content/20260601T1219.png",
+      "imageAltDesc": "Person dressed as a clown with a rainbow wig sitting at an office cubicle and looking back toward the camera",
+      "ratio": "5-9",
+      "color": "#706060"
+    },
+    {
       "guid": "#20260530T0827",
       "fullTime": "8:27 AM • May 30, 2026",
       "image": "https://current-status.com/assets/img/content/20260530T0827.png",
