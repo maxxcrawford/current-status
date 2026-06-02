@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260601T2208",
+      "fullTime": "10:08 PM • June 1, 2026",
+      "image": "https://current-status.com/assets/img/content/20260601T2208.png",
+      "displayImage": "assets/img/content/20260601T2208.png",
+      "imageAltDesc": "Scott Stapp, lead singer of Creed, in a white football jersey holding a microphone and shouting during a stadium performance",
+      "ratio": "5-8",
+      "color": "#808C80"
+    },
+    {
       "guid": "#20260601T1219",
       "fullTime": "12:19 PM • June 1, 2026",
       "image": "https://current-status.com/assets/img/content/20260601T1219.png",
