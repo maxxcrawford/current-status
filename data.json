@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260608T1331",
+      "fullTime": "1:31 PM • June 8, 2026",
+      "image": "https://current-status.com/assets/img/content/20260608T1331.png",
+      "displayImage": "assets/img/content/20260608T1331.png",
+      "imageAltDesc": "Close-up of James Hurley from Twin Peaks smiling against a warm orange and yellow background",
+      "ratio": "1-1",
+      "color": "#C04010"
+    },
+    {
       "guid": "#20260603T1126",
       "fullTime": "11:26 AM • June 3, 2026",
       "image": "https://current-status.com/assets/img/content/20260603T1126.png",
