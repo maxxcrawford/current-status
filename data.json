@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260616T1139",
+      "fullTime": "11:39 AM • June 16, 2026",
+      "image": "https://current-status.com/assets/img/content/20260616T1139.png",
+      "displayImage": "assets/img/content/20260616T1139.png",
+      "imageAltDesc": "Bob from Twin Peaks crouches on a living room couch in a parody IKEA advertisement, with furniture prices labeled throughout the room.",
+      "ratio": "3-4",
+      "color": "#804030"
+    },
+    {
       "guid": "#20260608T1331",
       "fullTime": "1:31 PM • June 8, 2026",
       "image": "https://current-status.com/assets/img/content/20260608T1331.png",
