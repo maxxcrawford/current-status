@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260623T2129",
+      "fullTime": "9:29 PM • June 23, 2026",
+      "image": "https://current-status.com/assets/img/content/20260623T2129.webp",
+      "displayImage": "assets/img/content/20260623T2129.webp",
+      "imageAltDesc": "James Gandolfini looking through a Panavision film camera on the set of The Sopranos.",
+      "ratio": "4-3",
+      "color": "#4A4338"
+    },
+    {
       "guid": "#20260616T1139",
       "fullTime": "11:39 AM • June 16, 2026",
       "image": "https://current-status.com/assets/img/content/20260616T1139.png",
