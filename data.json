@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260626T2139",
+      "fullTime": "9:39 PM • June 26, 2026",
+      "image": "https://current-status.com/assets/img/content/20260626T2139.jpg",
+      "displayImage": "assets/img/content/20260626T2139.jpg",
+      "imageAltDesc": "Cartoon green computer virus emerging from a desktop monitor behind a red prohibition symbol on a blue background.",
+      "ratio": "2-3",
+      "color": "#3D89AD"
+    },
+    {
       "guid": "#20260623T2129",
       "fullTime": "9:29 PM • June 23, 2026",
       "image": "https://current-status.com/assets/img/content/20260623T2129.webp",
