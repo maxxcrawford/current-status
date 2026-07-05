@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260705T1236",
+      "fullTime": "12:36 PM • July 5, 2026",
+      "image": "https://current-status.com/assets/img/content/20260705T1236.png",
+      "displayImage": "assets/img/content/20260705T1236.png",
+      "imageAltDesc": "Vintage Visa magazine advertisement showing a person surrounded by electronic gadgets using a laptop while seated on public transit, with the slogan “Be whoever you want to be.”",
+      "ratio": "1-1",
+      "color": "#303030"
+    },
+    {
       "guid": "#20260626T2139",
       "fullTime": "9:39 PM • June 26, 2026",
       "image": "https://current-status.com/assets/img/content/20260626T2139.jpg",
