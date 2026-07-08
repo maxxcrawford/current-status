@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260708T1532",
+      "fullTime": "3:32 PM • July 8, 2026",
+      "image": "https://current-status.com/assets/img/content/20260708T1532.gif",
+      "displayImage": "assets/img/content/20260708T1532.gif",
+      "imageAltDesc": "A shirtless man sits in a chair while a small child sleeps against his chest in a dimly lit scene from Jurassic Park.",
+      "ratio": "3-5",
+      "color": "#272121"
+    },
+    {
       "guid": "#20260705T1236",
       "fullTime": "12:36 PM • July 5, 2026",
       "image": "https://current-status.com/assets/img/content/20260705T1236.png",
