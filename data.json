@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260713T2236",
+      "fullTime": "10:36 PM • July 13, 2026",
+      "image": "https://current-status.com/assets/img/content/20260713T2236.png",
+      "displayImage": "assets/img/content/20260713T2236.png",
+      "imageAltDesc": "Sam Neill as Dr. Alan Grant standing in a lush jungle clearing in Jurassic Park, wearing a dusty blue work shirt and red neckerchief",
+      "ratio": "2-3",
+      "color": "#6C764A"
+    },
+    {
       "guid": "#20260708T1532",
       "fullTime": "3:32 PM • July 8, 2026",
       "image": "https://current-status.com/assets/img/content/20260708T1532.gif",
