@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260715T1409",
+      "fullTime": "2:09 PM • July 15, 2026",
+      "image": "https://current-status.com/assets/img/content/20260715T1409.png",
+      "displayImage": "assets/img/content/20260715T1409.png",
+      "imageAltDesc": "Man seated behind a large office desk with the caption, “Information is the new crude oil, and data centres are where it gets refined into money.”",
+      "ratio": "3-4",
+      "color": "#432915"
+    },
+    {
       "guid": "#20260713T2236",
       "fullTime": "10:36 PM • July 13, 2026",
       "image": "https://current-status.com/assets/img/content/20260713T2236.png",
