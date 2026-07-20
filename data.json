@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260720T1554",
+      "fullTime": "3:54 PM • July 20, 2026",
+      "image": "https://current-status.com/assets/img/content/20260720T1554.png",
+      "displayImage": "assets/img/content/20260720T1554.png",
+      "imageAltDesc": "Don Draper sits behind his desk in a mid-century modern office with wood-paneled walls, orange guest chairs, and vintage décor.",
+      "ratio": "2-3",
+      "color": "#8D6D47"
+    },
+    {
       "guid": "#20260715T1409",
       "fullTime": "2:09 PM • July 15, 2026",
       "image": "https://current-status.com/assets/img/content/20260715T1409.png",
