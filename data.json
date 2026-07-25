@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260724T1342",
+      "fullTime": "1:42 PM • July 24, 2026",
+      "image": "https://current-status.com/assets/img/content/20260724T1342.png",
+      "displayImage": "assets/img/content/20260724T1342.png",
+      "imageAltDesc": "Oliver Tree and Tommy Cash posing closely together in colorful satin pajamas, looking directly at the camera.",
+      "ratio": "1-1",
+      "color": "#50407F"
+    },
+    {
       "guid": "#20260720T1554",
       "fullTime": "3:54 PM • July 20, 2026",
       "image": "https://current-status.com/assets/img/content/20260720T1554.png",
