@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260724T2102",
+      "fullTime": "9:02 PM • July 24, 2026",
+      "image": "https://current-status.com/assets/img/content/20260724T2102.png",
+      "displayImage": "assets/img/content/20260724T2102.png",
+      "imageAltDesc": "A surreal 3D-rendered shark swimming through a psychedelic environment filled with swirling pink, purple, green, and yellow colors.",
+      "ratio": "2-3",
+      "color": "#E0A0C0"
+    },
+    {
       "guid": "#20260724T1342",
       "fullTime": "1:42 PM • July 24, 2026",
       "image": "https://current-status.com/assets/img/content/20260724T1342.png",
