@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260805T1532",
+      "fullTime": "3:32 PM • August 5, 2026",
+      "image": "https://current-status.com/assets/img/content/20260805T1532.png",
+      "displayImage": "assets/img/content/20260805T1532.png",
+      "imageAltDesc": "Cozy illustration of Ditto tucked into bed playing a handheld game console, surrounded by Pokémon plush-like friends.",
+      "ratio": "4-3",
+      "color": "#D0B0E0"
+    },
+    {
       "guid": "#20260724T2102",
       "fullTime": "9:02 PM • July 24, 2026",
       "image": "https://current-status.com/assets/img/content/20260724T2102.png",
