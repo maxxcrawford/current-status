@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260813T1132",
+      "fullTime": "11:32 AM • August 13, 2026",
+      "image": "https://current-status.com/assets/img/content/20260813T1132.gif",
+      "displayImage": "assets/img/content/20260813T1132.gif",
+      "imageAltDesc": "A woman dances barefoot in a dive bar while people watch from the stairs and sidelines",
+      "ratio": "3-4",
+      "color": "#281B15"
+    },
+    {
       "guid": "#20260805T1532",
       "fullTime": "3:32 PM • August 5, 2026",
       "image": "https://current-status.com/assets/img/content/20260805T1532.png",
