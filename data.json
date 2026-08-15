@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260814T2334",
+      "fullTime": "11:34 PM • August 14, 2026",
+      "image": "https://current-status.com/assets/img/content/20260814T2334.jpg",
+      "displayImage": "assets/img/content/20260814T2334.jpg",
+      "imageAltDesc": "Six people pose with nautical and mysterious objects beneath the word “DEADLINE.”",
+      "ratio": "5-9",
+      "color": "#29394A"
+    },
+    {
       "guid": "#20260813T1132",
       "fullTime": "11:32 AM • August 13, 2026",
       "image": "https://current-status.com/assets/img/content/20260813T1132.gif",
