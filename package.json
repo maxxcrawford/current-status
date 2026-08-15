@@ -14,8 +14,9 @@
     "date:full": "node assets/scripts/gen-date-full.js",
     "rss": "node assets/scripts/gen-rss.js",
     "rss:dist": "node assets/scripts/gen-rss.js dist/rss.xml",
-    "test": "npm run test:masto && npm run test:social && npm run test:post && npm run build:check",
+    "test": "npm run test:masto && npm run test:threads && npm run test:social && npm run test:post && npm run build:check",
     "test:masto": "node assets/scripts/test-masto-publisher.js",
+    "test:threads": "node assets/scripts/test-threads-publisher.js",
     "test:social": "node assets/scripts/test-social-publisher.js",
     "test:post": "node assets/scripts/test-create-post-from-issue.js",
     "post:from-issue": "node assets/scripts/create-post-from-issue.js",
@@ -26,7 +27,8 @@
     "masto:seed": "node assets/scripts/seed-masto.js",
     "publish:local": "npm run rss && node assets/scripts/publish-local.js",
     "publish:mastodon": "npm run rss && node assets/scripts/publish-mastodon.js",
-    "publish:bluesky": "npm run rss && node assets/scripts/bluesky-local.js"
+    "publish:bluesky": "npm run rss && node assets/scripts/bluesky-local.js",
+    "publish:threads": "npm run rss && node assets/scripts/threads-local.js"
   },
   "author": "",
   "license": "ISC",

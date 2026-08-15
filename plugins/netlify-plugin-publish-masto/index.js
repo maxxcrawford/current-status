@@ -86,6 +86,16 @@ async function callPublishFunction() {
     console.log(`Bluesky URL: ${result.services.bluesky.blueskyUrl}`);
   }
 
+  if (result.services && result.services.threads) {
+    const threadsResult = result.services.threads;
+
+    if (threadsResult.threadsUrl) {
+      console.log(`Threads URL: ${threadsResult.threadsUrl}`);
+    } else if (threadsResult.threadsPostId) {
+      console.log(`Threads post ID: ${threadsResult.threadsPostId}`);
+    }
+  }
+
   if (result.failed > 0) {
     console.warn(`Social publish completed with ${result.failed} failed service(s).`);
   }

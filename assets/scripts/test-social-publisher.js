@@ -8,6 +8,7 @@ const {
   publishLatestDirect: publishBlueskyLatestDirect,
 } = require('../../lib/bluesky-publisher');
 const { publishLatestDirect: publishMastodonLatestDirect } = require('../../lib/mastodon-publisher');
+const { publishLatestDirect: publishThreadsLatestDirect } = require('../../lib/threads-publisher');
 const { publishAllLatest } = require('../../lib/social-publisher');
 
 class MemoryStore {
@@ -124,6 +125,27 @@ function createMastodonClient(calls) {
   };
 }
 
+function createThreadsClient(calls) {
+  return {
+    createImageContainer: async (params) => {
+      calls.containers.push(params);
+      return { id: 'container-1' };
+    },
+    getContainer: async (containerId) => {
+      calls.statuses.push(containerId);
+      return { id: containerId, status: 'FINISHED' };
+    },
+    publishContainer: async (containerId) => {
+      calls.publications.push(containerId);
+      return { id: 'thread-1' };
+    },
+    getThread: async (threadId) => {
+      calls.lookups.push(threadId);
+      return { id: threadId, permalink: 'https://www.threads.com/@maxx/post/test' };
+    },
+  };
+}
+
 async function testBlueskyPublishesTopPost() {
   const store = new MemoryStore();
   const calls = { fetches: [], uploads: [], posts: [] };
@@ -201,9 +223,11 @@ async function testBlueskyAlreadyRecordedNoops() {
 async function testServiceStoresAreIndependent() {
   const mastodonStore = new MemoryStore();
   const blueskyStore = new MemoryStore();
+  const threadsStore = new MemoryStore();
   const topPost = post('#20260529T0737');
   const mastodonCalls = { fetches: [], media: [], statuses: [] };
   const blueskyCalls = { fetches: [], uploads: [], posts: [] };
+  const threadsCalls = { containers: [], statuses: [], publications: [], lookups: [] };
 
   await mastodonStore.setJSON(postKey(topPost.guid), {
     guid: topPost.guid,
@@ -216,10 +240,12 @@ async function testServiceStoresAreIndependent() {
     stores: {
       mastodon: mastodonStore,
       bluesky: blueskyStore,
+      threads: threadsStore,
     },
     onlyTop: true,
     mastodonClient: createMastodonClient(mastodonCalls),
     blueskyClient: createBlueskyClient(blueskyCalls),
+    threadsClient: createThreadsClient(threadsCalls),
     fetchImpl: createFetch(blueskyCalls),
     identifier: 'maxx.example.com',
     now: new Date('2026-05-29T12:00:00Z'),
@@ -228,47 +254,57 @@ async function testServiceStoresAreIndependent() {
   assert.equal(result.action, 'published');
   assert.equal(result.services.mastodon.action, 'noop');
   assert.equal(result.services.bluesky.action, 'published');
+  assert.equal(result.services.threads.action, 'published');
   assert.equal(mastodonCalls.media.length, 0);
   assert.equal(mastodonCalls.statuses.length, 0);
   assert.equal(blueskyCalls.posts.length, 1);
+  assert.equal(threadsCalls.publications.length, 1);
   assert.equal((await blueskyStore.get(postKey(topPost.guid))).status, 'published');
+  assert.equal((await threadsStore.get(postKey(topPost.guid))).status, 'published');
 }
 
 async function testPublishAllAllowsPartialFailure() {
   const mastodonStore = new MemoryStore();
   const blueskyStore = new MemoryStore();
+  const threadsStore = new MemoryStore();
   const topPost = post('#20260529T0737');
   const mastodonCalls = { fetches: [], media: [], statuses: [] };
   const blueskyCalls = { fetches: [], uploads: [], posts: [] };
+  const threadsCalls = { containers: [], statuses: [], publications: [], lookups: [] };
 
   const result = await publishAllLatest({
     data: { posts: [topPost] },
     stores: {
       mastodon: mastodonStore,
       bluesky: blueskyStore,
+      threads: threadsStore,
     },
     onlyTop: true,
     mastodonClient: createMastodonClient(mastodonCalls),
     blueskyClient: createBlueskyClient(blueskyCalls, { uploadError: new Error('upload failed') }),
+    threadsClient: createThreadsClient(threadsCalls),
     fetchImpl: createFetch(mastodonCalls),
     identifier: 'maxx.example.com',
     now: new Date('2026-05-29T12:00:00Z'),
   });
 
   assert.equal(result.action, 'partial_failed');
-  assert.equal(result.published, 1);
+  assert.equal(result.published, 2);
   assert.equal(result.failed, 1);
   assert.equal(result.services.mastodon.action, 'published');
   assert.equal(result.services.bluesky.action, 'failed');
+  assert.equal(result.services.threads.action, 'published');
   assert.equal(result.services.bluesky.message, 'upload failed');
   assert.equal((await mastodonStore.get(postKey(topPost.guid))).status, 'published');
   assert.equal(await blueskyStore.get(postKey(topPost.guid)), null);
+  assert.equal((await threadsStore.get(postKey(topPost.guid))).status, 'published');
 }
 
 async function testDirectLocalPublishersDoNotNeedStores() {
   const topPost = post('#20260529T0737');
   const mastodonCalls = { fetches: [], media: [], statuses: [] };
   const blueskyCalls = { fetches: [], uploads: [], posts: [] };
+  const threadsCalls = { containers: [], statuses: [], publications: [], lookups: [] };
 
   const mastodonResult = await publishMastodonLatestDirect({
     data: { posts: [topPost] },
@@ -281,11 +317,17 @@ async function testDirectLocalPublishersDoNotNeedStores() {
     fetchImpl: createFetch(blueskyCalls),
     identifier: 'maxx.example.com',
   });
+  const threadsResult = await publishThreadsLatestDirect({
+    data: { posts: [topPost] },
+    threadsClient: createThreadsClient(threadsCalls),
+  });
 
   assert.equal(mastodonResult.action, 'published');
   assert.equal(blueskyResult.action, 'published');
+  assert.equal(threadsResult.action, 'published');
   assert.equal(mastodonCalls.statuses.length, 1);
   assert.equal(blueskyCalls.posts.length, 1);
+  assert.equal(threadsCalls.publications.length, 1);
 }
 
 (async function main() {
