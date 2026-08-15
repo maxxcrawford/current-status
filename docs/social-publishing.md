@@ -5,7 +5,8 @@ Current Status publishes each new image status to Mastodon, Bluesky, and Threads
 ## How publishing works
 
 1. Opening a status-post issue triggers `.github/workflows/create-status-post-pr.yml`.
-2. The workflow creates and auto-merges a pull request containing the new `data.json` entry and image.
+2. The workflow creates and auto-merges a pull request containing the new `data.json` entry and image,
+   then explicitly closes the source issue once the merge is confirmed.
 3. Netlify builds and deploys the production site.
 4. The local Netlify build plugin calls `/.netlify/functions/publish-social` after a successful
    production deploy, but only when `data.json` changed.
