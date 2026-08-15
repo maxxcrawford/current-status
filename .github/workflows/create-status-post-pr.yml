@@ -108,3 +108,27 @@ jobs:
           PR_URL: ${{ steps.open-pr.outputs.pr_url }}
         run: |
           gh pr merge "$PR_URL" --auto --squash --delete-branch
+
+      - name: Close source issue after merge
+        if: steps.create-post.outputs.action == 'created'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          PR_URL: ${{ steps.open-pr.outputs.pr_url }}
+        run: |
+          for attempt in {1..30}; do
+            merged_at="$(gh pr view "$PR_URL" --json mergedAt --jq '.mergedAt // ""')"
+
+            if [[ -n "$merged_at" ]]; then
+              gh issue close "$ISSUE_NUMBER" \
+                --reason completed \
+                --comment "Closed automatically after $PR_URL merged."
+              exit 0
+            fi
+
+            echo "Waiting for $PR_URL to merge (attempt $attempt of 30)..."
+            sleep 10
+          done
+
+          echo "::error::$PR_URL did not merge within five minutes; issue #$ISSUE_NUMBER remains open."
+          exit 1
