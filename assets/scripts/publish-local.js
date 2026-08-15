@@ -3,6 +3,7 @@ require('dotenv').config();
 const { errorToResponse } = require('../../lib/publisher-common');
 const { publishLatestDirect: publishBlueskyLatestDirect } = require('../../lib/bluesky-publisher');
 const { publishLatestDirect: publishMastodonLatestDirect } = require('../../lib/mastodon-publisher');
+const { publishLatestDirect: publishThreadsLatestDirect } = require('../../lib/threads-publisher');
 
 (async function main() {
   const options = {
@@ -33,6 +34,20 @@ const { publishLatestDirect: publishMastodonLatestDirect } = require('../../lib/
   } catch (error) {
     const response = errorToResponse(error);
     services.bluesky = {
+      action: 'failed',
+      statusCode: response.statusCode,
+      ...response.body,
+    };
+  }
+
+  try {
+    services.threads = await publishThreadsLatestDirect({
+      ...options,
+      source: 'local-threads-script',
+    });
+  } catch (error) {
+    const response = errorToResponse(error);
+    services.threads = {
       action: 'failed',
       statusCode: response.statusCode,
       ...response.body,
