@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260815T0054",
+      "fullTime": "12:54 AM • August 15, 2026",
+      "image": "https://current-status.com/assets/img/content/20260815T0054.png",
+      "displayImage": "assets/img/content/20260815T0054.png",
+      "imageAltDesc": "Sandy lakeshore surrounded by trees with “WIDOW’S BAY” overlaid across the center",
+      "ratio": "3-4",
+      "color": "#B19DA1"
+    },
+    {
       "guid": "#20260814T2334",
       "fullTime": "11:34 PM • August 14, 2026",
       "image": "https://current-status.com/assets/img/content/20260814T2334.jpg",
