@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260816T2202",
+      "fullTime": "10:02 PM • August 16, 2026",
+      "image": "https://current-status.com/assets/img/content/20260816T2202.webp",
+      "displayImage": "assets/img/content/20260816T2202.webp",
+      "imageAltDesc": "Five men in colorful shirts pointing handguns toward the camera on a beach.",
+      "ratio": "5-9",
+      "color": "#92A7C1"
+    },
+    {
       "guid": "#20260815T0054",
       "fullTime": "12:54 AM • August 15, 2026",
       "image": "https://current-status.com/assets/img/content/20260815T0054.png",
