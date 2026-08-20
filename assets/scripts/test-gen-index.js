@@ -59,6 +59,8 @@ assert.match(page, /property="og:image:type" content="image\/png"/);
 assert.match(page, /property="og:image:width" content="256"/);
 assert.match(page, /property="og:image:height" content="324"/);
 assert.match(page, /property="og:type" content="article"/);
+assert.match(page, /aria-label="Back to all posts"[^>]+href="\/">&larr;<\/a>/);
+assert.match(page, /<span class="text-xl font-bold">Post<\/span>/);
 assert.doesNotMatch(page, /(?:src|href)="assets\//);
 assert.match(page, /src="\/assets\/img\/profile\.jpg"/);
 assert.doesNotMatch(page, /20260818T1200" class="flex items-start/);

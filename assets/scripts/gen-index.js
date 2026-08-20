@@ -207,11 +207,28 @@ function renderPostNavigation(newerPost, olderPost) {
       </li>`;
 }
 
+function addPermalinkHeader(html) {
+  const homeHeader = `    <div class="container max-w-screen-sm mx-auto py-4 text-xl text-center">
+      <span data-hover="current status" class="relative inline-block px-3 py-1 bg-black text-white">current status: </span>
+    </div>`;
+  const permalinkHeader = `    <div class="container max-w-screen-sm mx-auto px-4 py-4 flex items-center gap-6">
+      <a aria-label="Back to all posts" class="text-3xl leading-none text-black dark:text-white" href="/">&larr;</a>
+      <span class="text-xl font-bold">Post</span>
+    </div>`;
+
+  if (!html.includes(homeHeader)) {
+    throw new Error('Could not find the home-page header in index.html.');
+  }
+
+  return html.replace(homeHeader, permalinkHeader);
+}
+
 function renderPermalinkPage(template, post, newerPost, olderPost, imageDetails) {
   const id = postId(post);
   const canonicalUrl = `${siteUrl}/${id}/`;
   const description = post.imageAltDesc || `Current status posted ${post.fullTime || id}.`;
   let html = replacePostList(template, [post], renderPostNavigation(newerPost, olderPost));
+  html = addPermalinkHeader(html);
 
   html = html.replace('<title>current status</title>', `<title>current status: ${escapeAttr(post.fullTime || id)}</title>`);
   html = html.replace(
@@ -313,6 +330,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  addPermalinkHeader,
   displayImageForHtml,
   expectedOutputs,
   imageDetailsForPost,
