@@ -40,7 +40,7 @@ for (const post of posts.posts) {
         title:  'current status:',
         description: '',
         guid: post.guid,
-        url: `https://current-status.com/${post.guid}`,
+        url: `https://current-status.com/${post.guid.replace(/^#/, '')}/`,
         author: 'Maxx Crawford', 
         date: date, 
         enclosure: {
