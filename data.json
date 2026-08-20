@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260819T2247",
+      "fullTime": "10:47 PM • August 19, 2026",
+      "image": "https://current-status.com/assets/img/content/20260819T2247.png",
+      "displayImage": "assets/img/content/20260819T2247.png",
+      "imageAltDesc": "1997 Blade Runner video game cover featuring a man in a trench coat holding a futuristic pistol beneath the red Blade Runner title.",
+      "ratio": "5-4",
+      "color": "#392F39"
+    },
+    {
       "guid": "#20260816T2202",
       "fullTime": "10:02 PM • August 16, 2026",
       "image": "https://current-status.com/assets/img/content/20260816T2202.webp",
