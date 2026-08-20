@@ -1,5 +1,6 @@
 const Fs = require('fs');
 const Path = require('path');
+const { imageSize } = require('image-size');
 
 const rootDir = Path.resolve(__dirname, '../..');
 const dataPath = Path.join(rootDir, 'data.json');
@@ -65,6 +66,40 @@ function displayImageForHtml(image) {
 
 function permalinkForPost(post) {
   return `/${postId(post)}/`;
+}
+
+function imageDetailsForPost(post) {
+  const displayImage = String(post.displayImage || '');
+  const extension = Path.extname(displayImage.split(/[?#]/, 1)[0]).slice(1).toLowerCase();
+  const mimeSubtype = extension === 'jpg' || extension === 'jpeg'
+    ? 'jpeg'
+    : extension === 'svg'
+      ? 'svg+xml'
+      : extension;
+
+  if (/^https?:\/\//.test(displayImage)) {
+    return mimeSubtype ? { type: `image/${mimeSubtype}` } : {};
+  }
+
+  const relativePath = displayImage.replace(/^\//, '');
+  const imagePath = Path.resolve(rootDir, relativePath);
+
+  if (!relativePath || !imagePath.startsWith(`${rootDir}${Path.sep}`)) {
+    throw new Error(`Invalid local image path for post "${postId(post)}".`);
+  }
+
+  const dimensions = imageSize(Fs.readFileSync(imagePath));
+  const detectedMimeSubtype = dimensions.type === 'jpg'
+    ? 'jpeg'
+    : dimensions.type === 'svg'
+      ? 'svg+xml'
+      : dimensions.type;
+
+  return {
+    width: dimensions.width,
+    height: dimensions.height,
+    type: `image/${detectedMimeSubtype}`,
+  };
 }
 
 function aspectRatioClass(ratio) {
@@ -172,7 +207,7 @@ function renderPostNavigation(newerPost, olderPost) {
       </li>`;
 }
 
-function renderPermalinkPage(template, post, newerPost, olderPost) {
+function renderPermalinkPage(template, post, newerPost, olderPost, imageDetails) {
   const id = postId(post);
   const canonicalUrl = `${siteUrl}/${id}/`;
   const description = post.imageAltDesc || `Current status posted ${post.fullTime || id}.`;
@@ -190,21 +225,31 @@ function renderPermalinkPage(template, post, newerPost, olderPost) {
   html = replaceMetaContent(html, 'property="og:type"', 'article');
   html = replaceMetaContent(html, 'name="twitter:description"', description);
   html = replaceMetaContent(html, 'name="twitter:image"', post.image);
+  const structuredImageMetadata = [
+    imageDetails.type && `    <meta property="og:image:type" content="${escapeAttr(imageDetails.type)}" />`,
+    imageDetails.width && `    <meta property="og:image:width" content="${escapeAttr(imageDetails.width)}" />`,
+    imageDetails.height && `    <meta property="og:image:height" content="${escapeAttr(imageDetails.height)}" />`,
+    `    <meta property="og:image:alt" content="${escapeAttr(description)}" />`,
+    `    <meta name="twitter:image:alt" content="${escapeAttr(description)}">`,
+  ].filter(Boolean).join('\n');
   html = html.replace(
     '    <meta property="og:url"',
-    `    <meta property="og:image:alt" content="${escapeAttr(description)}" />\n    <meta name="twitter:image:alt" content="${escapeAttr(description)}">\n    <meta property="og:url"`
+    `${structuredImageMetadata}\n    <meta property="og:url"`
   );
 
   return addGeneratedComment(html);
 }
 
-function expectedOutputs(template, posts) {
+function expectedOutputs(template, posts, getImageDetails = imageDetailsForPost) {
   const outputs = new Map();
   outputs.set('index.html', addGeneratedComment(replacePostList(template, posts)));
 
   posts.forEach((post, index) => {
     const relativePath = Path.join(postId(post), 'index.html');
-    outputs.set(relativePath, renderPermalinkPage(template, post, posts[index - 1], posts[index + 1]));
+    outputs.set(
+      relativePath,
+      renderPermalinkPage(template, post, posts[index - 1], posts[index + 1], getImageDetails(post))
+    );
   });
 
   return outputs;
@@ -270,6 +315,7 @@ if (require.main === module) {
 module.exports = {
   displayImageForHtml,
   expectedOutputs,
+  imageDetailsForPost,
   permalinkForPost,
   renderPermalinkPage,
   renderPost,
