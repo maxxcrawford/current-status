@@ -212,8 +212,10 @@ function addPermalinkHeader(html) {
       <span data-hover="current status" class="relative inline-block px-3 py-1 bg-black text-white">current status: </span>
     </div>`;
   const permalinkHeader = `    <div class="container max-w-screen-sm mx-auto px-4 py-4 flex items-center gap-6">
-      <a aria-label="Back to all posts" class="text-3xl leading-none text-black dark:text-white" href="/">&larr;</a>
-      <span class="text-xl font-bold">Post</span>
+      <a aria-label="Back to all posts" class="flex items-center gap-6 text-black dark:text-white" href="/">
+        <span aria-hidden="true" class="text-3xl leading-none">&larr;</span>
+        <span class="text-xl font-bold">Post</span>
+      </a>
     </div>`;
 
   if (!html.includes(homeHeader)) {
