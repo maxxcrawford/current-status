@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260824T1128",
+      "fullTime": "11:28 AM • August 24, 2026",
+      "image": "https://current-status.com/assets/img/content/20260824T1128.png",
+      "displayImage": "assets/img/content/20260824T1128.png",
+      "imageAltDesc": "Two women in matching turquoise diner uniforms stand behind a counter with seated customers.",
+      "ratio": "3-4",
+      "color": "#615E53"
+    },
+    {
       "guid": "#20260819T2247",
       "fullTime": "10:47 PM • August 19, 2026",
       "image": "https://current-status.com/assets/img/content/20260819T2247.png",
