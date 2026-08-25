@@ -83,6 +83,8 @@ assert.match(page, /property="og:image:width" content="256"/);
 assert.match(page, /property="og:image:height" content="324"/);
 assert.match(page, /property="og:type" content="article"/);
 assert.match(page, /https:\/\/kit\.fontawesome\.com\/f42f48d217\.js/);
+assert.match(page, /href="\/assets\/tailwind\.css"/);
+assert.doesNotMatch(page, /cdn\.tailwindcss\.com/);
 assert.match(page, /<header class="site-header sticky top-0 left-0 w-full z-10 shadow dark:text-white">/);
 assert.match(page, /aria-label="Back to all posts" class="flex items-center gap-4/);
 assert.match(page, /aria-label="Back to all posts"[^>]+href="\/">[\s\S]+fa-arrow-left-long[\s\S]+Post[\s\S]+<\/a>/);
