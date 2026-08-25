@@ -4,11 +4,12 @@
   "description": "",
   "main": "current-status.js",
   "scripts": {
-    "start": "browser-sync start --server dist",
-    "preview": "browser-sync start --server dist",
-    "build": "node assets/scripts/gen-index.js && npm run rss:dist",
+    "start": "vite --host 127.0.0.1 --port 3000 dist",
+    "preview": "vite --host 127.0.0.1 --port 3000 dist",
+    "build": "node assets/scripts/gen-index.js && npm run tailwind:build && npm run rss:dist",
     "build:check": "node assets/scripts/gen-index.js --check",
     "build:watch": "node assets/scripts/build-watch.js",
+    "tailwind:build": "tailwindcss -i assets/tailwind.css -o dist/assets/tailwind.css --minify",
     "date": "npm-run-all date:*",
     "date:short": "node assets/scripts/gen-date-short.js",
     "date:full": "node assets/scripts/gen-date-full.js",
@@ -22,7 +23,6 @@
     "test:pages": "node assets/scripts/test-gen-index.js",
     "post:from-issue": "node assets/scripts/create-post-from-issue.js",
     "color": "dominant_colours --max-colours=1 --no-palette",
-    "deploy": "netlify deploy --prod",
     "masto": "node assets/scripts/masto.js",
     "masto:local": "node assets/scripts/masto-local.js",
     "masto:seed": "node assets/scripts/seed-masto.js",
@@ -36,10 +36,8 @@
   "dependencies": {
     "@atproto/api": "^0.20.6",
     "@netlify/blobs": "^10.7.8",
-    "browser-sync": "^3.0.4",
     "dayjs": "^1.11.20",
     "dotenv": "^17.4.2",
-    "image-size": "^2.0.2",
     "masto": "^7.11.1",
     "npm-run-all": "^4.1.5",
     "rss": "^1.2.2"
@@ -48,6 +46,7 @@
     "node": "22.13.0"
   },
   "devDependencies": {
-    "netlify-cli": "^26.0.2"
+    "tailwindcss": "^3.4.17",
+    "vite": "^8.2.2"
   }
 }

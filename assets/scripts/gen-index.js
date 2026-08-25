@@ -1,6 +1,6 @@
 const Fs = require('fs');
 const Path = require('path');
-const { imageSize } = require('image-size');
+const { imageSize } = require('../../lib/image-size');
 
 const rootDir = Path.resolve(__dirname, '../..');
 const dataPath = Path.join(rootDir, 'data.json');
@@ -14,7 +14,6 @@ const staticFiles = [
   'share.png',
   'assets/style.css',
   'assets/scripts/app.js',
-  'assets/scripts/dayjs.min.js',
   'assets/img',
 ];
 
@@ -119,11 +118,28 @@ function aspectRatioClass(ratio) {
   return `aspect-[${width}/${height}]`;
 }
 
-const POST_ITEM_CLASSES = 'post dark:!border-[#444] dark:!border-b-2';
+const POST_ITEM_CLASSES = 'post dark:!border-[#444]';
 const USER_FULL_NAME_CLASSES = 'user-profile-full-name mr-2 text-black dark:!text-white font-bold text-base sm:text-lg';
 const USER_USERNAME_CLASSES = 'user-profile-username mr-2 text-gray-600 dark:!text-[#999]';
 const POST_DATE_CLASSES = 'post-date relative text-gray-600 dark:!text-[#999]';
 const POST_IMAGE_CLASSES = 'loading post-content-container-image dark:opacity-75';
+
+function displayDateForPost(post, currentYear = new Date().getFullYear()) {
+  const id = postId(post);
+  const year = Number(id.slice(0, 4));
+  const month = Number(id.slice(4, 6));
+  const day = Number(id.slice(6, 8));
+  const monthName = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  ][month - 1];
+
+  if (!monthName) {
+    throw new Error(`Invalid month in post ID "${id}".`);
+  }
+
+  return year === currentYear ? `${monthName} ${day}` : `${monthName} ${day}, ${year}`;
+}
 
 function renderPost(post) {
   const id = postId(post);
@@ -132,7 +148,7 @@ function renderPost(post) {
   const fullTime = post.fullTime || '';
   const imageAltDesc = post.imageAltDesc || '';
 
-  return `      <li class="${POST_ITEM_CLASSES}">
+  return `      <li class="${POST_ITEM_CLASSES}" data-permalink="${escapeAttr(permalinkForPost(post))}">
         <div id="${escapeAttr(id)}" class="flex items-start p-4">
           <div class="user-profile-image w-8 h-8 sm:w-12 sm:h-12 bg-cover bg-black mr-2 flex-shrink-0"></div>
           <div class="post-container">
@@ -140,7 +156,7 @@ function renderPost(post) {
               <div class="${USER_FULL_NAME_CLASSES}"></div>
               <div class="${USER_USERNAME_CLASSES}">@woodenwarship</div>
               <div class="text-gray-600 mr-2">&bull;</div>
-              <a href="${escapeAttr(permalinkForPost(post))}" class="${POST_DATE_CLASSES}" data-date="${escapeAttr(id)}" data-full-date="${escapeAttr(fullTime)}">${escapeAttr(fullTime)}</a>
+              <a href="${escapeAttr(permalinkForPost(post))}" class="${POST_DATE_CLASSES}" data-full-date="${escapeAttr(fullTime)}" aria-label="${escapeAttr(fullTime)}">${escapeAttr(displayDateForPost(post))}</a>
             </div>
             <div class="post-content-container">
               <p class="mt-0">current status:</p>
@@ -151,7 +167,37 @@ function renderPost(post) {
       </li>`;
 }
 
-function replacePostList(template, posts, trailingHtml = '') {
+function dateTimeForPost(post) {
+  const id = postId(post);
+  return `${id.slice(0, 4)}-${id.slice(4, 6)}-${id.slice(6, 8)}T${id.slice(9, 11)}:${id.slice(11, 13)}`;
+}
+
+function renderPermalinkPost(post) {
+  const id = postId(post);
+  const ratioClass = post.ratio ? ` ratio-${post.ratio}` : '';
+  const aspectClass = aspectRatioClass(post.ratio);
+  const fullTime = post.fullTime || '';
+  const imageAltDesc = post.imageAltDesc || '';
+
+  return `      <li class="${POST_ITEM_CLASSES}">
+        <article id="${escapeAttr(id)}" class="p-4">
+          <div class="flex items-center mb-4">
+            <div class="user-profile-image w-12 h-12 bg-cover bg-black mr-3 flex-shrink-0"></div>
+            <div class="min-w-0">
+              <div class="user-profile-full-name text-black dark:!text-white font-bold text-lg">Maxx Crawford</div>
+              <div class="user-profile-username text-gray-600 dark:!text-[#999]">@woodenwarship</div>
+            </div>
+          </div>
+          <div class="post-content-container">
+            <p class="mt-0">current status:</p>
+            <div role="img" aria-label="${escapeAttr(imageAltDesc)}" data-full-image="${escapeAttr(fullImageForHtml(post.image))}" data-img="${escapeAttr(displayImageForHtml(post.displayImage))}" data-color="${escapeAttr(post.color)}" class="${POST_IMAGE_CLASSES}${ratioClass} ${aspectClass}"></div>
+            <time class="block mt-3 text-gray-600 dark:!text-[#999]" datetime="${escapeAttr(dateTimeForPost(post))}">${escapeAttr(fullTime)}</time>
+          </div>
+        </article>
+      </li>`;
+}
+
+function replacePostList(template, posts, trailingHtml = '', renderPostItem = renderPost) {
   const firstPostMatch = template.match(/      <li class="post(?: [^"]*)?">/);
   if (!firstPostMatch) {
     throw new Error('Could not find the first post in index.html.');
@@ -164,7 +210,7 @@ function replacePostList(template, posts, trailingHtml = '') {
   }
 
   const closingLineStart = template.lastIndexOf('\n', closingUlIndex) + 1;
-  const postsHtml = posts.map(renderPost).join('\n');
+  const postsHtml = posts.map(renderPostItem).join('\n');
 
   const trailing = trailingHtml ? `\n${trailingHtml}` : '';
 
@@ -195,10 +241,10 @@ function renderPostNavigation(newerPost, olderPost) {
   }
 
   const newerLink = newerPost
-    ? `<a class="text-blue-500" rel="prev" href="${escapeAttr(permalinkForPost(newerPost))}">&larr; Newer post</a>`
+    ? `<a class="text-blue-500 flex items-center gap-2" rel="prev" href="${escapeAttr(permalinkForPost(newerPost))}"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> Newer post</a>`
     : '<span></span>';
   const olderLink = olderPost
-    ? `<a class="text-blue-500" rel="next" href="${escapeAttr(permalinkForPost(olderPost))}">Older post &rarr;</a>`
+    ? `<a class="text-blue-500 flex items-center gap-2" rel="next" href="${escapeAttr(permalinkForPost(olderPost))}">Older post <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>`
     : '<span></span>';
 
   return `      <li aria-label="Post navigation" class="flex justify-between gap-4 p-4">
@@ -212,8 +258,8 @@ function addPermalinkHeader(html) {
       <span data-hover="current status" class="relative inline-block px-3 py-1 bg-black text-white">current status: </span>
     </div>`;
   const permalinkHeader = `    <div class="container max-w-screen-sm mx-auto px-4 py-4 flex items-center gap-6">
-      <a aria-label="Back to all posts" class="flex items-center gap-6 text-black dark:text-white" href="/">
-        <span aria-hidden="true" class="text-3xl leading-none">&larr;</span>
+      <a aria-label="Back to all posts" class="flex items-center gap-4 text-black dark:text-white" href="/">
+        <i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i>
         <span class="text-xl font-bold">Post</span>
       </a>
     </div>`;
@@ -225,11 +271,42 @@ function addPermalinkHeader(html) {
   return html.replace(homeHeader, permalinkHeader);
 }
 
+function removeFullProfileHeader(html) {
+  const sectionStart = html.indexOf('    <section data-profile-header');
+  if (sectionStart === -1) {
+    throw new Error('Could not find the full profile header in index.html.');
+  }
+
+  const sectionEnd = html.indexOf('    </section>', sectionStart);
+  if (sectionEnd === -1) {
+    throw new Error('Could not find the end of the full profile header in index.html.');
+  }
+
+  return `${html.slice(0, sectionStart)}${html.slice(sectionEnd + '    </section>\n'.length)}`;
+}
+
+function removeIndexBackToTop(html) {
+  const linkStart = html.indexOf('  <a data-index-back-to-top');
+  if (linkStart === -1) {
+    throw new Error('Could not find the index back-to-top link in index.html.');
+  }
+
+  const linkEnd = html.indexOf('  </a>', linkStart);
+  if (linkEnd === -1) {
+    throw new Error('Could not find the end of the index back-to-top link in index.html.');
+  }
+
+  return `${html.slice(0, linkStart)}${html.slice(linkEnd + '  </a>\n'.length)}`;
+}
+
 function renderPermalinkPage(template, post, newerPost, olderPost, imageDetails) {
   const id = postId(post);
   const canonicalUrl = `${siteUrl}/${id}/`;
-  const description = post.imageAltDesc || `Current status posted ${post.fullTime || id}.`;
-  let html = replacePostList(template, [post], renderPostNavigation(newerPost, olderPost));
+  const description = 'Maxx Crawford (@woodenwarship) on current-status.com';
+  const imageAlt = post.imageAltDesc || 'Current status image posted by Maxx Crawford.';
+  let html = removeFullProfileHeader(template);
+  html = removeIndexBackToTop(html);
+  html = replacePostList(html, [post], renderPostNavigation(newerPost, olderPost), renderPermalinkPost);
   html = addPermalinkHeader(html);
 
   html = html.replace('<title>current status</title>', `<title>current status: ${escapeAttr(post.fullTime || id)}</title>`);
@@ -248,8 +325,8 @@ function renderPermalinkPage(template, post, newerPost, olderPost, imageDetails)
     imageDetails.type && `    <meta property="og:image:type" content="${escapeAttr(imageDetails.type)}" />`,
     imageDetails.width && `    <meta property="og:image:width" content="${escapeAttr(imageDetails.width)}" />`,
     imageDetails.height && `    <meta property="og:image:height" content="${escapeAttr(imageDetails.height)}" />`,
-    `    <meta property="og:image:alt" content="${escapeAttr(description)}" />`,
-    `    <meta name="twitter:image:alt" content="${escapeAttr(description)}">`,
+    `    <meta property="og:image:alt" content="${escapeAttr(imageAlt)}" />`,
+    `    <meta name="twitter:image:alt" content="${escapeAttr(imageAlt)}">`,
   ].filter(Boolean).join('\n');
   html = html.replace(
     '    <meta property="og:url"',
@@ -333,11 +410,15 @@ if (require.main === module) {
 
 module.exports = {
   addPermalinkHeader,
+  displayDateForPost,
   displayImageForHtml,
   expectedOutputs,
   imageDetailsForPost,
   permalinkForPost,
+  removeFullProfileHeader,
+  removeIndexBackToTop,
   renderPermalinkPage,
+  renderPermalinkPost,
   renderPost,
   renderPostNavigation,
   validatePosts,
