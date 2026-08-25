@@ -1,16 +1,21 @@
 const Fs = require('fs');
 const Path = require('path');
 const { spawn } = require('child_process');
-const browserSync = require('browser-sync').create();
 
 const rootDir = Path.resolve(__dirname, '../..');
-const watchedFiles = ['index.html', 'data.json', 'assets/style.css'];
+const watchedFiles = [
+  'index.html',
+  'data.json',
+  'assets/style.css',
+  'assets/tailwind.css',
+  'tailwind.config.js',
+];
 const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 
 let buildInProgress = false;
 let buildQueued = false;
 let debounceTimer = null;
-let serverStarted = false;
+let previewProcess;
 
 function runBuild() {
   return new Promise((resolve) => {
@@ -30,16 +35,23 @@ function runBuild() {
   });
 }
 
-function startServer() {
-  if (serverStarted) {
+function startPreview() {
+  if (previewProcess) {
     return;
   }
 
-  serverStarted = true;
-  browserSync.init({
-    server: Path.join(rootDir, 'dist'),
-    notify: false,
-    open: true,
+  previewProcess = spawn(npmCommand, ['run', 'preview', '--', '--open'], {
+    cwd: rootDir,
+    stdio: 'inherit',
+  });
+
+  previewProcess.on('error', (error) => {
+    console.error(`[build:watch] Could not start Vite: ${error.message}`);
+    previewProcess = null;
+  });
+
+  previewProcess.on('exit', () => {
+    previewProcess = null;
   });
 }
 
@@ -56,11 +68,7 @@ async function buildAndReload(reason) {
   buildInProgress = false;
 
   if (buildSucceeded) {
-    if (serverStarted) {
-      browserSync.reload();
-    } else {
-      startServer();
-    }
+    startPreview();
   } else {
     console.error('[build:watch] Build failed; fix the error and save again.');
   }
@@ -87,7 +95,9 @@ function watchFile(relativePath) {
 }
 
 process.on('SIGINT', () => {
-  browserSync.exit();
+  if (previewProcess) {
+    previewProcess.kill('SIGINT');
+  }
   process.exit(0);
 });
 

@@ -1,6 +1,6 @@
 const Fs = require('fs');
 const Path = require('path');
-const { imageSize } = require('image-size');
+const { imageSize } = require('../../lib/image-size');
 
 const rootDir = Path.resolve(__dirname, '../..');
 const dataPath = Path.join(rootDir, 'data.json');
