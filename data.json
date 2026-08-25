@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260825T1033",
+      "fullTime": "10:33 AM • August 25, 2026",
+      "image": "https://current-status.com/assets/img/content/20260825T1033.png",
+      "displayImage": "assets/img/content/20260825T1033.png",
+      "imageAltDesc": "Shoppers rush through a litter-strewn parking lot outside a Sir Sav-a-Lot discount store.",
+      "ratio": "5-9",
+      "color": "#231D17"
+    },
+    {
       "guid": "#20260824T1128",
       "fullTime": "11:28 AM • August 24, 2026",
       "image": "https://current-status.com/assets/img/content/20260824T1128.png",
