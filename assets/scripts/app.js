@@ -20,7 +20,9 @@
 	const postDate = document.querySelectorAll(".post-date");
 	const postCount = document.getElementById("postCount");
 
-	postCount.textContent = postDate.length;
+	if (postCount) {
+		postCount.textContent = postDate.length;
+	}
 
 	const currentYear = dayjs().year();
 
@@ -39,6 +41,18 @@
 		// let span = document.createElement("span");
 		// span.classList.add("post-date-full", "tooltip", "p-1", "rounded", "bg-red-500", "sm:bg-yellow-400", "md:bg-blue-500", "lg:bg-green-700");
 		// span.textContent = dayjsDateHover
+	});
+
+	const linkedPosts = document.querySelectorAll(".post[data-permalink]");
+
+	linkedPosts.forEach(post => {
+		post.addEventListener("click", event => {
+			if (event.target.closest("a, .post-content-container-image")) {
+				return;
+			}
+
+			window.location.assign(post.dataset.permalink);
+		});
 	});
 
 	function copyToClipboard() {

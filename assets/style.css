@@ -1,6 +1,16 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Work Sans', sans-serif;
   background: #f9f9fa;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 .user-profile-image {
@@ -47,6 +57,18 @@ body {
 header {
   background: #f9f9fa;
   /* background: #ececec; */
+}
+
+.site-header {
+  background: rgba(249, 249, 250, 0.8);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  backdrop-filter: blur(12px) saturate(150%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .site-header {
+    background: rgba(51, 51, 51, 0.8);
+  }
 }
 
 main {
@@ -224,6 +246,14 @@ footer {
 
 .post {
   border-bottom: 1px solid #ccc;
+}
+
+.post[data-permalink] {
+  cursor: pointer;
+}
+
+.post[data-permalink] .post-content-container-image {
+  cursor: default;
 }
 
 .post-container {
