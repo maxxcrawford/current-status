@@ -3,6 +3,7 @@ const Fs = require('fs');
 const Path = require('path');
 
 const {
+  displayDateForPost,
   displayImageForHtml,
   expectedOutputs,
   imageDetailsForPost,
@@ -43,11 +44,16 @@ assert.throws(() => validatePosts([{ guid: '#not-an-id' }]), /Invalid post ID/);
 assert.throws(() => validatePosts([posts[0], posts[0]]), /Duplicate post ID/);
 assert.equal(permalinkForPost(posts[0]), '/20260819T2247/');
 assert.equal(displayImageForHtml('assets/example.png'), '/assets/example.png');
+assert.equal(displayDateForPost(posts[0], 2026), 'Aug 19');
+assert.equal(displayDateForPost(posts[0], 2027), 'Aug 19, 2026');
 
 const renderedPost = renderPost(posts[0]);
 assert.match(renderedPost, /data-permalink="\/20260819T2247\/"/);
 assert.match(renderedPost, /href="\/20260819T2247\/"/);
 assert.match(renderedPost, /data-img="\/assets\/img\/content\/20260819T2247\.png"/);
+assert.match(renderedPost, />Aug 19<\/a>/);
+assert.match(renderedPost, /data-full-date="10:47 PM • August 19, 2026"/);
+assert.doesNotMatch(renderedPost, /data-date=/);
 
 const renderedPermalinkPost = renderPermalinkPost(posts[0]);
 assert.doesNotMatch(renderedPermalinkPost, /data-permalink=/);
@@ -107,6 +113,7 @@ assert.match(firstOutputs.get('index.html'), /data-profile-header/);
 assert.match(firstOutputs.get('index.html'), /id="postCount"/);
 assert.match(firstOutputs.get('index.html'), /data-index-back-to-top[^>]+fixed z-\[100\] bottom-4 right-4 sm:hidden[^>]+href="#top"/);
 assert.match(firstOutputs.get('index.html'), /fa-arrow-up-long/);
+assert.doesNotMatch(firstOutputs.get('index.html'), /dayjs\.min\.js/);
 assert.match(firstOutputs.get('index.html'), /<\/main>\n  <a data-index-back-to-top[\s\S]+<\/a>/);
 assert.match(firstOutputs.get('index.html'), /<div class="mb-4">[\s\S]+id="postCount"/);
 assert.match(firstOutputs.get('index.html'), /<div class="flex flex-wrap gap-x-4 gap-y-2">/);

@@ -14,7 +14,6 @@ const staticFiles = [
   'share.png',
   'assets/style.css',
   'assets/scripts/app.js',
-  'assets/scripts/dayjs.min.js',
   'assets/img',
 ];
 
@@ -125,6 +124,23 @@ const USER_USERNAME_CLASSES = 'user-profile-username mr-2 text-gray-600 dark:!te
 const POST_DATE_CLASSES = 'post-date relative text-gray-600 dark:!text-[#999]';
 const POST_IMAGE_CLASSES = 'loading post-content-container-image dark:opacity-75';
 
+function displayDateForPost(post, currentYear = new Date().getFullYear()) {
+  const id = postId(post);
+  const year = Number(id.slice(0, 4));
+  const month = Number(id.slice(4, 6));
+  const day = Number(id.slice(6, 8));
+  const monthName = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  ][month - 1];
+
+  if (!monthName) {
+    throw new Error(`Invalid month in post ID "${id}".`);
+  }
+
+  return year === currentYear ? `${monthName} ${day}` : `${monthName} ${day}, ${year}`;
+}
+
 function renderPost(post) {
   const id = postId(post);
   const ratioClass = post.ratio ? ` ratio-${post.ratio}` : '';
@@ -140,7 +156,7 @@ function renderPost(post) {
               <div class="${USER_FULL_NAME_CLASSES}"></div>
               <div class="${USER_USERNAME_CLASSES}">@woodenwarship</div>
               <div class="text-gray-600 mr-2">&bull;</div>
-              <a href="${escapeAttr(permalinkForPost(post))}" class="${POST_DATE_CLASSES}" data-date="${escapeAttr(id)}" data-full-date="${escapeAttr(fullTime)}">${escapeAttr(fullTime)}</a>
+              <a href="${escapeAttr(permalinkForPost(post))}" class="${POST_DATE_CLASSES}" data-full-date="${escapeAttr(fullTime)}" aria-label="${escapeAttr(fullTime)}">${escapeAttr(displayDateForPost(post))}</a>
             </div>
             <div class="post-content-container">
               <p class="mt-0">current status:</p>
@@ -394,6 +410,7 @@ if (require.main === module) {
 
 module.exports = {
   addPermalinkHeader,
+  displayDateForPost,
   displayImageForHtml,
   expectedOutputs,
   imageDetailsForPost,

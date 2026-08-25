@@ -24,25 +24,6 @@
 		postCount.textContent = postDate.length;
 	}
 
-	const currentYear = dayjs().year();
-
-	postDate.forEach( el => {
-		// TODO: Add hover element with full date
-		let date = el.dataset.date;
-		let dayjsDate = dayjs(date);
-		let postIsCurrentYear = dayjsDate.isSame(`${currentYear}-01-01`, 'y')
-
-		let dayjsDateDisplay = postIsCurrentYear ? dayjsDate.format("MMM D") : dayjsDate.format("MMM D, YYYY")
-		
-		let dayjsDateHover = dayjsDate.format("h:mm A • MMMM D, YYYY");
-		el.textContent = dayjsDateDisplay;
-		el.dataset.fullDate = dayjsDateHover
-		el.ariaLabel = dayjsDateHover;
-		// let span = document.createElement("span");
-		// span.classList.add("post-date-full", "tooltip", "p-1", "rounded", "bg-red-500", "sm:bg-yellow-400", "md:bg-blue-500", "lg:bg-green-700");
-		// span.textContent = dayjsDateHover
-	});
-
 	const linkedPosts = document.querySelectorAll(".post[data-permalink]");
 
 	linkedPosts.forEach(post => {
@@ -54,22 +35,6 @@
 			window.location.assign(post.dataset.permalink);
 		});
 	});
-
-	function copyToClipboard() {
-		const temp = document.createElement("textarea");
-		const time = buildCurrentTime();
-		document.body.appendChild(temp);
-		temp.value = time;
-		temp.select();
-		document.execCommand("copy");
-		document.body.removeChild(temp);
-	}
-
-	function buildCurrentTime() {
-		// 20210310T2306
-		var now = dayjs();
-		return now.format('YYYYMMDDTHHmm');
-	}
 
 	const images = document.querySelectorAll(".post-content-container-image");
 
