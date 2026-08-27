@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260827T1503",
+      "fullTime": "3:03 PM • August 27, 2026",
+      "image": "https://current-status.com/assets/img/content/20260827T1503.png",
+      "displayImage": "assets/img/content/20260827T1503.png",
+      "imageAltDesc": "Omni-Man looks suspiciously at a smartphone beneath a cloudy sky",
+      "ratio": "5-9",
+      "color": "#6A7C8D"
+    },
+    {
       "guid": "#20260825T1033",
       "fullTime": "10:33 AM • August 25, 2026",
       "image": "https://current-status.com/assets/img/content/20260825T1033.png",
