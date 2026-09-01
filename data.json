@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260901T1005",
+      "fullTime": "10:05 AM • September 1, 2026",
+      "image": "https://current-status.com/assets/img/content/20260901T1005.png",
+      "displayImage": "assets/img/content/20260901T1005.png",
+      "imageAltDesc": "Bart Simpson holding a monkeys paw from Treehouse of Horror II",
+      "ratio": "3-4",
+      "color": "#B76DA8"
+    },
+    {
       "guid": "#20260827T1503",
       "fullTime": "3:03 PM • August 27, 2026",
       "image": "https://current-status.com/assets/img/content/20260827T1503.png",
