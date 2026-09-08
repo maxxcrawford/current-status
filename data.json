@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260907T2243",
+      "fullTime": "10:43 PM • September 7, 2026",
+      "image": "https://current-status.com/assets/img/content/20260907T2243.png",
+      "displayImage": "assets/img/content/20260907T2243.png",
+      "imageAltDesc": "(Still from the documentary, You Can See Everything) Close-up of a blue-eyed woman speaking to a man.",
+      "ratio": "2-3",
+      "color": "#513D2B"
+    },
+    {
       "guid": "#20260901T1005",
       "fullTime": "10:05 AM • September 1, 2026",
       "image": "https://current-status.com/assets/img/content/20260901T1005.png",
