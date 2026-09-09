@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260908T2321",
+      "fullTime": "11:21 PM • September 8, 2026",
+      "image": "https://current-status.com/assets/img/content/20260908T2321.png",
+      "displayImage": "assets/img/content/20260908T2321.png",
+      "imageAltDesc": "Calvin compliments a cowboy-hat-wearing Hobbes on his mustache, and Hobbes replies, “Thanks. I made it.”",
+      "ratio": "1-1",
+      "color": "#FEFEFE"
+    },
+    {
       "guid": "#20260907T2243",
       "fullTime": "10:43 PM • September 7, 2026",
       "image": "https://current-status.com/assets/img/content/20260907T2243.png",
