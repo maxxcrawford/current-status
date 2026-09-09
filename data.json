@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260909T0929",
+      "fullTime": "9:29 AM • September 9, 2026",
+      "image": "https://current-status.com/assets/img/content/20260909T0929.png",
+      "displayImage": "assets/img/content/20260909T0929.png",
+      "imageAltDesc": "Four animated raccoons dance on a rooftop beneath a full moon, with one playing a trumpet",
+      "ratio": "5-9",
+      "color": "#434C8E"
+    },
+    {
       "guid": "#20260908T2321",
       "fullTime": "11:21 PM • September 8, 2026",
       "image": "https://current-status.com/assets/img/content/20260908T2321.png",
