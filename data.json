@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260916T0904",
+      "fullTime": "9:04 AM • September 16, 2026",
+      "image": "https://current-status.com/assets/img/content/20260916T0904.png",
+      "displayImage": "assets/img/content/20260916T0904.png",
+      "imageAltDesc": "A man in a gray cap and blazer gives two thumbs up while standing in a pink-walled doorway.",
+      "ratio": "2-3",
+      "color": "#CDA5A0"
+    },
+    {
       "guid": "#20260915T1226",
       "fullTime": "12:26 PM • September 15, 2026",
       "image": "https://current-status.com/assets/img/content/20260915T1226.png",
