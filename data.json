@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20260917T1510",
+      "fullTime": "3:10 PM • September 17, 2026",
+      "image": "https://current-status.com/assets/img/content/20260917T1510.png",
+      "displayImage": "assets/img/content/20260917T1510.png",
+      "imageAltDesc": "Illustration of a Claude cartoon surrounded by scattered paperwork in a cluttered office.",
+      "ratio": "3-4",
+      "color": "#D9D8D0"
+    },
+    {
       "guid": "#20260916T0904",
       "fullTime": "9:04 AM • September 16, 2026",
       "image": "https://current-status.com/assets/img/content/20260916T0904.png",
