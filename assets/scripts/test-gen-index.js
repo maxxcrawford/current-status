@@ -20,8 +20,8 @@ const posts = [
   {
     guid: '#20260819T2247',
     fullTime: '10:47 PM • August 19, 2026',
-    image: 'https://current-status.com/assets/img/content/20260819T2247.png',
-    displayImage: 'assets/img/content/20260819T2247.png',
+    image: 'https://current-status.com/assets/img/content/20260819T2247.avif',
+    displayImage: 'assets/img/content/20260819T2247.avif',
     imageAltDesc: 'A game cover & its title',
     ratio: '5-4',
     color: '#392F39',
@@ -36,7 +36,7 @@ const posts = [
     color: '#000000',
   },
 ];
-const imageDetails = { width: 256, height: 324, type: 'image/png' };
+const imageDetails = { width: 256, height: 324, type: 'image/avif' };
 const getImageDetails = () => imageDetails;
 
 validatePosts(posts);
@@ -50,7 +50,7 @@ assert.equal(displayDateForPost(posts[0], 2027), 'Aug 19, 2026');
 const renderedPost = renderPost(posts[0]);
 assert.match(renderedPost, /data-permalink="\/20260819T2247\/"/);
 assert.match(renderedPost, /href="\/20260819T2247\/"/);
-assert.match(renderedPost, /data-img="\/assets\/img\/content\/20260819T2247\.png"/);
+assert.match(renderedPost, /data-img="\/assets\/img\/content\/20260819T2247\.avif"/);
 assert.match(renderedPost, />Aug 19<\/a>/);
 assert.match(renderedPost, /data-full-date="10:47 PM • August 19, 2026"/);
 assert.doesNotMatch(renderedPost, /data-date=/);
@@ -59,7 +59,7 @@ const renderedPermalinkPost = renderPermalinkPost(posts[0]);
 assert.doesNotMatch(renderedPermalinkPost, /data-permalink=/);
 assert.match(renderedPermalinkPost, /Maxx Crawford/);
 assert.match(renderedPermalinkPost, /@woodenwarship/);
-assert.match(renderedPermalinkPost, /data-img="\/assets\/img\/content\/20260819T2247\.png"/);
+assert.match(renderedPermalinkPost, /data-img="\/assets\/img\/content\/20260819T2247\.avif"/);
 assert.match(renderedPermalinkPost, /<time[^>]+datetime="2026-08-19T22:47"[^>]*>10:47 PM • August 19, 2026<\/time>/);
 assert.equal(renderedPermalinkPost.indexOf('Maxx Crawford') < renderedPermalinkPost.indexOf('data-img='), true);
 assert.equal(renderedPermalinkPost.indexOf('data-img=') < renderedPermalinkPost.indexOf('<time'), true);
@@ -73,12 +73,12 @@ assert.doesNotMatch(navigation, /&larr;|&rarr;/);
 
 const page = renderPermalinkPage(template, posts[0], undefined, posts[1], imageDetails);
 assert.match(page, /<link rel="canonical" href="https:\/\/current-status\.com\/20260819T2247\/">/);
-assert.match(page, /property="og:image" content="https:\/\/current-status\.com\/assets\/img\/content\/20260819T2247\.png"/);
+assert.match(page, /property="og:image" content="https:\/\/current-status\.com\/assets\/img\/content\/20260819T2247\.avif"/);
 assert.match(page, /property="og:image:alt" content="A game cover &amp; its title"/);
 assert.match(page, /property="og:description" content="Maxx Crawford \(@woodenwarship\) on current-status\.com"/);
 assert.match(page, /name="twitter:description" content="Maxx Crawford \(@woodenwarship\) on current-status\.com"/);
 assert.doesNotMatch(page, /property="og:description" content="A game cover/);
-assert.match(page, /property="og:image:type" content="image\/png"/);
+assert.match(page, /property="og:image:type" content="image\/avif"/);
 assert.match(page, /property="og:image:width" content="256"/);
 assert.match(page, /property="og:image:height" content="324"/);
 assert.match(page, /property="og:type" content="article"/);
@@ -98,7 +98,7 @@ assert.match(page, /href="\/20260818T1200\/">Older post <i class="fa-solid fa-ar
 
 const actualImageDetails = imageDetailsForPost({
   guid: '#20260819T2247',
-  displayImage: 'assets/img/content/20260819T2247.png',
+  displayImage: 'assets/img/content/20260819T2247.avif',
 });
 assert.deepEqual(actualImageDetails, imageDetails);
 assert.deepEqual(
