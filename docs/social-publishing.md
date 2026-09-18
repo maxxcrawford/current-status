@@ -17,6 +17,12 @@ Failures are isolated by service. For example, a Threads failure does not undo a
 or Bluesky post. The function returns a partial-failure result and the deploy log identifies the
 failed service.
 
+## Image formats
+
+Social platforms receive the original uploaded file (JPG, PNG, or GIF) via the post's `socialImage`
+field, not the AVIF or WebP copy stored for the site. See
+[Image optimization](image-optimization.md).
+
 ## Environment variables
 
 Copy `.env-dist` to the ignored `.env` file for local commands. Never commit real credentials.

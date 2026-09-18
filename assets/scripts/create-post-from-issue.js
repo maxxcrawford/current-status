@@ -1,6 +1,7 @@
 const Fs = require('fs');
 const Path = require('path');
 const { imageSize } = require('../../lib/image-size');
+const { optimizeImage } = require('../../lib/optimize-image');
 
 const rootDir = Path.resolve(__dirname, '../..');
 const DEFAULT_DATA_PATH = Path.join(rootDir, 'data.json');
@@ -466,7 +467,7 @@ function assertNoPostCollision(data, guid, assetPath) {
   }
 }
 
-function buildPost({ postId, fullTime, filename, altText, ratio, color }) {
+function buildPost({ postId, fullTime, filename, altText, ratio, color, socialImage }) {
   const displayImage = `assets/img/content/${filename}`;
 
   return {
@@ -474,6 +475,7 @@ function buildPost({ postId, fullTime, filename, altText, ratio, color }) {
     fullTime,
     image: `${CURRENT_STATUS_ORIGIN}/${displayImage}`,
     displayImage,
+    ...(socialImage ? { socialImage } : {}),
     imageAltDesc: altText,
     ratio,
     color,
@@ -516,7 +518,8 @@ async function createPostFromIssue(options = {}) {
   const postId = postIdForDate(now, timeZone);
   const fullTime = fullTimeForDate(now, timeZone);
   const issueTitle = issueTitleForDate(now, timeZone);
-  const filename = `${postId}.${downloadedImage.extension}`;
+  const storedImage = optimizeImage(downloadedImage.buffer, downloadedImage.extension, options.optimize);
+  const filename = `${postId}.${storedImage.extension}`;
   const assetPath = Path.join(assetDir, filename);
   const data = readData(dataPath);
   const post = buildPost({
@@ -526,12 +529,13 @@ async function createPostFromIssue(options = {}) {
     altText,
     ratio,
     color,
+    socialImage: storedImage.optimized ? imageUrl : '',
   });
 
   assertNoPostCollision(data, post.guid, assetPath);
 
   Fs.mkdirSync(assetDir, { recursive: true });
-  Fs.writeFileSync(assetPath, downloadedImage.buffer);
+  Fs.writeFileSync(assetPath, storedImage.buffer);
   data.posts.unshift(post);
   Fs.writeFileSync(dataPath, `${JSON.stringify(data, null, 2)}\n`);
 
@@ -544,6 +548,8 @@ async function createPostFromIssue(options = {}) {
     filename,
     assetPath: relativePath(assetPath),
     dataPath: relativePath(dataPath),
+    sourceExtension: downloadedImage.extension,
+    optimized: String(storedImage.optimized),
     branchName: `status-post/${postId}`,
     issueNumber: issue.number ? String(issue.number) : '',
     ratio,

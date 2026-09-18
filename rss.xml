@@ -9,7 +9,7 @@
             <link>http://current-status.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 17 Sep 2026 20:10:36 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 18 Sep 2026 15:15:54 GMT</lastBuildDate>
         <atom:link href="http://current-status.com/rss.xml" rel="self" type="application/rss+xml"/>
         <copyright><![CDATA[2024 Maxx Crawford]]></copyright>
         <language><![CDATA[en]]></language>
@@ -20,7 +20,7 @@
             <guid isPermaLink="false">#20260917T1510</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 17 Sep 2026 20:10:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260917T1510.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260917T1510.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -28,7 +28,7 @@
             <guid isPermaLink="false">#20260916T0904</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 16 Sep 2026 14:04:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260916T0904.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260916T0904.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -36,7 +36,7 @@
             <guid isPermaLink="false">#20260915T1226</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 15 Sep 2026 17:26:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260915T1226.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260915T1226.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -44,7 +44,7 @@
             <guid isPermaLink="false">#20260910T1035</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 10 Sep 2026 15:35:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260910T1035.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260910T1035.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -52,7 +52,7 @@
             <guid isPermaLink="false">#20260909T0929</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 09 Sep 2026 14:29:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260909T0929.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260909T0929.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -60,7 +60,7 @@
             <guid isPermaLink="false">#20260908T2321</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 09 Sep 2026 04:21:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260908T2321.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260908T2321.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -68,7 +68,7 @@
             <guid isPermaLink="false">#20260907T2243</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 08 Sep 2026 03:43:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260907T2243.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260907T2243.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -76,7 +76,7 @@
             <guid isPermaLink="false">#20260901T1005</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 01 Sep 2026 15:05:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260901T1005.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260901T1005.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -84,7 +84,7 @@
             <guid isPermaLink="false">#20260827T1503</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 27 Aug 2026 20:03:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260827T1503.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260827T1503.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -92,7 +92,7 @@
             <guid isPermaLink="false">#20260825T1033</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 25 Aug 2026 15:33:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260825T1033.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260825T1033.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -100,7 +100,7 @@
             <guid isPermaLink="false">#20260824T1128</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Mon, 24 Aug 2026 16:28:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260824T1128.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260824T1128.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -108,7 +108,7 @@
             <guid isPermaLink="false">#20260819T2247</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 20 Aug 2026 03:47:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260819T2247.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260819T2247.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -124,7 +124,7 @@
             <guid isPermaLink="false">#20260815T0054</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Sat, 15 Aug 2026 05:54:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260815T0054.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260815T0054.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -148,7 +148,7 @@
             <guid isPermaLink="false">#20260805T1532</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 05 Aug 2026 20:32:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260805T1532.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260805T1532.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -156,7 +156,7 @@
             <guid isPermaLink="false">#20260724T2102</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Sat, 25 Jul 2026 02:02:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260724T2102.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260724T2102.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -164,7 +164,7 @@
             <guid isPermaLink="false">#20260724T1342</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 24 Jul 2026 18:42:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260724T1342.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260724T1342.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -172,7 +172,7 @@
             <guid isPermaLink="false">#20260720T1554</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Mon, 20 Jul 2026 20:54:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260720T1554.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260720T1554.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -180,7 +180,7 @@
             <guid isPermaLink="false">#20260715T1409</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 15 Jul 2026 19:09:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260715T1409.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260715T1409.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -188,7 +188,7 @@
             <guid isPermaLink="false">#20260713T2236</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 14 Jul 2026 03:36:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260713T2236.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260713T2236.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -204,7 +204,7 @@
             <guid isPermaLink="false">#20260705T1236</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Sun, 05 Jul 2026 17:36:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260705T1236.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260705T1236.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -228,7 +228,7 @@
             <guid isPermaLink="false">#20260616T1139</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 16 Jun 2026 16:39:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260616T1139.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260616T1139.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -236,7 +236,7 @@
             <guid isPermaLink="false">#20260608T1331</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Mon, 08 Jun 2026 18:31:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260608T1331.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260608T1331.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -244,7 +244,7 @@
             <guid isPermaLink="false">#20260603T1126</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 03 Jun 2026 16:26:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260603T1126.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260603T1126.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -252,7 +252,7 @@
             <guid isPermaLink="false">#20260601T2208</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 02 Jun 2026 03:08:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260601T2208.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260601T2208.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -260,7 +260,7 @@
             <guid isPermaLink="false">#20260601T1219</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Mon, 01 Jun 2026 17:19:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260601T1219.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260601T1219.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -268,7 +268,7 @@
             <guid isPermaLink="false">#20260530T0827</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Sat, 30 May 2026 13:27:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20260530T0827.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20260530T0827.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2092,7 +2092,7 @@
             <guid isPermaLink="false">#20221024T2029</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 25 Oct 2022 01:29:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20221024T2029.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20221024T2029.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2124,7 +2124,7 @@
             <guid isPermaLink="false">#20221019T1654</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 19 Oct 2022 21:54:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20221019T1654.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20221019T1654.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2164,7 +2164,7 @@
             <guid isPermaLink="false">#20221016T2212</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Mon, 17 Oct 2022 03:12:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20221016T2212.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20221016T2212.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2188,7 +2188,7 @@
             <guid isPermaLink="false">#20221014T1443</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 14 Oct 2022 19:43:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20221014T1443.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20221014T1443.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2220,7 +2220,7 @@
             <guid isPermaLink="false">#20221012T1437</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 12 Oct 2022 19:37:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20221012T1437.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20221012T1437.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2268,7 +2268,7 @@
             <guid isPermaLink="false">#20221007T1758</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 07 Oct 2022 22:58:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20221007T1758.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20221007T1758.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2284,7 +2284,7 @@
             <guid isPermaLink="false">#20221005T1453</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 05 Oct 2022 19:53:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20221005T1453.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20221005T1453.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2292,7 +2292,7 @@
             <guid isPermaLink="false">#20221004T1911</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 05 Oct 2022 00:11:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20221004T1911.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20221004T1911.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2308,7 +2308,7 @@
             <guid isPermaLink="false">#20221003T1802</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Mon, 03 Oct 2022 23:02:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20221003T1802.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20221003T1802.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2316,7 +2316,7 @@
             <guid isPermaLink="false">#20220926T0317</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Mon, 26 Sep 2022 08:17:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20220926T0317.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20220926T0317.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2348,7 +2348,7 @@
             <guid isPermaLink="false">#20220918T2009</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Mon, 19 Sep 2022 01:09:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20220918T2009.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20220918T2009.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2364,7 +2364,7 @@
             <guid isPermaLink="false">#20220915T2024</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 16 Sep 2022 01:24:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20220915T2024.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20220915T2024.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2524,7 +2524,7 @@
             <guid isPermaLink="false">#20220803T1456</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 03 Aug 2022 19:56:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20220803T1456.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20220803T1456.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2540,7 +2540,7 @@
             <guid isPermaLink="false">#20220802T1947</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 03 Aug 2022 00:47:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20220802T1947.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20220802T1947.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2588,7 +2588,7 @@
             <guid isPermaLink="false">#20220730T0112</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Sat, 30 Jul 2022 06:12:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20220730T0112.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20220730T0112.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2620,7 +2620,7 @@
             <guid isPermaLink="false">#20220727T1918</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 28 Jul 2022 00:18:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20220727T1918.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20220727T1918.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -2652,7 +2652,7 @@
             <guid isPermaLink="false">#20220721T2224</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 22 Jul 2022 03:24:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20220721T2224.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20220721T2224.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -3292,7 +3292,7 @@
             <guid isPermaLink="false">#20210824T1430</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 24 Aug 2021 19:30:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210824T1430.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210824T1430.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -3524,7 +3524,7 @@
             <guid isPermaLink="false">#20210713T0509</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 13 Jul 2021 10:09:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210713T0509.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210713T0509.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -3588,7 +3588,7 @@
             <guid isPermaLink="false">#20210706T1529</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 06 Jul 2021 20:29:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210706T1529.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210706T1529.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -3652,7 +3652,7 @@
             <guid isPermaLink="false">#20210624T2050</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 25 Jun 2021 01:50:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210624T2050.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210624T2050.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -3764,7 +3764,7 @@
             <guid isPermaLink="false">#20210611T1958</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Sat, 12 Jun 2021 00:58:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210611T1958.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210611T1958.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -3788,7 +3788,7 @@
             <guid isPermaLink="false">#20210609T2054</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 10 Jun 2021 01:54:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210609T2054.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210609T2054.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -3828,7 +3828,7 @@
             <guid isPermaLink="false">#20210603T2055</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 04 Jun 2021 01:55:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210603T2055.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210603T2055.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -3836,7 +3836,7 @@
             <guid isPermaLink="false">#20210603T0127</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 03 Jun 2021 06:27:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210603T0127.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210603T0127.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4244,7 +4244,7 @@
             <guid isPermaLink="false">#20210217T1949</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 18 Feb 2021 01:49:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210217T1949.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210217T1949.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4364,7 +4364,7 @@
             <guid isPermaLink="false">#20210203T2151</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 04 Feb 2021 03:51:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210203T2151.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210203T2151.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4396,7 +4396,7 @@
             <guid isPermaLink="false">#20210120T1747</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 20 Jan 2021 23:47:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210120T1747.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210120T1747.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4428,7 +4428,7 @@
             <guid isPermaLink="false">#20210119T1818</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 20 Jan 2021 00:18:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210119T1818.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210119T1818.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4468,7 +4468,7 @@
             <guid isPermaLink="false">#20210114T1630</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 14 Jan 2021 22:30:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210114T1630.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210114T1630.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4484,7 +4484,7 @@
             <guid isPermaLink="false">#20210112T0439</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 12 Jan 2021 10:39:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210112T0439.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210112T0439.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4500,7 +4500,7 @@
             <guid isPermaLink="false">#20210111T2325</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Tue, 12 Jan 2021 05:25:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20210111T2325.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20210111T2325.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4788,7 +4788,7 @@
             <guid isPermaLink="false">#20201217T0311</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 17 Dec 2020 09:11:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201217T0311.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201217T0311.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4796,7 +4796,7 @@
             <guid isPermaLink="false">#20201216T1657</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 16 Dec 2020 22:57:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201216T1657.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201216T1657.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4812,7 +4812,7 @@
             <guid isPermaLink="false">#20201215T1807</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 16 Dec 2020 00:07:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201215T1807.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201215T1807.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4868,7 +4868,7 @@
             <guid isPermaLink="false">#20201209T1406</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 09 Dec 2020 20:06:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201209T1406.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201209T1406.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4916,7 +4916,7 @@
             <guid isPermaLink="false">#20201204T1611</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 04 Dec 2020 22:11:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201204T1611.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201204T1611.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -4988,7 +4988,7 @@
             <guid isPermaLink="false">#20201130T0225</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Mon, 30 Nov 2020 08:25:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201130T0225.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201130T0225.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -5012,7 +5012,7 @@
             <guid isPermaLink="false">#20201129T0246</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Sun, 29 Nov 2020 08:46:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201129T0246.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201129T0246.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -5180,7 +5180,7 @@
             <guid isPermaLink="false">#20201112T2009</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 13 Nov 2020 02:09:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201112T2009.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201112T2009.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -5260,7 +5260,7 @@
             <guid isPermaLink="false">#20201105T1556</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Thu, 05 Nov 2020 21:56:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201105T1556.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201105T1556.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -5300,7 +5300,7 @@
             <guid isPermaLink="false">#20201016T1507</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 16 Oct 2020 20:07:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201016T1507.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201016T1507.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -5308,7 +5308,7 @@
             <guid isPermaLink="false">#20201015T2033</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 16 Oct 2020 01:33:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201015T2033.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201015T2033.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -5412,7 +5412,7 @@
             <guid isPermaLink="false">#20201002T1511</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 02 Oct 2020 20:11:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20201002T1511.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20201002T1511.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -5476,7 +5476,7 @@
             <guid isPermaLink="false">#20200923T1659</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 23 Sep 2020 21:59:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20200923T1659.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20200923T1659.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -5924,7 +5924,7 @@
             <guid isPermaLink="false">#20150908T2111</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Wed, 09 Sep 2015 02:11:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20150908T2111.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20150908T2111.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -6276,7 +6276,7 @@
             <guid isPermaLink="false">#20141215T1621</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Mon, 15 Dec 2014 22:21:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20141215T1621.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20141215T1621.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>
@@ -6364,7 +6364,7 @@
             <guid isPermaLink="false">#20140829T1614</guid>
             <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
             <pubDate>Fri, 29 Aug 2014 21:14:00 GMT</pubDate>
-            <enclosure url="https://current-status.com/assets/img/content/20140829T1614.png" length="0" type="image/png"/>
+            <enclosure url="https://current-status.com/assets/img/content/20140829T1614.avif" length="0" type="false"/>
         </item>
         <item>
             <title><![CDATA[current status:]]></title>

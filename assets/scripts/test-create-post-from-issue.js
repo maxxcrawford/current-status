@@ -16,6 +16,7 @@ const {
 
 const jpegFixture = Path.resolve(__dirname, '../img/content/20260529T0737.jpg');
 const gifFixture = Path.resolve(__dirname, '../img/content/20210112T0304.gif');
+const { imageSize } = require('../../lib/image-size');
 
 function tempDir() {
   return Fs.mkdtempSync(Path.join(Os.tmpdir(), 'current-status-post-test-'));
@@ -109,12 +110,19 @@ async function testCreatesPostFromAttachment() {
   assert.equal(result.action, 'created');
   assert.equal(result.postId, '20260530T1435');
   assert.equal(result.issueTitle, 'Post : May 30 2026, 2:35 PM');
-  assert.equal(result.assetPath.endsWith('assets/img/content/20260530T1435.jpg'), true);
-  assert.equal(Fs.existsSync(Path.join(assetDir, '20260530T1435.jpg')), true);
+  assert.equal(result.assetPath.endsWith('assets/img/content/20260530T1435.webp'), true);
+  assert.equal(Fs.existsSync(Path.join(assetDir, '20260530T1435.webp')), true);
+  assert.equal(result.sourceExtension, 'jpg');
+  assert.equal(result.optimized, 'true');
   assert.equal(data.posts[0].guid, '#20260530T1435');
   assert.equal(data.posts[0].fullTime, '2:35 PM • May 30, 2026');
-  assert.equal(data.posts[0].image, 'https://current-status.com/assets/img/content/20260530T1435.jpg');
-  assert.equal(data.posts[0].displayImage, 'assets/img/content/20260530T1435.jpg');
+  assert.equal(data.posts[0].image, 'https://current-status.com/assets/img/content/20260530T1435.webp');
+  assert.equal(data.posts[0].displayImage, 'assets/img/content/20260530T1435.webp');
+  assert.equal(
+    data.posts[0].socialImage,
+    'https://github.com/user-attachments/assets/example-image'
+  );
+  assert.equal(imageSize(Fs.readFileSync(Path.join(assetDir, '20260530T1435.webp'))).width <= 900, true);
   assert.equal(data.posts[0].imageAltDesc, 'Vintage toy package on a red and green background');
   assert.equal(data.posts[0].ratio, '43-50');
   assert.equal(data.posts[0].color, '#B02010');
@@ -146,6 +154,7 @@ async function testDownloadsGifUrlAndUsesRatioOverride() {
   assert.equal(data.posts[0].displayImage, 'assets/img/content/20260530T1435.gif');
   assert.equal(data.posts[0].ratio, '5-4');
   assert.equal(Fs.existsSync(Path.join(assetDir, '20260530T1435.gif')), true);
+  assert.equal('socialImage' in data.posts[0], false);
 }
 
 async function testUnauthorizedAuthorIsIgnored() {
