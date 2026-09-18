@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20260918T1034",
+      "fullTime": "10:34 AM • September 18, 2026",
+      "image": "https://current-status.com/assets/img/content/20260918T1034.avif",
+      "displayImage": "assets/img/content/20260918T1034.avif",
+      "socialImage": "https://github.com/user-attachments/assets/b9bbce7a-6f09-43ac-8228-00a6a4c5a5ac",
+      "imageAltDesc": "Weary animated man working at a bulky computer beneath a desk lamp.",
+      "ratio": "1-1",
+      "color": "#303431"
+    },
+    {
       "guid": "#20260917T1510",
       "fullTime": "3:10 PM • September 17, 2026",
       "image": "https://current-status.com/assets/img/content/20260917T1510.avif",
