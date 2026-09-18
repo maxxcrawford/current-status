@@ -11,3 +11,9 @@
 
 [[plugins]]
   package = "./plugins/netlify-plugin-publish-masto"
+
+[[redirects]]
+  from = "/new"
+  to = "https://github.com/maxxcrawford/current-status/issues/new?template=status-post.yml"
+  status = 302
+  force = true
