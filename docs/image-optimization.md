@@ -30,8 +30,12 @@ fetched, publishing falls back to the stored optimized file.
 `optimizeImage` shells out to ImageMagick (`magick`, falling back to `convert`). If no binary is
 available or the encode fails, the original buffer is stored unchanged and the result reports
 `optimized: false` — a post never fails because of image optimization. The workflow installs
-ImageMagick via `apt-get`; Ubuntu's ImageMagick 6 may lack an AVIF delegate, in which case PNG posts
-land as PNG and the bulk script below converts them on the next run.
+ImageMagick via `apt-get`. The ubuntu-24.04 runner's ImageMagick 6 has a working AVIF delegate,
+confirmed by post 20260918T1034 (PNG upload stored as AVIF). If a future runner image drops it, PNG
+posts land as PNG with `optimized=false` and the bulk script below converts them on the next run.
+
+`gen-rss.js` passes the enclosure MIME type explicitly from `contentTypeFromPath`; the `rss`
+package's own extension table does not know AVIF and emits `type="false"` when left to infer.
 
 ## Bulk optimization
 
