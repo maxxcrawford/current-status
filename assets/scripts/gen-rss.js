@@ -2,6 +2,7 @@ const RSS = require('rss');
 const Fs = require('fs');
 const Path = require('path');
 const Dayjs = require('dayjs');
+const { contentTypeFromPath } = require('../../lib/publisher-common');
 const utc = require('dayjs/plugin/utc')
 const timezone = require('dayjs/plugin/timezone')
 
@@ -44,7 +45,8 @@ for (const post of posts.posts) {
         author: 'Maxx Crawford', 
         date: date, 
         enclosure: {
-            url: post.image
+            url: post.image,
+            type: contentTypeFromPath(post.image),
         },
     });
 }
