@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20260923T1129",
+      "fullTime": "11:29 AM • September 23, 2026",
+      "image": "https://current-status.com/assets/img/content/20260923T1129.avif",
+      "displayImage": "assets/img/content/20260923T1129.avif",
+      "socialImage": "https://github.com/user-attachments/assets/f8b8b9bc-f8b0-4999-a771-8e8f74432137",
+      "imageAltDesc": "Blue cartoon character angrily viewing a cute cat picture on a laptop, saying, “I’ve never been more enraged in my life.”",
+      "ratio": "1-1",
+      "color": "#5ECBE6"
+    },
+    {
       "guid": "#20260922T1134",
       "fullTime": "11:34 AM • September 22, 2026",
       "image": "https://current-status.com/assets/img/content/20260922T1134.avif",
