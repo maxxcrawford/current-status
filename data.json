@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20260924T0922",
+      "fullTime": "9:22 AM • September 24, 2026",
+      "image": "https://current-status.com/assets/img/content/20260924T0922.avif",
+      "displayImage": "assets/img/content/20260924T0922.avif",
+      "socialImage": "https://github.com/user-attachments/assets/246aaba7-78e4-4d50-9080-117be2ca36d7",
+      "imageAltDesc": "Hand-drawn sketch of hands holding a soggy sandwich, labeled “only option,” “overpriced,” and “technically food.”",
+      "ratio": "5-7",
+      "color": "#FAFAFA"
+    },
+    {
       "guid": "#20260923T1129",
       "fullTime": "11:29 AM • September 23, 2026",
       "image": "https://current-status.com/assets/img/content/20260923T1129.avif",
