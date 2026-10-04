@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20261004T0001",
+      "fullTime": "12:01 AM • October 4, 2026",
+      "image": "https://current-status.com/assets/img/content/20261004T0001.avif",
+      "displayImage": "assets/img/content/20261004T0001.avif",
+      "socialImage": "https://github.com/user-attachments/assets/47311877-b34e-43de-84a5-f534a820a2ce",
+      "imageAltDesc": "A blonde-haired woman in a white blouse aims a shotgun with a cigarette between her lips.",
+      "ratio": "5-9",
+      "color": "#5E3222"
+    },
+    {
       "guid": "#20260924T0922",
       "fullTime": "9:22 AM • September 24, 2026",
       "image": "https://current-status.com/assets/img/content/20260924T0922.avif",
