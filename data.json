@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20261006T0908",
+      "fullTime": "9:08 AM • October 6, 2026",
+      "image": "https://current-status.com/assets/img/content/20261006T0908.avif",
+      "displayImage": "assets/img/content/20261006T0908.avif",
+      "socialImage": "https://github.com/user-attachments/assets/95424741-c5c7-4525-b95f-8b9917be1807",
+      "imageAltDesc": "Four men in matching burgundy suits stand in front of a tour bus marked “Galaxy of Stars.”",
+      "ratio": "2-3",
+      "color": "#491418"
+    },
+    {
       "guid": "#20261004T0001",
       "fullTime": "12:01 AM • October 4, 2026",
       "image": "https://current-status.com/assets/img/content/20261004T0001.avif",
