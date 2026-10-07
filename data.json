@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20261007T1148",
+      "fullTime": "11:48 AM • October 7, 2026",
+      "image": "https://current-status.com/assets/img/content/20261007T1148.avif",
+      "displayImage": "assets/img/content/20261007T1148.avif",
+      "socialImage": "https://github.com/user-attachments/assets/6232766c-9500-4345-82b7-a3556ddcb988",
+      "imageAltDesc": "A wolf pup howling in a sunlit meadow of pink wildflowers.",
+      "ratio": "3-4",
+      "color": "#AFBD79"
+    },
+    {
       "guid": "#20261006T0908",
       "fullTime": "9:08 AM • October 6, 2026",
       "image": "https://current-status.com/assets/img/content/20261006T0908.avif",
