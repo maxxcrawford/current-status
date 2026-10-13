@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20261013T0845",
+      "fullTime": "8:45 AM • October 13, 2026",
+      "image": "https://current-status.com/assets/img/content/20261013T0845.avif",
+      "displayImage": "assets/img/content/20261013T0845.avif",
+      "socialImage": "https://github.com/user-attachments/assets/5571009d-cf73-4c0d-95cc-788f9a6a0d15",
+      "imageAltDesc": "Two men (Kyle MacLachlan and David Lynch) standing in a brick alley on a movie set, holding a grayscale calibration chart.",
+      "ratio": "3-5",
+      "color": "#323935"
+    },
+    {
       "guid": "#20261007T1148",
       "fullTime": "11:48 AM • October 7, 2026",
       "image": "https://current-status.com/assets/img/content/20261007T1148.avif",
