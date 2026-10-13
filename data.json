@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20261013T1118",
+      "fullTime": "11:18 AM • October 13, 2026",
+      "image": "https://current-status.com/assets/img/content/20261013T1118.avif",
+      "displayImage": "assets/img/content/20261013T1118.avif",
+      "socialImage": "https://github.com/user-attachments/assets/12b46517-9589-489d-9e9f-ea08ae9b32b3",
+      "imageAltDesc": "Ponyo floats toward Sosuke, who holds a green bucket beneath a blue sky filled with fluffy clouds.",
+      "ratio": "5-9",
+      "color": "#3CA3C9"
+    },
+    {
       "guid": "#20261013T0845",
       "fullTime": "8:45 AM • October 13, 2026",
       "image": "https://current-status.com/assets/img/content/20261013T0845.avif",
