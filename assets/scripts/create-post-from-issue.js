@@ -125,26 +125,17 @@ function requiredField(fields, label) {
 function normalizeColor(value) {
   const match = String(value || '')
     .trim()
-    .match(/^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/);
+    .match(/^#?([0-9a-fA-F]{6})$/);
 
   if (!match) {
     throw new StatusPostIssueError(
-      'Background color must be a hex color like #B02010.',
+      'Background color must be a hex color with exactly six digits, like B02010 or #B02010.',
       'invalid_color',
       { color: value }
     );
   }
 
-  const hex = match[1];
-  const expanded =
-    hex.length === 3
-      ? hex
-          .split('')
-          .map((character) => `${character}${character}`)
-          .join('')
-      : hex;
-
-  return `#${expanded.toUpperCase()}`;
+  return `#${match[1].toUpperCase()}`;
 }
 
 function extractImageUrl(value) {

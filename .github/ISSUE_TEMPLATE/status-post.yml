@@ -23,8 +23,8 @@ body:
     id: background-color
     attributes:
       label: Background color
-      description: Hex color used while the image loads.
-      placeholder: "#B02010"
+      description: "Six-digit hex color used while the image loads. The leading # is optional."
+      placeholder: "B02010 or #B02010"
     validations:
       required: true
   - type: input

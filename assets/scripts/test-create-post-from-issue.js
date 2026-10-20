@@ -220,7 +220,7 @@ async function testPostCollisionFailsBeforeWritingAsset() {
         issueBody({
           imageSource: 'https://example.com/status.gif',
           altText: 'Alt text',
-          backgroundColor: '#000',
+          backgroundColor: '#000000',
         })
       ),
       dataPath,
@@ -238,7 +238,14 @@ function testHelpers() {
   assert.equal(postIdForDate(new Date('2026-05-30T05:15:00Z')), '20260530T0015');
   assert.equal(fullTimeForDate(new Date('2026-05-30T05:15:00Z')), '12:15 AM • May 30, 2026');
   assert.equal(issueTitleForDate(new Date('2026-05-30T05:15:00Z')), 'Post : May 30 2026, 12:15 AM');
-  assert.equal(normalizeColor('#abc'), '#AABBCC');
+  for (const color of ['FFFFFF', '#FFFFFF', 'ffffff', '#ffffff', ' FfFfFf ']) {
+    assert.equal(normalizeColor(color), '#FFFFFF');
+  }
+  assert.equal(normalizeColor('b02010'), '#B02010');
+  assert.equal(normalizeColor('#b02010'), '#B02010');
+  for (const color of ['', '#abc', 'abc', 'FFFFF', '#FFFFFFF', 'GGGGGG', '##FFFFFF', 'FF FF FF']) {
+    assert.throws(() => normalizeColor(color), /Background color must be a hex color with exactly six digits/);
+  }
   assert.equal(extractImageUrl('[download](https://example.com/image.png)'), 'https://example.com/image.png');
   assert.equal(ratioTokenFromDimensions(1920, 1080), '9-16');
   assert.equal(ratioTokenFromOverride('16:9'), '9-16');

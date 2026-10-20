@@ -113,7 +113,24 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           PR_URL: ${{ steps.open-pr.outputs.pr_url }}
         run: |
-          gh pr merge "$PR_URL" --auto --squash --delete-branch
+          for attempt in {1..5}; do
+            if merge_output="$(gh pr merge "$PR_URL" --auto --squash --delete-branch 2>&1)"; then
+              printf '%s\n' "$merge_output"
+              exit 0
+            else
+              merge_status=$?
+            fi
+
+            printf '%s\n' "$merge_output"
+
+            # GitHub can reject a merge when the base branch changes during the request.
+            if [[ "$merge_output" != *"Base branch was modified"* || "$attempt" -eq 5 ]]; then
+              exit "$merge_status"
+            fi
+
+            echo "Base branch changed; retrying merge (attempt $((attempt + 1)) of 5)..."
+            sleep 5
+          done
 
       - name: Close source issue after merge
         if: steps.create-post.outputs.action == 'created'
