@@ -4,6 +4,7 @@ const Os = require('os');
 const Path = require('path');
 
 const {
+  commonRatiosFromPosts,
   createPostFromIssue,
   extractImageUrl,
   fullTimeForDate,
@@ -251,8 +252,75 @@ function testHelpers() {
   assert.equal(ratioTokenFromOverride('16:9'), '9-16');
 }
 
+async function testUsesExistingRatiosForDetection() {
+  const dir = tempDir();
+  const dataPath = writeData(dir, [
+    { ratio: '100-249' },
+    { ratio: '100-249' },
+    { ratio: '2-5' },
+  ]);
+  const result = await createPostFromIssue({
+    event: event(issueBody({
+      imageSource: 'https://example.com/status.gif',
+      altText: 'Animated image',
+      backgroundColor: '000000',
+    })),
+    dataPath,
+    assetDir: Path.join(dir, 'assets/img/content'),
+    now: new Date('2026-05-30T19:35:00Z'),
+    fetchImpl: fetchFile(gifFixture, 'image/gif'),
+  });
+  // The image is exactly 5:2, but only the repeated 249:100 is eligible.
+  assert.equal(result.ratio, '100-249');
+  assert.equal(JSON.parse(Fs.readFileSync(dataPath, 'utf8')).posts[0].ratio, '100-249');
+}
+
+function testRatioNormalization() {
+  const commonRatios = commonRatiosFromPosts([
+    ...['1-1', '2-3', '3-2', '5-4', '5-9', '9-5', '5-8', '1-2', '13-32']
+      .flatMap(ratio => [{ ratio }, { ratio }]),
+    { ratio: '8-5' },
+    { ratio: '' },
+    { ratio: 'invalid' },
+    { ratio: '0-1' },
+  ]);
+  assert.equal(commonRatios.length, 9);
+  assert.deepEqual(commonRatiosFromPosts([{ ratio: '2-3' }, { ratio: '4-6' }]), [[3, 2]]);
+  assert.deepEqual(commonRatiosFromPosts([{ ratio: '1-1' }, { ratio: '' }]), []);
+  const cases = [
+    [1001, 1000, '1-1'],
+    [1201, 800, '2-3'],
+    [800, 1201, '3-2'],
+    [801, 1000, '5-4'],
+    [1599, 900, '5-9'],
+    [900, 1599, '9-5'],
+    [1599, 1000, '5-8'],
+    [1999, 1000, '1-2'],
+    [2332, 1000, '250-583'],
+    [2459, 1000, '13-32'],
+    [1000, 1601, '1601-1000'],
+    [1050, 1000, '1-1'],
+    [1000, 1050, '1-1'],
+    [1051, 1000, '1000-1051'],
+    [1000, 1051, '1051-1000'],
+    [1100, 1000, '10-11'],
+  ];
+  for (const [width, height, expected] of cases) {
+    assert.equal(ratioTokenFromDimensions(width, height, { commonRatios }), expected, `${width} x ${height}`);
+  }
+  assert.equal(ratioTokenFromDimensions(1201, 800), '800-1201');
+  assert.equal(ratioTokenFromOverride('1201:800'), '800-1201');
+  assert.equal(ratioTokenFromOverride('1001-1000'), '1000-1001');
+  assert.equal(ratioTokenFromOverride(''), '');
+  for (const [width, height] of [[0, 100], [100, -1], [1.5, 100], [NaN, 100]]) {
+    assert.throws(() => ratioTokenFromDimensions(width, height), /Ratio dimensions must be/);
+  }
+}
+
 (async function main() {
   testHelpers();
+  testRatioNormalization();
+  await testUsesExistingRatiosForDetection();
   await testCreatesPostFromAttachment();
   await testDownloadsGifUrlAndUsesRatioOverride();
   await testUnauthorizedAuthorIsIgnored();

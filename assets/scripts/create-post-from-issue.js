@@ -309,7 +309,23 @@ function greatestCommonDivisor(first, second) {
   return a || 1;
 }
 
-function ratioTokenFromDimensions(width, height) {
+function commonRatiosFromPosts(posts) {
+  const counts = new Map();
+  for (const post of posts) {
+    const match = String(post.ratio || '').match(/^(\d+)-(\d+)$/);
+    if (!match || Number(match[1]) <= 0 || Number(match[2]) <= 0) continue;
+    const token = ratioTokenFromDimensions(Number(match[2]), Number(match[1]));
+    counts.set(token, (counts.get(token) || 0) + 1);
+  }
+
+  return [...counts.entries()]
+    .filter(([, count]) => count > 1)
+    .map(([token]) => token.split('-').map(Number).reverse());
+}
+
+const RATIO_SNAP_TOLERANCE = 0.05;
+
+function ratioTokenFromDimensions(width, height, { commonRatios = [] } = {}) {
   const normalizedWidth = Number(width);
   const normalizedHeight = Number(height);
 
@@ -319,6 +335,26 @@ function ratioTokenFromDimensions(width, height) {
 
   if (normalizedWidth <= 0 || normalizedHeight <= 0) {
     throw new StatusPostIssueError('Ratio dimensions must be positive.', 'invalid_ratio');
+  }
+
+  if (commonRatios.length) {
+    const actualRatio = normalizedWidth / normalizedHeight;
+    let closestRatio;
+    let closestError = Infinity;
+
+    for (const [commonWidth, commonHeight] of commonRatios) {
+      const commonRatio = commonWidth / commonHeight;
+      // Symmetric comparison keeps the same tolerance in portrait and landscape.
+      const error = Math.max(actualRatio / commonRatio, commonRatio / actualRatio) - 1;
+      if (error < closestError) {
+        closestRatio = [commonWidth, commonHeight];
+        closestError = error;
+      }
+    }
+
+    if (closestError <= RATIO_SNAP_TOLERANCE + Number.EPSILON) {
+      return ratioTokenFromDimensions(...closestRatio);
+    }
   }
 
   const divisor = greatestCommonDivisor(normalizedWidth, normalizedHeight);
@@ -498,11 +534,14 @@ async function createPostFromIssue(options = {}) {
   const color = normalizeColor(requiredField(fields, 'Background color'));
   const imageUrl = extractImageUrl(imageSource);
   const downloadedImage = await downloadImage(imageUrl, options);
+  const dataPath = options.dataPath || DEFAULT_DATA_PATH;
+  const data = readData(dataPath);
   const ratio =
     ratioTokenFromOverride(getField(fields, 'Ratio override')) ||
-    ratioTokenFromDimensions(downloadedImage.dimensions.width, downloadedImage.dimensions.height);
+    ratioTokenFromDimensions(downloadedImage.dimensions.width, downloadedImage.dimensions.height, {
+      commonRatios: commonRatiosFromPosts(data.posts),
+    });
 
-  const dataPath = options.dataPath || DEFAULT_DATA_PATH;
   const assetDir = options.assetDir || DEFAULT_ASSET_DIR;
   const timeZone = options.timeZone || process.env.POST_TIMEZONE || DEFAULT_TIME_ZONE;
   const now = options.now || new Date();
@@ -512,7 +551,6 @@ async function createPostFromIssue(options = {}) {
   const storedImage = optimizeImage(downloadedImage.buffer, downloadedImage.extension, options.optimize);
   const filename = `${postId}.${storedImage.extension}`;
   const assetPath = Path.join(assetDir, filename);
-  const data = readData(dataPath);
   const post = buildPost({
     postId,
     fullTime,
@@ -575,6 +613,7 @@ if (require.main === module) {
 
 module.exports = {
   StatusPostIssueError,
+  commonRatiosFromPosts,
   createPostFromIssue,
   datePartsForTimeZone,
   downloadImage,
