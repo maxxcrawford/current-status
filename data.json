@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20261021T1705",
+      "fullTime": "5:05 PM • October 21, 2026",
+      "image": "https://current-status.com/assets/img/content/20261021T1705.avif",
+      "displayImage": "assets/img/content/20261021T1705.avif",
+      "socialImage": "https://github.com/user-attachments/assets/a37f689d-bd7a-4f9c-a095-73d9294fdfe4",
+      "imageAltDesc": "Close-up of a Nokia communicator displaying “WHERE YOU AT? HOLLA WHEN YOU GET THIS” in a spreadsheet.",
+      "ratio": "2-3",
+      "color": "#419EED"
+    },
+    {
       "guid": "#20261020T0921",
       "fullTime": "9:21 AM • October 20, 2026",
       "image": "https://current-status.com/assets/img/content/20261020T0921.avif",
