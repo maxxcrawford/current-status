@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20261026T0921",
+      "fullTime": "9:21 AM • October 26, 2026",
+      "image": "https://current-status.com/assets/img/content/20261026T0921.avif",
+      "displayImage": "assets/img/content/20261026T0921.avif",
+      "socialImage": "https://github.com/user-attachments/assets/7422fa52-8b63-45d6-8198-038e648d88eb",
+      "imageAltDesc": "A full-size Velociraptor model suspended in a metal frame in a special effects workshop, with artists working behind it.",
+      "ratio": "2-3",
+      "color": "#6A5F56"
+    },
+    {
       "guid": "#20261025T1441",
       "fullTime": "2:41 PM • October 25, 2026",
       "image": "https://current-status.com/assets/img/content/20261025T1441.avif",
