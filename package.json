@@ -35,7 +35,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@netlify/blobs": "^10.7.8",
+    "@netlify/blobs": "^11.1.6",
     "dayjs": "^1.11.23",
     "dotenv": "^18.0.9",
     "masto": "^8.0.0",
