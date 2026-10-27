@@ -6,7 +6,7 @@ Stored images are optimized for the site. Social platforms get the original uplo
 
 | Source | Stored as | Why |
 | --- | --- | --- |
-| PNG | AVIF | ~93% smaller on screenshots, keeps alpha. |
+| PNG | AVIF, falling back to WebP | Smaller display copy, keeps alpha. |
 | JPG / JPEG | WebP | ~45% smaller than JPEG at q75; matches AVIF on photos and encodes far faster. |
 | WebP | WebP | Re-encoded at the same settings. |
 | GIF | GIF, untouched | Animation must survive. |
@@ -28,11 +28,13 @@ Bluesky's MIME lookup reads `socialImage` first for the same reason. If the orig
 fetched, publishing falls back to the stored optimized file.
 
 `optimizeImage` shells out to ImageMagick (`magick`, falling back to `convert`). If no binary is
-available or the encode fails, the original buffer is stored unchanged and the result reports
+available or all encodes fail, the original buffer is stored unchanged and the result reports
 `optimized: false` — a post never fails because of image optimization. The workflow installs
-ImageMagick via `apt-get`. The ubuntu-24.04 runner's ImageMagick 6 has a working AVIF delegate,
-confirmed by post 20260918T1034 (PNG upload stored as AVIF). If a future runner image drops it, PNG
-posts land as PNG with `optimized=false` and the bulk script below converts them on the next run.
+ImageMagick via `apt-get`. Successful exit status alone is insufficient: some builds can return
+PNG data when asked for AVIF. The optimizer checks the actual encoded format and width before
+reporting success. If AVIF fails validation, it tries WebP; if that also fails, it keeps the
+original bytes and extension. Attachment formats are detected from their bytes before consulting
+HTTP headers. GIFs remain untouched.
 
 `gen-rss.js` passes the enclosure MIME type explicitly from `contentTypeFromPath`; the `rss`
 package's own extension table does not know AVIF and emits `type="false"` when left to infer.
@@ -43,8 +45,8 @@ package's own extension table does not know AVIF and emits `type="false"` when l
 ./assets/scripts/optimize-images.sh [dir]
 ```
 
-Defaults to `assets/img/content`. Rewrites JPG, JPEG, PNG, WebP, and AVIF files in place at the
-settings above; skips GIFs. Four files are processed in parallel.
+Defaults to `assets/img/content`. Rewrites JPG, JPEG, PNG, and WebP files in place at the
+settings above; skips AVIF and GIF files. Four batches are processed in parallel.
 
 The script does not convert PNG to AVIF — it only re-encodes in place. The one-time PNG conversion
 was run separately; repeat it with:
@@ -74,3 +76,7 @@ The September 2026 pass over `assets/img/content`:
 - 446 JPG/PNG/WebP files re-encoded and resized: 71.7MB to 50.0MB.
 - 75 PNGs converted to AVIF: 27.1MB to 2.6MB.
 - 285 GIFs left untouched: 241.9MB, still the bulk of the directory.
+
+An October 2026 check found 14 files with `.avif` extensions that contained PNG data, including
+`20261026T0921`. Re-encoding them as genuine AVIF reduced their combined size from 9,031,750 to
+699,149 bytes. `20261026T0921` alone fell from 1,146,456 to 129,803 bytes at the same dimensions.

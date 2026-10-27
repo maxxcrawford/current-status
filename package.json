@@ -19,7 +19,7 @@
     "test:masto": "node assets/scripts/test-masto-publisher.js",
     "test:threads": "node assets/scripts/test-threads-publisher.js",
     "test:social": "node assets/scripts/test-bluesky-client.js && node assets/scripts/test-social-publisher.js",
-    "test:post": "node assets/scripts/test-create-post-from-issue.js",
+    "test:post": "node assets/scripts/test-optimize-image.js && node assets/scripts/test-create-post-from-issue.js",
     "test:pages": "node assets/scripts/test-gen-index.js",
     "test:browser": "npm run build && playwright test",
     "post:from-issue": "node assets/scripts/create-post-from-issue.js",

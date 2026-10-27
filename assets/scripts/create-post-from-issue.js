@@ -278,8 +278,8 @@ async function downloadImage(imageUrl, options = {}) {
   }
 
   const extension =
-    extensionFromContentType(responseHeader(response.headers, 'content-type')) ||
     extensionFromImageType(dimensions.type) ||
+    extensionFromContentType(responseHeader(response.headers, 'content-type')) ||
     extensionFromUrl(imageUrl);
 
   if (!extension) {

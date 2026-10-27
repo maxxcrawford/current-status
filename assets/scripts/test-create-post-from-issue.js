@@ -158,6 +158,45 @@ async function testDownloadsGifUrlAndUsesRatioOverride() {
   assert.equal('socialImage' in data.posts[0], false);
 }
 
+async function testPngUploadsUseVerifiedFormats() {
+  const pngFixture = Path.resolve(__dirname, '../../favicon.png');
+  const png = Fs.readFileSync(pngFixture);
+  const webp = Fs.readFileSync(Path.resolve(__dirname, '../img/content/20260623T2129.webp'));
+  const cases = [
+    { optimize: undefined, extensions: ['avif', 'webp'], optimized: true },
+    // A successful encoder process that silently returns PNG is not a successful AVIF conversion.
+    { optimize: { execFileSync: (_binary, args) => args.at(-1) === 'avif:-' ? png : webp },
+      extensions: ['webp'], optimized: true },
+    { optimize: { execFileSync: () => png }, extensions: ['png'], optimized: false },
+  ];
+
+  for (const scenario of cases) {
+    const dir = tempDir();
+    const assetDir = Path.join(dir, 'assets/img/content');
+    const dataPath = writeData(dir);
+    const imageUrl = 'https://github.com/user-attachments/assets/png-upload';
+    const result = await createPostFromIssue({
+      event: event(issueBody({ imageSource: imageUrl, altText: 'Uploaded PNG', backgroundColor: '#123456' })),
+      dataPath,
+      assetDir,
+      now: new Date('2026-10-27T12:00:00Z'),
+      // The actual bytes take priority even if the attachment server sends an incorrect MIME type.
+      fetchImpl: fetchFile(pngFixture, 'image/jpeg'),
+      optimize: scenario.optimize,
+    });
+    const post = JSON.parse(Fs.readFileSync(dataPath, 'utf8')).posts[0];
+    const stored = Fs.readFileSync(Path.join(assetDir, result.filename));
+    const actualType = imageSize(stored).type;
+    assert.equal(result.sourceExtension, 'png');
+    assert.ok(scenario.extensions.includes(actualType));
+    assert.ok(result.filename.endsWith(`.${actualType}`));
+    assert.ok(post.displayImage.endsWith(result.filename));
+    assert.equal(result.optimized, String(scenario.optimized));
+    assert.equal(post.socialImage, scenario.optimized ? imageUrl : undefined);
+    if (!scenario.optimized) assert.deepEqual(stored, png);
+  }
+}
+
 async function testUnauthorizedAuthorIsIgnored() {
   const dir = tempDir();
   const assetDir = Path.join(dir, 'assets/img/content');
@@ -322,6 +361,7 @@ function testRatioNormalization() {
   testRatioNormalization();
   await testUsesExistingRatiosForDetection();
   await testCreatesPostFromAttachment();
+  await testPngUploadsUseVerifiedFormats();
   await testDownloadsGifUrlAndUsesRatioOverride();
   await testUnauthorizedAuthorIsIgnored();
   await testInvalidColorFails();
