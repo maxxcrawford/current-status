@@ -8,7 +8,6 @@ const watchedFiles = [
   'data.json',
   'assets/style.css',
   'assets/tailwind.css',
-  'tailwind.config.js',
 ];
 const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 

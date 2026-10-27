@@ -91,6 +91,22 @@ test('mobile feeds and single posts retain their layout', async ({ page }) => {
   expect(await page.locator('.feed').evaluate(el => el.getBoundingClientRect().bottom)).toBeGreaterThanOrEqual(812);
 });
 
+for (const colorScheme of ['light', 'dark']) {
+  test(`feed and permalink styling is preserved in ${colorScheme} mode`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme });
+    await page.setViewportSize({ width: 1280, height: 900 });
+    for (const path of ['/', `/${posts[0].guid.slice(1)}/`]) {
+      await page.goto(path);
+      await expect(page.locator('body')).toHaveCSS('background-color',
+        colorScheme === 'dark' ? 'rgb(34, 34, 34)' : 'rgb(249, 249, 250)');
+      await expect(page.locator('.feed')).toHaveCSS('width', '640px');
+      await expect(page.locator('.post').first()).toHaveCSS('border-bottom-color',
+        colorScheme === 'dark' ? 'rgb(68, 68, 68)' : 'rgb(204, 204, 204)');
+      await expect(page.locator('.post .user-profile-image').first()).toHaveCSS('flex-shrink', '0');
+    }
+  });
+}
+
 test('initial styling needs no stylesheet requests and the LCP image has high priority', async ({ page }) => {
   const stylesheets = [];
   page.on('request', request => {
