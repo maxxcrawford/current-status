@@ -37,7 +37,7 @@
   "dependencies": {
     "@netlify/blobs": "^10.7.8",
     "dayjs": "^1.11.23",
-    "dotenv": "^17.4.2",
+    "dotenv": "^18.0.9",
     "masto": "^7.11.1",
     "npm-run-all": "^4.1.5",
     "rss": "^1.2.2"
