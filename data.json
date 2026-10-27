@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20261026T2300",
+      "fullTime": "11:00 PM • October 26, 2026",
+      "image": "https://current-status.com/assets/img/content/20261026T2300.avif",
+      "displayImage": "assets/img/content/20261026T2300.avif",
+      "socialImage": "https://github.com/user-attachments/assets/94581bfe-634b-4bba-aa71-2e4841eec369",
+      "imageAltDesc": "Super Mario 64 title screen with Mario’s floating head in shadow, bright blue eyes, and colorful “START” text.",
+      "ratio": "3-4",
+      "color": "#171144"
+    },
+    {
       "guid": "#20261026T0921",
       "fullTime": "9:21 AM • October 26, 2026",
       "image": "https://current-status.com/assets/img/content/20261026T0921.avif",
