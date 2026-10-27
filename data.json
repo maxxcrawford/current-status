@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20261027T1116",
+      "fullTime": "11:16 AM • October 27, 2026",
+      "image": "https://current-status.com/assets/img/content/20261027T1116.webp",
+      "displayImage": "assets/img/content/20261027T1116.webp",
+      "socialImage": "https://github.com/user-attachments/assets/51680d47-3b21-4bde-886b-5d3a0862de8c",
+      "imageAltDesc": "Three men in heavy winter clothing stand behind a snowbank, the center man wearing sunglasses and a wide-brimmed hat.",
+      "ratio": "3-4",
+      "color": "#A9C7F0"
+    },
+    {
       "guid": "#20261026T2300",
       "fullTime": "11:00 PM • October 26, 2026",
       "image": "https://current-status.com/assets/img/content/20261026T2300.avif",
