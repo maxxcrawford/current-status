@@ -14,6 +14,7 @@ const staticFiles = [
   'favicon.png',
   'share.png',
   'assets/style.css',
+  'assets/fonts',
   'assets/scripts/app.js',
   'assets/img',
 ];
@@ -403,12 +404,23 @@ function prepareOutputDir() {
   staticFiles.forEach(copyStaticFile);
 }
 
+function inlineStyles(html, css) {
+  const links = '    <link rel="stylesheet" href="/assets/tailwind.css">\n    <link rel="stylesheet" href="/assets/style.css">';
+  if (!html.includes(links)) throw new Error('Could not find the site stylesheet links.');
+  return html.replace(links, () => `    <style data-site-styles>\n${css}\n    </style>`);
+}
+
 function main() {
   const checkOnly = process.argv.includes('--check');
+  const inlineOnly = process.argv.includes('--inline-styles');
   const data = JSON.parse(Fs.readFileSync(dataPath, 'utf8'));
   const template = Fs.readFileSync(indexPath, 'utf8');
   validatePosts(data.posts);
   const outputs = expectedOutputs(template, data.posts);
+  if (checkOnly || inlineOnly) {
+    const css = `${Fs.readFileSync(Path.join(outputDir, 'assets/tailwind.css'), 'utf8')}\n${Fs.readFileSync(Path.join(rootDir, 'assets/style.css'), 'utf8')}`;
+    for (const [path, html] of outputs) outputs.set(path, inlineStyles(html, css));
+  }
 
   if (checkOnly) {
     const mismatches = [...outputs].filter(([relativePath, expected]) => {
@@ -427,7 +439,7 @@ function main() {
     return;
   }
 
-  prepareOutputDir();
+  if (!inlineOnly) prepareOutputDir();
   for (const [relativePath, html] of outputs) {
     const outputPath = Path.join(outputDir, relativePath);
     Fs.mkdirSync(Path.dirname(outputPath), { recursive: true });
@@ -441,6 +453,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  inlineStyles,
   FEED_PAGE_SIZE,
   addPermalinkHeader,
   displayDateForPost,

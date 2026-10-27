@@ -16,6 +16,21 @@ stripped of metadata, and encoded at quality 75. Images narrower than 900px keep
 
 ## New posts
 
+The site header uses 640px and 1280px WebP sources with `srcset`. The 112px profile image uses
+112px and 224px WebP sources, while post avatars use 48px and 96px WebP backgrounds via
+`image-set`. These are generated at quality 75 from `assets/img/header.jpg` and
+`assets/img/profile.jpg`; the original JPEGs remain as source assets. If either source changes,
+regenerate its variants, for example:
+
+```sh
+magick assets/img/header.jpg -strip -resize '640>' -quality 75 assets/img/header-640.webp
+magick assets/img/profile.jpg -strip -resize '112>' -quality 75 assets/img/profile-112.webp
+```
+
+Repeat for the other widths listed above. The header loads eagerly with high fetch priority.
+
+## Uploaded post images
+
 `assets/scripts/create-post-from-issue.js` downloads the issue attachment, then calls
 `optimizeImage` from `lib/optimize-image.js` before writing the asset. The post record gets:
 

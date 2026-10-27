@@ -24,10 +24,8 @@
 
     <!-- Stylesheets -->
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link defer rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <script src="https://kit.fontawesome.com/f42f48d217.js" crossorigin="anonymous"></script>
+    <link rel="preload" href="/assets/fonts/work-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <script defer src="https://kit.fontawesome.com/f42f48d217.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/tailwind.css">
     <link rel="stylesheet" href="/assets/style.css">
 </head>
@@ -41,11 +39,11 @@
   <main class="relative">
     <section data-profile-header class="container max-w-screen-sm mx-auto border-l border-r border-b border-gray-300 dark:!border-[#444]">
       <div class="h-48 bg-gray-300 overflow-hidden">
-        <img class="w-full h-full object-cover" src="/assets/img/header.jpg" alt="Oil pumpjacks operating across a flat, arid Texas landscape beneath a cloudy sky">
+        <img class="w-full h-full object-cover" src="/assets/img/header-640.webp" srcset="/assets/img/header-640.webp 640w, /assets/img/header-1280.webp 1280w" sizes="(max-width: 640px) 100vw, 640px" width="640" height="213" loading="eager" fetchpriority="high" alt="Oil pumpjacks operating across a flat, arid Texas landscape beneath a cloudy sky">
       </div>
       <div class="px-4 pb-6">
         <div class="-mt-12 mb-4 flex justify-between items-start">
-          <img class="w-28 h-28 rounded-full outline outline-4 outline-white bg-black object-cover" src="/assets/img/profile.jpg" alt="Maxx Crawford">
+          <img class="w-28 h-28 rounded-full outline outline-4 outline-white bg-black object-cover" src="/assets/img/profile-112.webp" srcset="/assets/img/profile-112.webp 112w, /assets/img/profile-224.webp 224w" sizes="112px" width="112" height="112" alt="Maxx Crawford">
           <a class="mt-16 px-6 py-2 rounded-full border border-gray-400 font-bold text-black active:hover:bg-gray-800 hover:bg-gray-800 hover:text-white dark:text-white dark:hover:bg-gray-200 dark:hover:text-black" href="/rss.xml">Follow</a>
         </div>
         <div class="mb-4">

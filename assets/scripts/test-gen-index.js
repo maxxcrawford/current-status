@@ -4,6 +4,7 @@ const Path = require('path');
 
 const {
   FEED_PAGE_SIZE,
+  inlineStyles,
   displayDateForPost,
   displayImageForHtml,
   expectedOutputs,
@@ -141,5 +142,13 @@ assert.match(batches[1], /rel="canonical" href="https:\/\/current-status.com\/pa
 assert.doesNotMatch(batches[2], /data-feed-next/);
 assert.doesNotMatch(paginated.get('20260819T0000/index.html'), /data-feed-next|data-feed-announcement/);
 assert.doesNotMatch(expectedOutputs(template, [], getImageDetails).get('index.html'), /data-feed-next/);
+
+const styledPage = inlineStyles(firstOutputs.get('index.html'), 'body { color: black; }');
+assert.match(styledPage, /<style data-site-styles>\nbody \{ color: black; \}/);
+assert.doesNotMatch(styledPage, /rel="stylesheet"/);
+assert.doesNotMatch(styledPage, /fonts\.googleapis|fonts\.gstatic|normalize\.min/);
+assert.match(styledPage, /rel="preload" href="\/assets\/fonts\/work-sans-latin\.woff2"/);
+assert.match(styledPage, /<script defer src="https:\/\/kit\.fontawesome\.com/);
+assert.match(styledPage, /src="\/assets\/img\/header-640\.webp"[^>]+loading="eager" fetchpriority="high"/);
 
 console.log('permalink page generation tests passed.');

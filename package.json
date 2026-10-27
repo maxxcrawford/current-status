@@ -6,7 +6,7 @@
   "scripts": {
     "start": "vite --host 127.0.0.1 --port 3000 dist",
     "preview": "vite --host 127.0.0.1 --port 3000 dist",
-    "build": "node assets/scripts/gen-index.js && npm run tailwind:build && npm run rss:dist",
+    "build": "node assets/scripts/gen-index.js && npm run tailwind:build && node assets/scripts/gen-index.js --inline-styles && npm run rss:dist",
     "build:check": "node assets/scripts/gen-index.js --check",
     "build:watch": "node assets/scripts/build-watch.js",
     "tailwind:build": "tailwindcss -i assets/tailwind.css -o dist/assets/tailwind.css --minify",

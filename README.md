@@ -17,3 +17,7 @@ and the reading position when session storage is available.
 Run `npm run build && npm test` for the build and publishing tests. To run browser tests,
 install Chromium once with `npx playwright install chromium`, then run `npm run test:browser`.
 To use an installed Google Chrome instead, run `PLAYWRIGHT_CHANNEL=chrome npm run test:browser`.
+
+The build compiles Tailwind and embeds the site CSS in each HTML page to avoid render-blocking
+stylesheet requests. Work Sans is served locally from `assets/fonts/` under its included OFL
+license. Icons use the six-icon Font Awesome SVG kit, loaded with `defer`.
