@@ -244,6 +244,22 @@ footer {
   border-right: 1px solid #ccc;
 }
 
+body.permalink-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.permalink-page main {
+  flex: 1;
+  display: flex;
+}
+
+.permalink-page .feed {
+  padding-bottom: 0;
+}
+
 .post {
   border-bottom: 1px solid #ccc;
 }

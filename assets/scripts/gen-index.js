@@ -308,6 +308,7 @@ function renderPermalinkPage(template, post, newerPost, olderPost, imageDetails)
   html = removeIndexBackToTop(html);
   html = replacePostList(html, [post], renderPostNavigation(newerPost, olderPost), renderPermalinkPost);
   html = addPermalinkHeader(html);
+  html = html.replace('<body id="top" class="', '<body id="top" class="permalink-page ');
 
   html = html.replace('<title>current status</title>', `<title>current status: ${escapeAttr(post.fullTime || id)}</title>`);
   html = html.replace(
