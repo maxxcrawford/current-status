@@ -21,6 +21,7 @@
     "test:social": "node assets/scripts/test-bluesky-client.js && node assets/scripts/test-social-publisher.js",
     "test:post": "node assets/scripts/test-create-post-from-issue.js",
     "test:pages": "node assets/scripts/test-gen-index.js",
+    "test:browser": "npm run build && playwright test",
     "post:from-issue": "node assets/scripts/create-post-from-issue.js",
     "color": "dominant_colours --max-colours=1 --no-palette",
     "masto": "node assets/scripts/masto.js",
@@ -45,6 +46,7 @@
     "node": "22.22.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "tailwindcss": "^3.4.17",
     "vite": "^8.3.5"
   }

@@ -3,6 +3,7 @@ const Fs = require('fs');
 const Path = require('path');
 
 const {
+  FEED_PAGE_SIZE,
   displayDateForPost,
   displayImageForHtml,
   expectedOutputs,
@@ -121,5 +122,24 @@ assert.match(firstOutputs.get('index.html'), /<div class="mb-4">[\s\S]+id="postC
 assert.match(firstOutputs.get('index.html'), /<div class="flex flex-wrap gap-x-4 gap-y-2">/);
 assert.doesNotMatch(firstOutputs.get('index.html'), /mb-4 flex flex-wrap gap-x-4 gap-y-2/);
 assert.doesNotMatch(firstOutputs.get('index.html'), /dark:!border-(?:x|b)-2/);
+
+// Every post appears in exactly one feed batch, with navigable static fallbacks.
+const manyPosts = Array.from({ length: FEED_PAGE_SIZE * 2 + 1 }, (_, index) => ({
+  ...posts[0], guid: `#20260819T${String(Math.floor(index / 60)).padStart(2, '0')}${String(index % 60).padStart(2, '0')}`,
+}));
+const paginated = expectedOutputs(template, manyPosts, getImageDetails);
+const batches = ['index.html', 'page/2/index.html', 'page/3/index.html'].map(path => paginated.get(path));
+assert.deepEqual(batches.map(html => (html.match(/data-permalink=/g) || []).length), [30, 30, 1]);
+const ids = batches.flatMap(html => [...html.matchAll(/data-permalink="([^"]+)"/g)].map(match => match[1]));
+assert.equal(new Set(ids).size, manyPosts.length);
+assert.deepEqual(ids, manyPosts.map(permalinkForPost));
+assert.match(batches[0], /id="postCount">61<\/span>/);
+assert.match(batches[0], /data-feed-next href="\/page\/2\/"/);
+assert.match(batches[1], /href="\/" rel="prev"/);
+assert.match(batches[1], /data-feed-next href="\/page\/3\/"/);
+assert.match(batches[1], /rel="canonical" href="https:\/\/current-status.com\/page\/2\/"/);
+assert.doesNotMatch(batches[2], /data-feed-next/);
+assert.doesNotMatch(paginated.get('20260819T0000/index.html'), /data-feed-next|data-feed-announcement/);
+assert.doesNotMatch(expectedOutputs(template, [], getImageDetails).get('index.html'), /data-feed-next/);
 
 console.log('permalink page generation tests passed.');

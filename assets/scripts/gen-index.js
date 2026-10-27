@@ -7,6 +7,7 @@ const dataPath = Path.join(rootDir, 'data.json');
 const indexPath = Path.join(rootDir, 'index.html');
 const outputDir = Path.join(rootDir, 'dist');
 const siteUrl = 'https://current-status.com';
+const FEED_PAGE_SIZE = 30;
 
 const staticFiles = [
   'favicon.ico',
@@ -153,7 +154,7 @@ function renderPost(post) {
           <div class="user-profile-image w-8 h-8 sm:w-12 sm:h-12 bg-cover bg-black mr-2 flex-shrink-0"></div>
           <div class="post-container">
             <div class="user-profile-info flex items-baseline mb-2 text-sm">
-              <div class="${USER_FULL_NAME_CLASSES}"></div>
+              <div class="${USER_FULL_NAME_CLASSES}">Maxx Crawford</div>
               <div class="${USER_USERNAME_CLASSES}">@woodenwarship</div>
               <div class="text-gray-600 mr-2">&bull;</div>
               <a href="${escapeAttr(permalinkForPost(post))}" class="${POST_DATE_CLASSES}" data-full-date="${escapeAttr(fullTime)}" aria-label="${escapeAttr(fullTime)}">${escapeAttr(displayDateForPost(post))}</a>
@@ -337,9 +338,39 @@ function renderPermalinkPage(template, post, newerPost, olderPost, imageDetails)
   return addGeneratedComment(html);
 }
 
+function feedPageUrl(page) {
+  return page === 1 ? '/' : `/page/${page}/`;
+}
+
+function renderFeedPage(template, posts, page, pageCount) {
+  const start = (page - 1) * FEED_PAGE_SIZE;
+  const previous = page > 1
+    ? `<a href="${feedPageUrl(page - 1)}" rel="prev">Newer posts</a>` : '';
+  const next = page < pageCount
+    ? `<a data-feed-next href="${feedPageUrl(page + 1)}" rel="next">Load more posts</a>` : '';
+  const navigation = `      <li data-feed-pagination class="p-4">
+        <nav aria-label="Feed pages" class="flex justify-between gap-4 text-blue-500">${previous}<span></span>${next}</nav>
+        <p data-feed-status role="status" class="text-sm mt-2"></p>
+      </li>`;
+  let html = replacePostList(template, posts.slice(start, start + FEED_PAGE_SIZE), navigation);
+  html = html.replace('class="feed ', `data-feed data-feed-version="${escapeAttr(postId(posts[0] || {}))}" class="feed `);
+  html = html.replace('<span id="postCount"></span>', `<span id="postCount">${posts.length}</span>`);
+  html = html.replace('  </main>', '    <p data-feed-announcement role="status" class="sr-only"></p>\n  </main>');
+  if (page > 1) {
+    html = html.replace('<title>current status</title>', `<title>current status — Page ${page}</title>`);
+    html = html.replace('<link rel="canonical" href="https://current-status.com/">',
+      `<link rel="canonical" href="${siteUrl}${feedPageUrl(page)}">`);
+  }
+  return addGeneratedComment(html);
+}
+
 function expectedOutputs(template, posts, getImageDetails = imageDetailsForPost) {
   const outputs = new Map();
-  outputs.set('index.html', addGeneratedComment(replacePostList(template, posts)));
+  const pageCount = Math.max(1, Math.ceil(posts.length / FEED_PAGE_SIZE));
+  for (let page = 1; page <= pageCount; page++) {
+    outputs.set(page === 1 ? 'index.html' : Path.join('page', String(page), 'index.html'),
+      renderFeedPage(template, posts, page, pageCount));
+  }
 
   posts.forEach((post, index) => {
     const relativePath = Path.join(postId(post), 'index.html');
@@ -410,6 +441,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  FEED_PAGE_SIZE,
   addPermalinkHeader,
   displayDateForPost,
   displayImageForHtml,
