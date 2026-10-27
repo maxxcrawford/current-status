@@ -152,7 +152,7 @@ function renderPost(post) {
 
   return `      <li class="${POST_ITEM_CLASSES}" data-permalink="${escapeAttr(permalinkForPost(post))}">
         <div id="${escapeAttr(id)}" class="flex items-start p-4">
-          <div class="user-profile-image w-8 h-8 sm:w-12 sm:h-12 bg-cover bg-black mr-2 flex-shrink-0"></div>
+          <div class="user-profile-image w-8 h-8 sm:w-12 sm:h-12 bg-cover bg-black mr-2 shrink-0"></div>
           <div class="post-container">
             <div class="user-profile-info flex items-baseline mb-2 text-sm">
               <div class="${USER_FULL_NAME_CLASSES}">Maxx Crawford</div>
@@ -184,7 +184,7 @@ function renderPermalinkPost(post) {
   return `      <li class="${POST_ITEM_CLASSES}">
         <article id="${escapeAttr(id)}" class="p-4">
           <div class="flex items-center mb-4">
-            <div class="user-profile-image w-12 h-12 bg-cover bg-black mr-3 flex-shrink-0"></div>
+            <div class="user-profile-image w-12 h-12 bg-cover bg-black mr-3 shrink-0"></div>
             <div class="min-w-0">
               <div class="user-profile-full-name text-black dark:!text-white font-bold text-lg">Maxx Crawford</div>
               <div class="user-profile-username text-gray-600 dark:!text-[#999]">@woodenwarship</div>
@@ -256,10 +256,10 @@ function renderPostNavigation(newerPost, olderPost) {
 }
 
 function addPermalinkHeader(html) {
-  const homeHeader = `    <div class="container max-w-screen-sm mx-auto py-4 text-xl text-center">
+  const homeHeader = `    <div class="container max-w-[640px] mx-auto py-4 text-xl text-center">
       <span data-hover="current status" class="relative inline-block px-3 py-1 bg-black text-white">current status: </span>
     </div>`;
-  const permalinkHeader = `    <div class="container max-w-screen-sm mx-auto px-4 py-4 flex items-center gap-6">
+  const permalinkHeader = `    <div class="container max-w-[640px] mx-auto px-4 py-4 flex items-center gap-6">
       <a aria-label="Back to all posts" class="flex items-center gap-4 text-black dark:text-white" href="/">
         <i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i>
         <span class="text-xl font-bold">Post</span>

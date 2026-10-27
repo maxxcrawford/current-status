@@ -1,3 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss" source(none);
+
+/* Scan the generated pages, including classes derived from post data. */
+@source "../dist/**/*.html";

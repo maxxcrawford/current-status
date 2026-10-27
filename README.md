@@ -19,5 +19,6 @@ install Chromium once with `npx playwright install chromium`, then run `npm run 
 To use an installed Google Chrome instead, run `PLAYWRIGHT_CHANNEL=chrome npm run test:browser`.
 
 The build compiles Tailwind and embeds the site CSS in each HTML page to avoid render-blocking
-stylesheet requests. Work Sans is served locally from `assets/fonts/` under its included OFL
+stylesheet requests. Tailwind 4's CLI scans the generated HTML using the sources declared in
+`assets/tailwind.css`. Work Sans is served locally from `assets/fonts/` under its included OFL
 license. Icons use the six-icon Font Awesome SVG kit, loaded with `defer`.

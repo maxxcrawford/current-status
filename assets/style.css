@@ -31,7 +31,13 @@ html {
 
 body {
   font-family: 'Work Sans', sans-serif;
-  background: #f9f9fa;
+}
+
+/* Keep the default background below Tailwind's dark-mode utility layer. */
+@layer base {
+  body {
+    background: #f9f9fa;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
