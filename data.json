@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "guid": "#20261029T1124",
+      "fullTime": "11:24 AM • October 29, 2026",
+      "image": "https://current-status.com/assets/img/content/20261029T1124.webp",
+      "displayImage": "assets/img/content/20261029T1124.webp",
+      "socialImage": "https://github.com/user-attachments/assets/f663ed78-1e16-4438-b23f-185501144ed5",
+      "imageAltDesc": "Blonde woman wearing a green coat and plaid suspender skirt outside an ice cream parlor, with a red folding chair in the foreground",
+      "ratio": "7-5",
+      "color": "#B7B9A0"
+    },
+    {
       "guid": "#20261027T1116",
       "fullTime": "11:16 AM • October 27, 2026",
       "image": "https://current-status.com/assets/img/content/20261027T1116.webp",
