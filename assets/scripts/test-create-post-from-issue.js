@@ -119,10 +119,7 @@ async function testCreatesPostFromAttachment() {
   assert.equal(data.posts[0].fullTime, '2:35 PM • May 30, 2026');
   assert.equal(data.posts[0].image, 'https://current-status.com/assets/img/content/20260530T1435.webp');
   assert.equal(data.posts[0].displayImage, 'assets/img/content/20260530T1435.webp');
-  assert.equal(
-    data.posts[0].socialImage,
-    'https://github.com/user-attachments/assets/example-image'
-  );
+  assert.equal('socialImage' in data.posts[0], false);
   assert.equal(imageSize(Fs.readFileSync(Path.join(assetDir, '20260530T1435.webp'))).width <= 900, true);
   assert.equal(data.posts[0].imageAltDesc, 'Vintage toy package on a red and green background');
   assert.equal(data.posts[0].ratio, '43-50');
@@ -192,7 +189,7 @@ async function testPngUploadsUseVerifiedFormats() {
     assert.ok(result.filename.endsWith(`.${actualType}`));
     assert.ok(post.displayImage.endsWith(result.filename));
     assert.equal(result.optimized, String(scenario.optimized));
-    assert.equal(post.socialImage, scenario.optimized ? imageUrl : undefined);
+    assert.equal('socialImage' in post, false);
     if (!scenario.optimized) assert.deepEqual(stored, png);
   }
 }

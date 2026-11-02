@@ -194,6 +194,38 @@ async function testBlueskyPublishesTopPost() {
   });
 }
 
+async function testBlueskyImageSizeLimit() {
+  const originalUrl = 'https://uploads.example/original.png';
+  const topPost = { ...post('#20261102T0913'), image: 'https://current-status.com/assets/img/content/20261102T0913.webp', socialImage: originalUrl };
+  const smallImage = new Blob([Fs.readFileSync('assets/img/content/20261102T0913.webp')], { type: 'image/webp' });
+
+  const uploadCalls = { fetches: [], uploads: [], posts: [] };
+  await publishBlueskyLatestDirect({
+    data: { posts: [topPost] },
+    blueskyClient: createBlueskyClient(uploadCalls),
+    sourceBaseUrl: 'https://deploy.example',
+    fetchImpl: async url => {
+      uploadCalls.fetches.push(url);
+      return { ok: true, blob: async () => smallImage };
+    },
+  });
+  assert.deepEqual(uploadCalls.fetches, ['https://deploy.example/assets/img/content/20261102T0913.webp']);
+  assert.equal(uploadCalls.uploads[0].file, smallImage);
+  assert.equal(uploadCalls.uploads[0].options.encoding, 'image/webp');
+  assert.deepEqual(uploadCalls.posts[0].embed.images[0].aspectRatio, { width: 900, height: 1155 });
+
+  const store = new MemoryStore();
+  const calls = { fetches: [], uploads: [], posts: [] };
+  await assert.rejects(publishBlueskyLatest({
+    data: { posts: [topPost] }, store, onlyTop: true,
+    blueskyClient: createBlueskyClient(calls),
+    fetchImpl: async () => ({ ok: true, blob: async () => new Blob([Buffer.alloc(2_000_001)]) }),
+  }), error => error.code === 'bluesky_image_too_large');
+  assert.equal(calls.uploads.length, 0);
+  assert.equal(calls.posts.length, 0);
+  assert.equal(await store.get(postKey(topPost.guid)), null);
+}
+
 async function testBlueskyAlreadyRecordedNoops() {
   const store = new MemoryStore();
   const topPost = post('#20260529T0737');
@@ -301,7 +333,7 @@ async function testPublishAllAllowsPartialFailure() {
 }
 
 async function testDirectLocalPublishersDoNotNeedStores() {
-  const topPost = post('#20260529T0737');
+  const topPost = { ...post('#20260529T0737'), socialImage: 'https://uploads.example/original.png' };
   const mastodonCalls = { fetches: [], media: [], statuses: [] };
   const blueskyCalls = { fetches: [], uploads: [], posts: [] };
   const threadsCalls = { containers: [], statuses: [], publications: [], lookups: [] };
@@ -322,6 +354,9 @@ async function testDirectLocalPublishersDoNotNeedStores() {
     threadsClient: createThreadsClient(threadsCalls),
   });
 
+  assert.deepEqual(mastodonCalls.fetches, [topPost.image]);
+  assert.deepEqual(blueskyCalls.fetches, [topPost.image]);
+  assert.equal(threadsCalls.containers[0].imageUrl, topPost.image);
   assert.equal(mastodonResult.action, 'published');
   assert.equal(blueskyResult.action, 'published');
   assert.equal(threadsResult.action, 'published');
@@ -332,6 +367,7 @@ async function testDirectLocalPublishersDoNotNeedStores() {
 
 (async function main() {
   await testBlueskyPublishesTopPost();
+  await testBlueskyImageSizeLimit();
   await testBlueskyAlreadyRecordedNoops();
   await testServiceStoresAreIndependent();
   await testPublishAllAllowsPartialFailure();
