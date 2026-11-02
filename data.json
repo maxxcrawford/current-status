@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20261102T1347",
+      "fullTime": "1:47 PM • November 2, 2026",
+      "image": "https://current-status.com/assets/img/content/20261102T1347.webp",
+      "displayImage": "assets/img/content/20261102T1347.webp",
+      "imageAltDesc": "Jurassic Park computer display showing an island map and Ford Explorer tour vehicle status.",
+      "ratio": "5-9",
+      "color": "#4E6A81"
+    },
+    {
       "guid": "#20261102T0913",
       "fullTime": "9:13 AM • November 2, 2026",
       "image": "https://current-status.com/assets/img/content/20261102T0913.webp",
