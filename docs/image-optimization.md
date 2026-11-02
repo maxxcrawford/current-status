@@ -1,6 +1,6 @@
 # Image optimization
 
-Stored images are optimized for the site. Social platforms get the original upload.
+Stored images are optimized for the site and all social platforms.
 
 ## Formats
 
@@ -32,15 +32,10 @@ Repeat for the other widths listed above. The header loads eagerly with high fet
 ## Uploaded post images
 
 `assets/scripts/create-post-from-issue.js` downloads the issue attachment, then calls
-`optimizeImage` from `lib/optimize-image.js` before writing the asset. The post record gets:
-
-- `displayImage` / `image` — the optimized file stored in `assets/img/content/`.
-- `socialImage` — the original attachment URL, set only when optimization actually changed the file.
-
-`lib/publisher-common.js` (`fetchImageBlob`) and `lib/threads-publisher.js` prefer `socialImage`, so
-Mastodon, Bluesky, and Threads receive the original JPG/PNG/GIF rather than the AVIF or WebP copy.
-Bluesky's MIME lookup reads `socialImage` first for the same reason. If the original URL cannot be
-fetched, publishing falls back to the stored optimized file.
+`optimizeImage` from `lib/optimize-image.js` before writing the asset. The post record gets `displayImage` and `image` pointing to the optimized file stored in
+`assets/img/content/`. Mastodon and Bluesky upload this file; Threads fetches its deployed URL.
+Historical `socialImage` attachment URLs are ignored by publishers and new posts omit that field.
+Bluesky rejects images over 2,000,000 bytes before uploading and releases the claim for a later retry.
 
 `optimizeImage` shells out to ImageMagick (`magick`, falling back to `convert`). If no binary is
 available or all encodes fail, the original buffer is stored unchanged and the result reports

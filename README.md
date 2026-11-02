@@ -7,7 +7,7 @@ See [Social publishing](docs/social-publishing.md) for setup, local testing, tok
 troubleshooting.
 
 See [Image optimization](docs/image-optimization.md) for stored image formats, the bulk optimize
-script, and why social platforms receive the original upload.
+script, and how social platforms use the optimized site images.
 
 The feed renders 30 posts per page and loads older batches automatically while scrolling.
 Static links at `/page/2/`, `/page/3/`, and so on also work without JavaScript. The displayed

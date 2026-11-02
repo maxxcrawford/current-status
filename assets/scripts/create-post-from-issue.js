@@ -494,7 +494,7 @@ function assertNoPostCollision(data, guid, assetPath) {
   }
 }
 
-function buildPost({ postId, fullTime, filename, altText, ratio, color, socialImage }) {
+function buildPost({ postId, fullTime, filename, altText, ratio, color }) {
   const displayImage = `assets/img/content/${filename}`;
 
   return {
@@ -502,7 +502,6 @@ function buildPost({ postId, fullTime, filename, altText, ratio, color, socialIm
     fullTime,
     image: `${CURRENT_STATUS_ORIGIN}/${displayImage}`,
     displayImage,
-    ...(socialImage ? { socialImage } : {}),
     imageAltDesc: altText,
     ratio,
     color,
@@ -558,7 +557,6 @@ async function createPostFromIssue(options = {}) {
     altText,
     ratio,
     color,
-    socialImage: storedImage.optimized ? imageUrl : '',
   });
 
   assertNoPostCollision(data, post.guid, assetPath);

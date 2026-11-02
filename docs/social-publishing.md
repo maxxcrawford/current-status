@@ -19,9 +19,9 @@ failed service.
 
 ## Image formats
 
-Social platforms receive the original uploaded file (JPG, PNG, or GIF) via the post's `socialImage`
-field, not the AVIF or WebP copy stored for the site. See
-[Image optimization](image-optimization.md).
+All social platforms use the optimized site image referenced by `image`, including for local
+publishing commands. Historical `socialImage` original-attachment URLs are ignored. Bluesky rejects
+images over 2,000,000 bytes before uploading. See [Image optimization](image-optimization.md).
 
 ## Environment variables
 
