@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20261103T1316",
+      "fullTime": "1:16 PM • November 3, 2026",
+      "image": "https://current-status.com/assets/img/content/20261103T1316.webp",
+      "displayImage": "assets/img/content/20261103T1316.webp",
+      "imageAltDesc": "Cartoon blonde driver holds a small green creature on a leash out of a gray car’s window while a police officer stands beside her.",
+      "ratio": "2-3",
+      "color": "#74737F"
+    },
+    {
       "guid": "#20261102T1347",
       "fullTime": "1:47 PM • November 2, 2026",
       "image": "https://current-status.com/assets/img/content/20261102T1347.webp",
