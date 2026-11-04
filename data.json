@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20261104T1607",
+      "fullTime": "4:07 PM • November 4, 2026",
+      "image": "https://current-status.com/assets/img/content/20261104T1607.webp",
+      "displayImage": "assets/img/content/20261104T1607.webp",
+      "imageAltDesc": "Two blue pixel-art cats above the text “You made it to the end!” on a dark background.",
+      "ratio": "1-2",
+      "color": "#21282F"
+    },
+    {
       "guid": "#20261103T2316",
       "fullTime": "11:16 PM • November 3, 2026",
       "image": "https://current-status.com/assets/img/content/20261103T2316.webp",
