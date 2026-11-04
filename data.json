@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20261103T2316",
+      "fullTime": "11:16 PM • November 3, 2026",
+      "image": "https://current-status.com/assets/img/content/20261103T2316.webp",
+      "displayImage": "assets/img/content/20261103T2316.webp",
+      "imageAltDesc": "Television graphic showing Texas election results with Santos (D) at 52% and Vinick (R) at 48%, with 85% reporting.",
+      "ratio": "4-5",
+      "color": "#000000"
+    },
+    {
       "guid": "#20261103T1348",
       "fullTime": "1:48 PM • November 3, 2026",
       "image": "https://current-status.com/assets/img/content/20261103T1348.webp",
