@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20261107T0910",
+      "fullTime": "9:10 AM • November 7, 2026",
+      "image": "https://current-status.com/assets/img/content/20261107T0910.webp",
+      "displayImage": "assets/img/content/20261107T0910.webp",
+      "imageAltDesc": "Two helmeted contestants and a host face a giant stone head with glowing red eyes amid fog and jungle ruins",
+      "ratio": "1-1",
+      "color": "#56412E"
+    },
+    {
       "guid": "#20261104T1626",
       "fullTime": "4:26 PM • November 4, 2026",
       "image": "https://current-status.com/assets/img/content/20261104T1626.webp",
