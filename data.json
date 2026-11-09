@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20261109T0853",
+      "fullTime": "8:53 AM • November 9, 2026",
+      "image": "https://current-status.com/assets/img/content/20261109T0853.webp",
+      "displayImage": "assets/img/content/20261109T0853.webp",
+      "imageAltDesc": "A man (Western novelist, Louis L'amour) in a gray cowboy hat and red patterned shirt leans on a saddle beside a tree.",
+      "ratio": "1-1",
+      "color": "#994F40"
+    },
+    {
       "guid": "#20261107T0910",
       "fullTime": "9:10 AM • November 7, 2026",
       "image": "https://current-status.com/assets/img/content/20261107T0910.webp",
