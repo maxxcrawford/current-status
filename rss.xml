@@ -9,11 +9,19 @@
             <link>http://current-status.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 07 Nov 2026 15:10:36 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 09 Nov 2026 14:53:37 GMT</lastBuildDate>
         <atom:link href="http://current-status.com/rss.xml" rel="self" type="application/rss+xml"/>
         <copyright><![CDATA[2024 Maxx Crawford]]></copyright>
         <language><![CDATA[en]]></language>
         <ttl>1</ttl>
+        <item>
+            <title><![CDATA[current status:]]></title>
+            <link>https://current-status.com/20261109T0853/</link>
+            <guid isPermaLink="false">#20261109T0853</guid>
+            <dc:creator><![CDATA[Maxx Crawford]]></dc:creator>
+            <pubDate>Mon, 09 Nov 2026 14:53:00 GMT</pubDate>
+            <enclosure url="https://current-status.com/assets/img/content/20261109T0853.webp" length="0" type="image/webp"/>
+        </item>
         <item>
             <title><![CDATA[current status:]]></title>
             <link>https://current-status.com/20261107T0910/</link>
