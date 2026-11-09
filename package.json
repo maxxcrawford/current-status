@@ -46,9 +46,9 @@
     "node": "22.22.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.64.1",
-    "@tailwindcss/cli": "^4.3.3",
+    "@playwright/test": "^1.65.0",
+    "@tailwindcss/cli": "^4.3.4",
     "tailwindcss": "^4.3.3",
-    "vite": "^8.3.5"
+    "vite": "^8.3.6"
   }
 }
