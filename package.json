@@ -37,7 +37,7 @@
   "dependencies": {
     "@netlify/blobs": "^10.7.8",
     "dayjs": "^1.11.23",
-    "dotenv": "^18.0.9",
+    "dotenv": "^18.0.10",
     "masto": "^8.0.0",
     "npm-run-all": "^4.1.5",
     "rss": "^1.2.2"
@@ -46,9 +46,9 @@
     "node": "22.22.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.64.1",
-    "@tailwindcss/cli": "^4.3.3",
+    "@playwright/test": "^1.65.0",
+    "@tailwindcss/cli": "^4.3.5",
     "tailwindcss": "^4.3.3",
-    "vite": "^8.3.5"
+    "vite": "^8.3.8"
   }
 }
