@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20261116T2345",
+      "fullTime": "11:45 PM • November 16, 2026",
+      "image": "https://current-status.com/assets/img/content/20261116T2345.webp",
+      "displayImage": "assets/img/content/20261116T2345.webp",
+      "imageAltDesc": "A low-poly video game character (from the N64 game Goldeneye) with the face of actor, Robert Pattinson, holds a silenced pistol upright in an industrial doorway.",
+      "ratio": "3-4",
+      "color": "#162416"
+    },
+    {
       "guid": "#20261116T1350",
       "fullTime": "1:50 PM • November 16, 2026",
       "image": "https://current-status.com/assets/img/content/20261116T1350.webp",
