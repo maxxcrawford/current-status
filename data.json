@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20261120T1501",
+      "fullTime": "3:01 PM • November 20, 2026",
+      "image": "https://current-status.com/assets/img/content/20261120T1501.gif",
+      "displayImage": "assets/img/content/20261120T1501.gif",
+      "imageAltDesc": "Avril Lavigne and three friends crowd the camera, singing and waving their arms in a shopping mall.",
+      "ratio": "3-4",
+      "color": "#080808"
+    },
+    {
       "guid": "#20261116T2345",
       "fullTime": "11:45 PM • November 16, 2026",
       "image": "https://current-status.com/assets/img/content/20261116T2345.webp",
