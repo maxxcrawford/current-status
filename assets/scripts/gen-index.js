@@ -143,6 +143,21 @@ function displayDateForPost(post, currentYear = new Date().getFullYear()) {
   return year === currentYear ? `${monthName} ${day}` : `${monthName} ${day}, ${year}`;
 }
 
+function renderPostActions(id) {
+  return `<div class="post-actions" data-post-actions="${escapeAttr(id)}" hidden>
+              <button type="button" class="post-action" data-post-like aria-label="Like post">
+                <span class="post-heart-outline" aria-hidden="true"><i class="fa-regular fa-heart"></i></span>
+                <span class="post-heart-filled" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+                <span data-post-like-count aria-hidden="true"></span>
+              </button>
+              <span class="post-action-feedback" data-post-like-status role="status"></span>
+              <span class="post-action-feedback" data-post-share-status role="status"></span>
+              <button type="button" class="post-action" data-post-share aria-label="Copy post link">
+                <i class="fa-solid fa-share" aria-hidden="true"></i>
+              </button>
+            </div>`;
+}
+
 function renderPost(post) {
   const id = postId(post);
   const ratioClass = post.ratio ? ` ratio-${post.ratio}` : '';
@@ -164,6 +179,7 @@ function renderPost(post) {
               <p class="mt-0">current status:</p>
               <div role="img" aria-label="${escapeAttr(imageAltDesc)}" data-full-image="${escapeAttr(fullImageForHtml(post.image))}" data-img="${escapeAttr(displayImageForHtml(post.displayImage))}" data-color="${escapeAttr(post.color)}" class="${POST_IMAGE_CLASSES}${ratioClass} ${aspectClass}"></div>
             </div>
+            ${renderPostActions(id)}
           </div>
         </div>
       </li>`;
@@ -193,7 +209,8 @@ function renderPermalinkPost(post) {
           <div class="post-content-container">
             <p class="mt-0">current status:</p>
             <div role="img" aria-label="${escapeAttr(imageAltDesc)}" data-full-image="${escapeAttr(fullImageForHtml(post.image))}" data-img="${escapeAttr(displayImageForHtml(post.displayImage))}" data-color="${escapeAttr(post.color)}" class="${POST_IMAGE_CLASSES}${ratioClass} ${aspectClass}"></div>
-            <time class="block mt-3 text-gray-600 dark:!text-[#999]" datetime="${escapeAttr(dateTimeForPost(post))}">${escapeAttr(fullTime)}</time>
+            <a href="${escapeAttr(permalinkForPost(post))}" class="${POST_DATE_CLASSES} inline-block mt-3"><time datetime="${escapeAttr(dateTimeForPost(post))}">${escapeAttr(fullTime)}</time></a>
+            ${renderPostActions(id)}
           </div>
         </article>
       </li>`;
@@ -354,7 +371,7 @@ function renderFeedPage(template, posts, page, pageCount) {
         <p data-feed-status role="status" class="text-sm mt-2"></p>
       </li>`;
   let html = replacePostList(template, posts.slice(start, start + FEED_PAGE_SIZE), navigation);
-  html = html.replace('class="feed ', `data-feed data-feed-version="${escapeAttr(postId(posts[0] || {}))}" class="feed `);
+  html = html.replace('class="feed ', `data-feed data-feed-version="3:${escapeAttr(postId(posts[0] || {}))}" class="feed `);
   html = html.replace('<span id="postCount"></span>', `<span id="postCount">${posts.length}</span>`);
   html = html.replace('  </main>', '    <p data-feed-announcement role="status" class="sr-only"></p>\n  </main>');
   if (page > 1) {

@@ -2,6 +2,11 @@
   'use strict';
 
   const feed = document.querySelector('[data-feed]');
+  const likesPath = '/api/post-likes';
+  const reactions = new Map();
+  const pendingLikes = new Set();
+  const shareTimers = new WeakMap();
+  const compactCount = new Intl.NumberFormat(undefined, { notation: 'compact' });
   const imageObserver = 'IntersectionObserver' in window
     ? new IntersectionObserver(entries => {
       for (const entry of entries) {
@@ -17,6 +22,97 @@
     image.style.backgroundImage = `url('${image.dataset.img}')`;
   }
 
+  function getReaction(id) {
+    try {
+      return JSON.parse(localStorage.getItem(`post-like:${id}`)) || reactions.get(id);
+    } catch {
+      return reactions.get(id);
+    }
+  }
+
+  function rememberReaction(id, reaction) {
+    reactions.set(id, reaction);
+    try {
+      localStorage.setItem(`post-like:${id}`, JSON.stringify(reaction));
+    } catch { /* The like still works when browser storage is unavailable. */ }
+  }
+
+  function updateLike(button, liked, count) {
+    const counter = button.querySelector('[data-post-like-count]');
+    const displayed = Number(counter.dataset.count);
+    if (Number.isSafeInteger(count) && (!Number.isFinite(displayed) || count >= displayed)) {
+      counter.dataset.count = count;
+    }
+    button.toggleAttribute('data-liked', liked);
+    if (liked || pendingLikes.has(button)) button.setAttribute('aria-disabled', 'true');
+    else button.removeAttribute('aria-disabled');
+    const total = Number(counter.dataset.count);
+    counter.textContent = total > 0 ? compactCount.format(total) : '';
+    const label = liked ? 'Liked post' : 'Like post';
+    button.setAttribute('aria-label', Number.isFinite(total)
+      ? `${label} (${total.toLocaleString()} ${total === 1 ? 'like' : 'likes'})` : label);
+  }
+
+  async function loadLikeCounts(actions) {
+    const query = new URLSearchParams();
+    for (const row of actions) query.append('id', row.dataset.postActions);
+    try {
+      const response = await fetch(`${likesPath}?${query}`);
+      if (!response.ok) return;
+      const counts = await response.json();
+      for (const row of actions) {
+        const id = row.dataset.postActions;
+        updateLike(row.querySelector('[data-post-like]'), !!getReaction(id)?.liked, counts[id]);
+      }
+    } catch { /* A failed count lookup leaves the post and its actions usable. */ }
+  }
+
+  function initializePostActions(root) {
+    const actions = [...root.querySelectorAll('[data-post-actions]')];
+    for (const row of actions) {
+      row.querySelector('[data-post-like-status]').textContent = '';
+      row.querySelector('[data-post-share-status]').textContent = '';
+      updateLike(row.querySelector('[data-post-like]'), !!getReaction(row.dataset.postActions)?.liked);
+      row.hidden = false;
+    }
+    for (let start = 0; start < actions.length; start += 30) {
+      loadLikeCounts(actions.slice(start, start + 30));
+    }
+  }
+
+  async function likePost(row, button, status) {
+    const id = row.dataset.postActions;
+    let reaction = getReaction(id);
+    if (reaction?.liked || pendingLikes.has(button)) return;
+
+    pendingLikes.add(button);
+    button.setAttribute('aria-disabled', 'true');
+    status.textContent = '';
+    let count;
+    try {
+      reaction ??= { id: crypto.randomUUID(), liked: false };
+      rememberReaction(id, reaction);
+      const response = await fetch(`${likesPath}?id=${encodeURIComponent(id)}`, {
+        method: 'POST',
+        headers: { 'x-reaction-id': reaction.id },
+      });
+      if (response.status === 429) {
+        status.textContent = 'Too many requests. Try again in a minute.';
+        return;
+      }
+      if (!response.ok) throw new Error('Like failed');
+      ({ count } = await response.json());
+      if (!Number.isSafeInteger(count) || count < 1) throw new Error('Invalid like count');
+      rememberReaction(id, { ...reaction, liked: true });
+      status.textContent = 'Liked.';
+    } catch {
+      status.textContent = 'Could not save the like. Try again.';
+    } finally {
+      pendingLikes.delete(button);
+      updateLike(button, !!getReaction(id)?.liked, count);
+    }
+  }
+
   function initializePosts(root) {
     root.querySelectorAll('.user-profile-full-name').forEach(el => { el.textContent = 'Maxx Crawford'; });
     root.querySelectorAll('.user-profile-username').forEach(el => { el.textContent = '@woodenwarship'; });
@@ -25,6 +121,7 @@
       if (imageObserver) imageObserver.observe(image);
       else loadImage(image);
     });
+    initializePostActions(root);
   }
 
   // Save each history entry separately, so returning to a post's feed restores its batch and position.
@@ -43,6 +140,36 @@
   }
 
   initializePosts(document);
+
+  document.addEventListener('click', async event => {
+    const button = event.target.closest('[data-post-like], [data-post-share]');
+    if (!button) return;
+    const row = button.closest('[data-post-actions]');
+    if (button.matches('[data-post-like]')) {
+      await likePost(row, button, row.querySelector('[data-post-like-status]'));
+      return;
+    }
+
+    const status = row.querySelector('[data-post-share-status]');
+    const link = row.closest('.post').querySelector('a.post-date').href;
+    try {
+      await navigator.clipboard.writeText(link);
+      clearTimeout(shareTimers.get(status));
+      status.textContent = 'Link copied.';
+      shareTimers.set(status, setTimeout(() => {
+        status.textContent = '';
+        shareTimers.delete(status);
+      }, 2000));
+    } catch {
+      clearTimeout(shareTimers.get(status));
+      status.textContent = '';
+      window.prompt('Copy this post link', link);
+    }
+  });
+
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) initializePostActions(document);
+  });
 
   document.addEventListener('click', event => {
     const post = event.target.closest('.post[data-permalink]');

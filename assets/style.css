@@ -74,7 +74,7 @@ body {
 }
 
 .tooltip:hover::after,
-.post-date:hover::after {
+.post-date[data-full-date]:hover::after {
   display: block;
 }
 
@@ -304,6 +304,72 @@ body.permalink-page {
 
 .post[data-permalink] .post-content-container-image {
   cursor: default;
+}
+
+.post-actions:not([hidden]) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.post-action {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.375rem;
+  min-height: 44px;
+  padding: 0 0.5rem;
+  border-radius: 0.375rem;
+  color: #666;
+  cursor: pointer;
+}
+
+.post-action-feedback {
+  min-width: 0;
+  font-size: 0.875rem;
+}
+
+[data-post-share-status] {
+  margin-inline-start: auto;
+  text-align: end;
+}
+
+.post-action:hover:not([aria-disabled="true"]) {
+  background-color: rgb(128 128 128 / 12%);
+}
+
+[data-post-like][aria-disabled="true"] {
+  cursor: default;
+}
+
+[data-post-like-count]:empty {
+  display: none;
+}
+
+[data-post-share] {
+  justify-content: center;
+  min-width: 44px;
+}
+
+.post-heart-filled,
+[data-liked] .post-heart-outline {
+  display: none;
+}
+
+[data-liked] .post-heart-filled {
+  display: inline;
+  color: #c32b55;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-action {
+    color: #bbb;
+  }
+
+  [data-liked] .post-heart-filled {
+    color: #f37594;
+  }
 }
 
 .post-container {

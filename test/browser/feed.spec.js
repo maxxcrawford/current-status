@@ -20,6 +20,67 @@ test('automatically appends the next batch and initializes its images', async ({
     new Set(elements.map(el => el.dataset.permalink)).size)).toBe(60);
 });
 
+test('an appended post can be liked and its date link copied', async ({ page }) => {
+  const id = posts[30].guid.slice(1);
+  let count = 6;
+  const reactions = [];
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'clipboard', {
+      value: { writeText: async text => { window.copiedPostLink = text; } },
+    });
+  });
+  await page.route('**/api/post-likes?*', async route => {
+    const request = route.request();
+    const ids = new URL(request.url()).searchParams.getAll('id');
+    if (request.method() === 'GET') {
+      return route.fulfill({ json: Object.fromEntries(ids.map(requestedId => [requestedId, requestedId === id ? count : 0])) });
+    }
+    expect(ids).toEqual([id]);
+    reactions.push(request.headers()['x-reaction-id']);
+    if (reactions.length === 1) return route.fulfill({ status: 503 });
+    return route.fulfill({ json: { count: ++count } });
+  });
+
+  await page.goto('/');
+  const zeroLikes = page.locator('[data-post-actions]').first();
+  await expect(zeroLikes.getByRole('button', { name: 'Like post (0 likes)', exact: true })).toBeVisible();
+  await expect(zeroLikes.locator('[data-post-like-count]')).toHaveText('');
+  await page.locator('[data-feed-next]').scrollIntoViewIfNeeded();
+  const post = page.locator(`[data-permalink="/${id}/"]`);
+  const like = post.getByRole('button', { name: 'Like post (6 likes)', exact: true });
+  await expect(like.locator('.post-heart-outline')).not.toHaveCSS('display', 'none');
+  await expect(like.locator('.post-heart-filled')).toHaveCSS('display', 'none');
+  await like.click();
+  await expect(post.locator('[data-post-like-status]')).toHaveText('Could not save the like. Try again.');
+  await like.press('Enter');
+  const liked = post.getByRole('button', { name: 'Liked post (7 likes)', exact: true });
+  await expect(liked).toBeDisabled();
+  await expect(post.locator('[data-post-like-status]')).toHaveText('Liked.');
+  await expect(liked.locator('.post-heart-filled')).not.toHaveCSS('display', 'none');
+  await expect(liked.locator('.post-heart-outline')).toHaveCSS('display', 'none');
+  expect(reactions[0]).toBeTruthy();
+  expect(reactions).toEqual([reactions[0], reactions[0]]);
+  await expect(page).toHaveURL('/');
+
+  const date = post.locator('.post-date');
+  const permalink = await date.evaluate(link => link.href);
+  const share = post.getByRole('button', { name: 'Copy post link' });
+  await expect(share.locator('i.fa-solid.fa-share')).toHaveCount(1);
+  const { height } = await post.locator('[data-post-actions]').boundingBox();
+  await share.click();
+  await expect(post.locator('[data-post-share-status]')).toHaveText('Link copied.');
+  expect((await post.locator('[data-post-actions]').boundingBox()).height).toBe(height);
+  expect(await page.evaluate(() => window.copiedPostLink)).toBe(permalink);
+
+  await date.click();
+  await expect(page).toHaveURL(permalink);
+  await expect(page.getByRole('button', { name: 'Liked post (7 likes)', exact: true })).toBeDisabled();
+  await page.getByRole('button', { name: 'Copy post link' }).click();
+  await expect(page.locator('.post [data-post-share-status]')).toHaveText('Link copied.');
+  expect(await page.evaluate(() => window.copiedPostLink)).toBe(permalink);
+  await expect(page.locator('.post [data-post-share-status]')).toHaveText('', { timeout: 4000 });
+});
+
 test('a failed batch keeps existing posts and allows an explicit retry', async ({ page }) => {
   let attempts = 0;
   await page.route('**/page/2/', async route => {
@@ -66,17 +127,17 @@ test('the final batch stops loading and announces the remaining posts', async ({
   await expect(page.locator('[data-feed-announcement]')).toHaveText(`${remaining} more posts loaded.`);
 });
 
-test('static page links work without JavaScript and the last page has no next link', async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false });
+test('static page links work without JavaScript and the last page has no next link', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, javaScriptEnabled: false });
   const page = await context.newPage();
   await page.route('https://**/*', route => route.abort());
-  await page.goto('http://127.0.0.1:3101/');
+  await page.goto('/');
   await expect(page.locator('[data-permalink]')).toHaveCount(30);
   await expect(page.locator('#postCount')).toHaveText(String(posts.length));
   await page.getByRole('link', { name: 'Load more posts' }).click();
   await expect(page).toHaveURL(/\/page\/2\/$/);
   await expect(page.locator('[data-permalink]').first()).toHaveAttribute('data-permalink', `/${posts[30].guid.slice(1)}/`);
-  await page.goto(`http://127.0.0.1:3101/page/${Math.ceil(posts.length / 30)}/`);
+  await page.goto(`/page/${Math.ceil(posts.length / 30)}/`);
   await expect(page.locator('[data-feed-next]')).toHaveCount(0);
   await context.close();
 });
@@ -126,13 +187,13 @@ test('initial styling needs no stylesheet requests and the LCP image has high pr
 });
 
 for (const scale of [1, 2]) {
-  test(`header and profile images select appropriately sized sources at ${scale}x`, async ({ browser }) => {
-    const context = await browser.newContext({ viewport: { width: 375, height: 812 }, deviceScaleFactor: scale });
+  test(`header and profile images select appropriately sized sources at ${scale}x`, async ({ browser, baseURL }) => {
+    const context = await browser.newContext({ baseURL, viewport: { width: 375, height: 812 }, deviceScaleFactor: scale });
     const page = await context.newPage();
     const requests = [];
     page.on('request', request => requests.push(request.url()));
     await page.route('https://**/*', route => route.abort());
-    await page.goto('http://127.0.0.1:3101/');
+    await page.goto('/');
     const header = page.getByAltText('Oil pumpjacks operating across a flat, arid Texas landscape beneath a cloudy sky');
     const profile = page.getByAltText('Maxx Crawford', { exact: true });
     await expect.poll(() => header.evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
