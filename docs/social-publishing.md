@@ -5,7 +5,9 @@ Current Status publishes each new image status to Mastodon, Bluesky, and Threads
 ## How publishing works
 
 1. Opening a status-post issue triggers `.github/workflows/create-status-post-pr.yml`.
-2. The workflow creates and auto-merges a pull request containing the new `data.json` entry and image,
+2. The workflow uses its existing ImageMagick installation to generate a temporary Threads JPEG
+   for WebP, AVIF, and GIF inputs and stage it in the `threads-images` Netlify Blob store. It then
+   creates and auto-merges a pull request containing the new `data.json` entry and site image,
    then explicitly closes the source issue once the merge is confirmed.
 3. Netlify builds and deploys the production site.
 4. The local Netlify build plugin calls `/.netlify/functions/publish-social` after a successful
@@ -20,8 +22,12 @@ failed service.
 ## Image formats
 
 All social platforms use the optimized site image referenced by `image`, including for local
-publishing commands. Historical `socialImage` original-attachment URLs are ignored. Bluesky rejects
-images over 2,000,000 bytes before uploading. See [Image optimization](image-optimization.md).
+publishing commands. Threads uses an ImageMagick-generated JPEG for site WebP, AVIF, and GIF
+images because its API officially supports JPEG and PNG. GIF conversion produces a static image.
+The JPEG is generated in memory, temporarily hosted in Netlify Blobs, and deleted after Threads
+confirms publication. No JPEG copy is committed to Git or kept among the deployed static assets.
+Historical `socialImage` original-attachment URLs are ignored. Bluesky rejects images over
+2,000,000 bytes before uploading. See [Image optimization](image-optimization.md).
 
 ## Environment variables
 
@@ -42,6 +48,9 @@ Copy `.env-dist` to the ignored `.env` file for local commands. Never commit rea
 | `NETLIFY_AUTH_TOKEN` | Netlify token used by local Blob-backed maintenance commands. |
 
 Configure the runtime values in the Netlify site's environment variables as well as `.env`.
+Also configure a GitHub Actions repository secret named `PUBLISH_SECRET`, matching the Netlify
+value. The issue workflow needs it to stage the JPEG through the authenticated `threads-image`
+function. Deploy that function before opening the first new status-post issue using this workflow.
 
 ## Set up Threads
 
@@ -126,6 +135,14 @@ This command intentionally bypasses the Netlify Blob deduplication store. It cre
 post every time it runs. Verify the text, image, and alt text, then deliberately keep or delete the
 test post in the Threads UI.
 
+For WebP, AVIF, and GIF inputs, this command needs ImageMagick and `PUBLISH_SECRET` locally.
+It stages a temporary JPEG through the deployed function and deletes it after publication.
+Generating and staging a JPEG alone does not publish a post:
+
+```sh
+node assets/scripts/stage-threads-image.js
+```
+
 Threads fetches the image itself, so `SOURCE_BASE_URL` must be publicly reachable. The command
 defaults to `https://current-status.com`; localhost and local file paths will not work. The deployed
 URL must already contain the image referenced by the top `data.json` post.
@@ -141,13 +158,15 @@ statuses are not backfilled to Threads.
 
 The production Threads flow:
 
-1. Creates an `IMAGE` media container using the deployed image URL, `current status:` text, and the
+1. Creates an `IMAGE` media container using the temporary JPEG URL (or deployed JPEG/PNG), `current status:` text, and the
    status image's alt description.
 2. Polls the container until Meta reports `FINISHED`; `ERROR`, `EXPIRED`, and polling timeouts fail
    safely before publication.
 3. Publishes that container.
-4. Looks up the post permalink when possible.
-5. Stores the container ID, post ID, permalink, commit, and timestamp in the `threads-posts` Netlify
+4. Deletes the temporary JPEG, if used. Failed publication keeps the JPEG available for retry;
+   a cleanup error is logged without turning a successful post into a retry.
+5. Looks up the post permalink when possible.
+6. Stores the container ID, post ID, permalink, commit, and timestamp in the `threads-posts` Netlify
    Blob store.
 
 If permalink lookup fails after publication, the post is still recorded using its post ID so a retry
@@ -173,7 +192,12 @@ an expired token must be authorized again.
 - `missing_threads_environment`: set `THREADS_ACCESS_TOKEN` in the environment running the command or
   Netlify function.
 - `Invalid image URL`: confirm the resolved image is available over public HTTPS without credentials
-  and that the production deploy already contains it.
+  and that the production deploy already contains it. For WebP, AVIF, and GIF site images, confirm
+  the workflow staged the JPEG and `/.netlify/functions/threads-image?post=POST_ID` returns
+  `image/jpeg` before publication. This URL should return 404 after successful cleanup.
+- Failed or abandoned workflows can leave a staged JPEG. After checking that no publication is
+  in progress, delete its `POST_ID.jpg` entry from the `threads-images` Blob store or send an
+  authenticated `DELETE` to the same temporary-image URL. Restage before retrying a deleted image.
 - Permission errors: verify `threads_basic` and `threads_content_publish`, the tester invitation, app,
   account, and token in Meta's debugger.
 - An isolated Threads failure: inspect the Netlify function/build log. Mastodon and Bluesky may still

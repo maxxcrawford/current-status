@@ -33,7 +33,10 @@ Repeat for the other widths listed above. The header loads eagerly with high fet
 
 `assets/scripts/create-post-from-issue.js` downloads the issue attachment, then calls
 `optimizeImage` from `lib/optimize-image.js` before writing the asset. The post record gets `displayImage` and `image` pointing to the optimized file stored in
-`assets/img/content/`. Mastodon and Bluesky upload this file; Threads fetches its deployed URL.
+`assets/img/content/`. Mastodon and Bluesky upload this file; Threads fetches its deployed URL,
+using a temporary JPEG generated with the workflow's existing ImageMagick installation for WebP,
+AVIF, and GIF inputs. This JPEG is hosted in Netlify Blobs and deleted after Threads confirms
+publication. Converted GIFs are static images; JPEGs are never committed to the repository.
 Historical `socialImage` attachment URLs are ignored by publishers and new posts omit that field.
 Bluesky rejects images over 2,000,000 bytes before uploading and releases the claim for a later retry.
 

@@ -169,6 +169,66 @@ async function testApiErrorsDoNotExposeToken() {
   );
 }
 
+async function testUnsupportedSiteImagesUseTemporaryJpeg() {
+  for (const extension of ['webp', 'avif', 'gif']) {
+    for (const sourceBaseUrl of [undefined, 'https://deploy.example']) {
+      const calls = { containers: [], statuses: [], publications: [], lookups: [] };
+      const topPost = {
+        ...post(),
+        image: `https://current-status.com/assets/img/content/test.${extension}`,
+      };
+
+      await publishLatestDirect({
+        data: { posts: [topPost] },
+        threadsClient: createMockClient(calls),
+        sourceBaseUrl,
+        deleteThreadsImage: async (url) => {
+          assert.equal(calls.publications.length, 1, 'Do not delete the image before publication.');
+          assert.equal(url, calls.containers[0].imageUrl);
+          calls.deleted = true;
+        },
+      });
+
+      const imageUrl = new URL(calls.containers[0].imageUrl);
+      assert.equal(imageUrl.origin, sourceBaseUrl || 'https://current-status.com');
+      assert.equal(imageUrl.pathname, '/.netlify/functions/threads-image');
+      assert.equal(imageUrl.searchParams.get('post'), '20260529T0737');
+      assert.equal(calls.deleted, true);
+      assert.equal(calls.containers[0].altText, topPost.imageAltDesc);
+    }
+  }
+}
+
+async function testTemporaryImageRetainedOnFailureAndCleanupFailureDoesNotDuplicate() {
+  const topPost = { ...post(), image: 'https://current-status.com/test.webp' };
+  const calls = { containers: [], statuses: [], publications: [], lookups: [] };
+  let deleted = false;
+  await assert.rejects(publishLatestDirect({
+    data: { posts: [topPost] },
+    threadsClient: createMockClient(calls, { publishError: new Error('publication failed') }),
+    deleteThreadsImage: async () => { deleted = true; },
+  }), /publication failed/);
+  assert.equal(deleted, false, 'Keep the staged JPEG available for a retry.');
+
+  const store = new MemoryStore();
+  const originalWarn = console.warn;
+  const warnings = [];
+  console.warn = message => warnings.push(message);
+  try {
+    const options = {
+      data: { posts: [topPost] }, store, onlyTop: true,
+      threadsClient: createMockClient(calls),
+      deleteThreadsImage: async () => { throw new Error('cleanup unavailable'); },
+    };
+    assert.equal((await publishLatest(options)).action, 'published');
+    assert.equal((await publishLatest(options)).action, 'noop');
+    assert.equal((await store.get(postKey(topPost.guid))).status, 'published');
+    assert.match(warnings[0], /cleanup unavailable/);
+  } finally {
+    console.warn = originalWarn;
+  }
+}
+
 async function testBlobPublishAndNoop() {
   const store = new MemoryStore();
   const calls = { containers: [], statuses: [], publications: [], lookups: [] };
@@ -333,6 +393,8 @@ async function testMissingToken() {
 
 (async function main() {
   await testHttpClientPublishesImage();
+  await testUnsupportedSiteImagesUseTemporaryJpeg();
+  await testTemporaryImageRetainedOnFailureAndCleanupFailureDoesNotDuplicate();
   await testApiErrorsDoNotExposeToken();
   await testBlobPublishAndNoop();
   await testFailedPublishReleasesClaim();
