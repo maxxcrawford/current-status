@@ -4,6 +4,8 @@ const { errorToResponse } = require('../../lib/publisher-common');
 const { publishLatestDirect: publishBlueskyLatestDirect } = require('../../lib/bluesky-publisher');
 const { publishLatestDirect: publishMastodonLatestDirect } = require('../../lib/mastodon-publisher');
 const { publishLatestDirect: publishThreadsLatestDirect } = require('../../lib/threads-publisher');
+const { readData } = require('../../lib/publisher-common');
+const { stageThreadsImage } = require('../../lib/threads-image');
 
 (async function main() {
   const options = {
@@ -41,6 +43,7 @@ const { publishLatestDirect: publishThreadsLatestDirect } = require('../../lib/t
   }
 
   try {
+    await stageThreadsImage(readData().posts[0], options);
     services.threads = await publishThreadsLatestDirect({
       ...options,
       source: 'local-threads-script',
