@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20261122T1158",
+      "fullTime": "11:58 AM • November 22, 2026",
+      "image": "https://current-status.com/assets/img/content/20261122T1158.webp",
+      "displayImage": "assets/img/content/20261122T1158.webp",
+      "imageAltDesc": "A T Rex bares its teeth in the pouring rain as Alan Grant holds up a red flare in Jurassic Park",
+      "ratio": "5-9",
+      "color": "#536490"
+    },
+    {
       "guid": "#20261120T1501",
       "fullTime": "3:01 PM • November 20, 2026",
       "image": "https://current-status.com/assets/img/content/20261120T1501.gif",
