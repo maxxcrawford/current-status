@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "guid": "#20261127T1055",
+      "fullTime": "10:55 AM • November 27, 2026",
+      "image": "https://current-status.com/assets/img/content/20261127T1055.webp",
+      "displayImage": "assets/img/content/20261127T1055.webp",
+      "imageAltDesc": "Rows of beige CRT monitors and corded phones on long wooden desks in a large, empty office",
+      "ratio": "5-7",
+      "color": "#2F2431"
+    },
+    {
       "guid": "#20261122T1158",
       "fullTime": "11:58 AM • November 22, 2026",
       "image": "https://current-status.com/assets/img/content/20261122T1158.webp",
